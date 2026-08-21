@@ -9,26 +9,28 @@
   /* Colors - Boostin brand colors */
   --color-primary: #ff144f;        /* Boostin red/pink */
   --color-primary-dark: #e0103f;   /* Darker red */
+  --color-primary-text: #d1153f;   /* rood voor tekst: 5,4:1 op wit, #ff144f haalt maar 3,84:1 */
   --color-primary-light: #ff4d7a;  /* Lighter red */
   --color-secondary: #3177ea;      /* Blue accent */
   --color-secondary-dark: #2560c7; /* Darker blue */
 
   --color-white: #ffffff;
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f7f7f7;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  --color-paper: #faf7f2;      /* warme pagina-achtergrond */
+  --color-gray-50: #faf8f5;
+  --color-gray-100: #f5f1ec;
+  --color-gray-200: #e8e2da;
+  --color-gray-300: #d9d2c8;
+  --color-gray-400: #a8a099;
+  --color-gray-500: #7c736c;
+  --color-gray-600: #5e5651;
+  --color-gray-700: #46403c;
+  --color-gray-800: #2b2724;
+  --color-gray-900: #191518;
   --color-black: #000000;
 
   /* Typography */
-  --font-heading: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-body: 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -72,6 +74,9 @@
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
 
+  /* Beweging */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -105,6 +110,7 @@ html {
 
 body {
   font-family: var(--font-body);
+  background-color: var(--color-paper);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   color: var(--color-gray-900);
@@ -242,12 +248,18 @@ h4 {
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease), color 0.25s var(--ease);
   transition: all var(--transition-base);
 }
 
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .btn-primary:hover {
@@ -267,7 +279,7 @@ h4 {
 
 .btn-white {
   background-color: var(--color-white);
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .btn-white:hover {
@@ -276,7 +288,7 @@ h4 {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   border: 2px solid var(--color-primary);
 }
 
@@ -293,7 +305,7 @@ h4 {
 
 .btn-outline-white:hover {
   background-color: var(--color-white);
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   border-color: var(--color-white);
 }
 
@@ -304,9 +316,11 @@ h4 {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 3px solid var(--color-primary);
+  background-color: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(14px);
+  /* was een balk van 3px vol #ff144f: het luidste element op de eerste
+     schermvulling, voor pure decoratie */
+  border-bottom: 1px solid rgba(25, 21, 24, 0.08);
 }
 
 .nav {
@@ -363,7 +377,7 @@ h4 {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .dropdown-icon {
@@ -408,7 +422,7 @@ h4 {
 }
 
 .dropdown-link:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   background-color: rgba(255, 20, 79, 0.08);
 }
 
@@ -614,7 +628,7 @@ h4 {
   width: 64px;
   height: 64px;
   margin-bottom: var(--spacing-4);
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .card h3 {
@@ -807,11 +821,11 @@ h4 {
 }
 
 .footer .btn-white {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .footer .btn-white:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   background-color: var(--color-gray-100);
 }
 
@@ -937,6 +951,7 @@ h4 {
 
 .form-group {
   margin-bottom: var(--spacing-4);
+  text-wrap: pretty;
 }
 
 .form-group label {
@@ -957,7 +972,7 @@ h4 {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-primary-text);
 }
 
 .form-group textarea {
@@ -989,7 +1004,7 @@ h4 {
 }
 
 .service-card h3 {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   margin-bottom: var(--spacing-4);
 }
 
@@ -1013,7 +1028,7 @@ h4 {
 }
 
 .text-primary {
-  color: var(--color-primary);
+  color: var(--color-primary-text);
 }
 
 .mb-4 {
@@ -1084,6 +1099,8 @@ h4 {
   border: none;
   border-radius: var(--radius-full);
   cursor: pointer;
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease), color 0.25s var(--ease);
   transition: background-color var(--transition-fast);
 }
 
@@ -1150,7 +1167,7 @@ h4 {
 .pipedrive-success-content h3 {
   font-size: var(--font-size-2xl);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-text);
   margin-bottom: var(--spacing-3);
 }
 
@@ -1180,28 +1197,125 @@ h4 {
   min-height: 400px;
 }
 
-/* --------------------------------------------------------------------------
-   Inladen bij scrollen
-   -------------------------------------------------------------------------- */
-.reveal-ready [data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  will-change: opacity, transform;
+.btn-sm {
+  padding: 0.55rem 1.1rem;
+  font-size: var(--font-size-sm);
 }
 
-.reveal-ready [data-reveal].is-visible {
-  opacity: 1;
+.nav-item--cta {
+  margin-left: var(--spacing-2);
+}
+
+.nav-item--cta .btn:hover {
   transform: none;
+}
+
+.nav-menu--mobile .nav-item--cta {
+  margin: var(--spacing-4) 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   Inladen bij scrollen
+
+   De begintoestand staat hier in statische CSS en niet in JavaScript. Zou JS
+   de elementen pas na het eerste tekenen verbergen, dan flikkert elke
+   pageload: tekst zichtbaar, dan weg, dan infaden. Nadeel van deze aanpak is
+   dat de inhoud verborgen blijft als reveal.js niet draait; daarom staat er
+   een noscript-vangnet in de layout en vangt reveal.js zijn eigen fouten op.
+
+   Deze selectorlijst hoort gelijk te blijven met die in reveal.js.
+   -------------------------------------------------------------------------- */
+.np-head, .np-card, .np-domain, .np-lane, .np-phase, .np-panel, .np-quote,
+.np-cta, .np-logo, .np-stat, .np-testimonial, .np-chain, .np-media, .np-role,
+.np-person, .np-compare, .np-hero-grid > div,
+.card, .methode-card, .klant-logo, .section-header, .two-col > div {
   transition:
-    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms),
-    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms);
+    opacity 0.7s var(--ease) var(--reveal-delay, 0ms),
+    transform 0.7s var(--ease) var(--reveal-delay, 0ms);
+}
+
+.np-head:not(.is-visible),
+.np-card:not(.is-visible),
+.np-domain:not(.is-visible),
+.np-lane:not(.is-visible),
+.np-phase:not(.is-visible),
+.np-panel:not(.is-visible),
+.np-quote:not(.is-visible),
+.np-cta:not(.is-visible),
+.np-logo:not(.is-visible),
+.np-stat:not(.is-visible),
+.np-testimonial:not(.is-visible),
+.np-chain:not(.is-visible),
+.np-media:not(.is-visible),
+.np-role:not(.is-visible),
+.np-person:not(.is-visible),
+.np-compare:not(.is-visible),
+.np-hero-grid > div:not(.is-visible),
+.card:not(.is-visible),
+.methode-card:not(.is-visible),
+.klant-logo:not(.is-visible),
+.section-header:not(.is-visible),
+.two-col > div:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready [data-reveal],
-  .reveal-ready [data-reveal].is-visible {
-    opacity: 1;
-    transform: none;
+  .np-head, .np-card, .np-domain, .np-lane, .np-phase, .np-panel, .np-quote,
+.np-cta, .np-logo, .np-stat, .np-testimonial, .np-chain, .np-media, .np-role,
+.np-person, .np-compare, .np-hero-grid > div,
+.card, .methode-card, .klant-logo, .section-header, .two-col > div {
+    opacity: 1 !important;
+    transform: none !important;
     transition: none;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Serif alleen waar hij hoort
+
+   --font-heading is een serif geworden. Die staat goed op koppen, citaten en
+   cijfers, maar niet op navigatie, knoppen en kleine labels: interface-tekst
+   hoort in de grotesk, anders wordt het geheel zwaar en ouderwets.
+   -------------------------------------------------------------------------- */
+.btn,
+.nav-link,
+.dropdown-link,
+.methode-number,
+.footer h4,
+.form-group label,
+.np-eyebrow,
+.np-tag,
+.np-hero-note,
+.np-chain h2,
+.np-chain li,
+.np-steps li,
+.np-phase::before,
+.np-phase-chip,
+.np-person strong,
+.np-avatar,
+.np-lanes-note,
+.np-role h4,
+.np-compare thead th,
+.np-compare tbody th,
+.np-domain h3,
+.np-card h3,
+.np-lane h3,
+.np-phase h3,
+.np-panel h3 {
+  font-family: var(--font-body);
+  letter-spacing: normal;
+}
+
+/* koppen in de serif mogen wat strakker staan */
+.np-head h2,
+.np-partner-title,
+.np-duo h2,
+.np-cta h2,
+.np-hero h1 {
+  font-family: var(--font-heading);
+}
+
+.np-hero-note {
+  color: rgba(255, 255, 255, 0.52);
 }
