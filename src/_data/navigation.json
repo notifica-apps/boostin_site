@@ -77,12 +77,12 @@
   ],
   "footer": [
     {
-      "label": "Privacy Policy",
-      "url": "/privacy/"
+      "label": "Privacyverklaring",
+      "url": "/assets/docs/privacyverklaring-boostin-consultancy.pdf"
     },
     {
       "label": "Algemene Voorwaarden",
-      "url": "/voorwaarden/"
+      "url": "/assets/docs/algemene-voorwaarden-boostin-consultancy.pdf"
     }
   ]
 }

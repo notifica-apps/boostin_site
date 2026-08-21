@@ -14,3 +14,29 @@
 /powerbi-trainingen-door-en-voor-praktijkmensen/ /trainingen/ 301
 /power-bi-basis-training-financials/ /trainingen/basis-financials/ 301
 /power-bi-basis-training-sales/ /trainingen/basis-sales/ 301
+
+# Aanvulling 21-08-2026 — resterende URL's uit page-sitemap.xml van de
+# WordPress-site, zodat de pad-behoudende forward van boostin-consultancy.nl
+# nergens op een 404 uitkomt.
+/methode/ / 301
+/blog/ / 301
+/vacatures/ / 301
+/vacature-bi-financial/ / 301
+/vacature-database-etl-specialist/ / 301
+/boostin-talks/ / 301
+/boostin-talks-2/ / 301
+/haringparty/ / 301
+/haringparty-2/ / 301
+/boostin-evenementen/ / 301
+/training/ /trainingen/ 301
+/plug-en-play-power-bi-dashboards/ /power-bi-producten/ 301
+/power-bi-exact-online-trainingen/ /trainingen/ 301
+/privacy-policy/ /assets/docs/privacyverklaring-boostin-consultancy.pdf 301
+/wp-content/uploads/2019/07/201907_Privacy_Statement_Boostin_Consultancy_BV-1.pdf /assets/docs/privacyverklaring-boostin-consultancy.pdf 301
+/wp-content/uploads/2019/07/201907_Algemene_Voorwaarden_Boostin_Consultancy_BV.pdf /assets/docs/algemene-voorwaarden-boostin-consultancy.pdf 301
+
+# Vangnet: al het overige WordPress-gruis naar de homepage
+/wp-content/* / 301
+/category/* / 301
+/tag/* / 301
+/author/* / 301
