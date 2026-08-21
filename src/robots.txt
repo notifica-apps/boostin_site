@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://boostin-consultancy.nl/sitemap.xml
+Sitemap: https://boostin.nl/sitemap.xml
