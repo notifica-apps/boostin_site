@@ -13,8 +13,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
-  // Pages Functions: wrangler deployt _site, dus ze moeten daarin staan
-  eleventyConfig.addPassthroughCopy({ "src/functions": "functions" });
 
   // Watch targets
   eleventyConfig.addWatchTarget("src/assets/css/");
