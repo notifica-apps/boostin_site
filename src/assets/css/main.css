@@ -193,7 +193,7 @@ h4 {
 }
 
 .section--primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(150deg, #101114 0%, #191b20 100%);
   color: var(--color-white);
 }
 
@@ -547,7 +547,7 @@ h4 {
 .hero {
   position: relative;
   padding: var(--spacing-24) 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(150deg, #101114 0%, #191b20 100%);
   color: var(--color-white);
   overflow: hidden;
 }
@@ -864,9 +864,12 @@ h4 {
    Page Header
    -------------------------------------------------------------------------- */
 .page-header {
+  position: relative;
   padding: var(--spacing-16) 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  /* diep bijna-zwart in plaats van vol #ff144f: rood blijft het accent */
+  background: linear-gradient(150deg, #101114 0%, #191b20 100%);
   color: var(--color-white);
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .page-header h1 {
@@ -1175,4 +1178,30 @@ h4 {
 .form-container {
   position: relative;
   min-height: 400px;
+}
+
+/* --------------------------------------------------------------------------
+   Inladen bij scrollen
+   -------------------------------------------------------------------------- */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+}
+
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal],
+  .reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
