@@ -40,3 +40,10 @@
 /category/* / 301
 /tag/* / 301
 /author/* / 301
+
+# Opgeruimd 21-08-2026: Dynamics 365 en Legalsense passen niet meer bij de propositie
+/legalsense/ /power-bi-producten/ 301
+/dynamics-365/customer-service/ /consultancy/ 301
+/dynamics-365/marketing/ /consultancy/ 301
+/dynamics-365/sales/ /consultancy/ 301
+/dynamics-365/ /consultancy/ 301

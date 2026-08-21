@@ -285,6 +285,10 @@
   gap: 1rem;
 }
 
+.np-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .np-card {
   padding: clamp(1.625rem, 2.4vw, 2rem);
   background-color: #fff;
@@ -987,4 +991,143 @@
   .np-grid { grid-template-columns: 1fr; }
   .np-questions { justify-content: flex-start; text-align: left; }
   .np-hero-actions .btn { width: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+   Homepage-componenten
+   -------------------------------------------------------------------------- */
+.np-section--ink {
+  background-color: var(--np-ink);
+  color: #fff;
+}
+
+.np-section--ink .np-head h2,
+.np-section--ink .np-quote p {
+  color: #fff;
+}
+
+.np-section--ink .np-head p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Klantlogo's: gelijke hoogte, rustig grijs, kleur op hover */
+.np-logos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background-color: var(--np-line);
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  overflow: hidden;
+}
+
+.np-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+  padding: 0.75rem;
+  background-color: #fff;
+}
+
+.np-logo img {
+  width: 100%;
+  max-width: 11.5rem;
+  height: auto;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter var(--transition-base), opacity var(--transition-base);
+}
+
+.np-logo:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+/* Testimonial */
+.np-testimonial {
+  max-width: 54rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.np-testimonial blockquote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 2.8vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.np-testimonial cite {
+  display: block;
+  margin-top: 1.75rem;
+  font-style: normal;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.np-testimonial cite strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Beeld met verschoven vlak erachter */
+.np-media {
+  position: relative;
+  padding: 0 1rem 1rem 0;
+}
+
+.np-media::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 32%;
+  height: 34%;
+  background-color: var(--np-red);
+  border-radius: var(--np-radius);
+  z-index: 0;
+}
+
+.np-media img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--np-radius);
+}
+
+/* Tweekoloms tekst-plus-beeld */
+.np-duo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.np-duo h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--np-heading);
+}
+
+.np-duo p {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--np-text);
+}
+
+@media (max-width: 1024px) {
+  .np-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .np-duo { grid-template-columns: 1fr; }
+  .np-media { order: -1; max-width: 34rem; }
 }

@@ -6,69 +6,29 @@
     },
     {
       "label": "Wie is Boostin?",
-      "url": "/wat-is-boostin/",
+      "url": "/wat-is-boostin/"
+    },
+    {
+      "label": "Wat we doen",
+      "url": "/consultancy/"
+    },
+    {
+      "label": "Voor wie",
+      "url": "/voor-wie/",
       "children": [
         {
-          "label": "Referenties",
-          "url": "/referenties/"
+          "label": "Woningcorporaties",
+          "url": "/woningcorporaties/"
+        },
+        {
+          "label": "Maakindustrie",
+          "url": "/maakindustrie/"
         }
       ]
     },
     {
-      "label": "Consultancy",
-      "url": "/consultancy/",
-      "children": [
-        {
-          "label": "Prestatiemanagement",
-          "url": "/prestatiemanagement/"
-        }
-      ]
-    },
-    {
-      "label": "Power BI Producten",
-      "url": "/power-bi-producten/",
-      "children": [
-        {
-          "label": "Power BI & Legalsense",
-          "url": "/legalsense/"
-        }
-      ]
-    },
-    {
-      "label": "Microsoft Dynamics 365",
-      "url": "/dynamics-365/",
-      "children": [
-        {
-          "label": "Customer Service",
-          "url": "/dynamics-365/customer-service/"
-        },
-        {
-          "label": "Marketing",
-          "url": "/dynamics-365/marketing/"
-        },
-        {
-          "label": "Sales",
-          "url": "/dynamics-365/sales/"
-        }
-      ]
-    },
-    {
-      "label": "Power BI Trainingen",
-      "url": "/trainingen/",
-      "children": [
-        {
-          "label": "Basis training Financials",
-          "url": "/trainingen/basis-financials/"
-        },
-        {
-          "label": "Basis training Sales",
-          "url": "/trainingen/basis-sales/"
-        },
-        {
-          "label": "Advanced training",
-          "url": "/trainingen/advanced/"
-        }
-      ]
+      "label": "Trainingen",
+      "url": "/trainingen/"
     },
     {
       "label": "Contact",
