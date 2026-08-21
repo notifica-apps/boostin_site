@@ -1010,32 +1010,34 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Klantlogo's: gelijke hoogte, rustig grijs, kleur op hover */
+/* Klantlogo's: rustige rij, grijs, kleur op hover. Geen kaders, en een
+   oneven aantal laat geen gat in een raster achter. */
 .np-logos {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  background-color: var(--np-line);
-  border: 1px solid var(--np-line);
-  border-radius: var(--np-radius);
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.75rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  border-top: 1px solid var(--np-line);
+  border-bottom: 1px solid var(--np-line);
 }
 
 .np-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 10rem;
-  padding: 0.75rem;
-  background-color: #fff;
+  width: clamp(6.5rem, 12vw, 9.5rem);
 }
 
 .np-logo img {
   width: 100%;
-  max-width: 11.5rem;
   height: auto;
   filter: grayscale(1);
-  opacity: 0.85;
+  opacity: 0.8;
+  /* de bronbestanden zijn JPG met een witte achtergrond; multiply laat dat wit
+     wegvallen tegen een getinte sectie in plaats van als vierkant op te vallen */
+  mix-blend-mode: multiply;
   transition: filter var(--transition-base), opacity var(--transition-base);
 }
 
@@ -1127,7 +1129,6 @@
 }
 
 @media (max-width: 1024px) {
-  .np-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .np-duo { grid-template-columns: 1fr; }
   .np-media { order: -1; max-width: 34rem; }
 }
