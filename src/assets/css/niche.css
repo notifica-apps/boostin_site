@@ -12,21 +12,21 @@
   --np-red: #ff144f;
   --np-red-ink: #d1153f;      /* rustiger rood voor tekst en randen */
 
-  /* Diepe vlakken: warm, ontzadigd pruim-ink */
-  --np-ink: #191016;
-  --np-ink-2: #2a1620;
+  /* Diepe vlakken: neutraal koel bijna-zwart, geen kleurzweem */
+  --np-ink: #101114;
+  --np-ink-2: #191b20;
 
-  /* Warme neutralen */
-  --np-heading: #1d1a1f;
-  --np-text: #5c5560;
-  --np-text-dim: #8a828d;
-  --np-surface: #f8f6f7;
-  --np-line: #e9e5e8;
-  --np-line-soft: #f1eef0;
+  /* Koele neutralen */
+  --np-heading: #12141a;
+  --np-text: #565c6b;
+  --np-text-dim: #878d9b;
+  --np-surface: #f7f8f9;
+  --np-line: #e6e8ec;
+  --np-line-soft: #f0f1f4;
 
-  --np-radius: 14px;
-  --np-radius-lg: 22px;
-  --np-shadow-hover: 0 1px 2px rgba(25, 16, 22, 0.04), 0 18px 40px -20px rgba(25, 16, 22, 0.22);
+  --np-radius: 12px;
+  --np-radius-lg: 18px;
+  --np-shadow-hover: 0 1px 2px rgba(16, 17, 20, 0.04), 0 18px 40px -20px rgba(16, 17, 20, 0.2);
 }
 
 /* --------------------------------------------------------------------------
@@ -95,12 +95,14 @@
   padding-block: clamp(4rem, 7vw, 6.5rem);
   background-color: var(--np-ink);
   background-image:
-    linear-gradient(150deg, rgba(25, 16, 22, 0.88) 0%, rgba(25, 16, 22, 0.7) 48%, rgba(42, 22, 32, 0.86) 100%),
-    radial-gradient(90rem 40rem at 85% 12%, rgba(255, 20, 79, 0.3) 0%, rgba(255, 20, 79, 0) 62%),
+    linear-gradient(105deg, rgba(16, 17, 20, 0.94) 0%, rgba(16, 17, 20, 0.72) 52%, rgba(16, 17, 20, 0.5) 100%),
     url('../images/hero-bg.png');
   background-repeat: no-repeat;
-  background-position: center, center, right bottom;
-  background-size: cover, cover, cover;
+  background-position: center, right bottom;
+  background-size: cover, cover;
+  /* luminosity: alleen de helderheid van de foto, de kleur komt van --np-ink,
+     zodat de rode duotone geen paarse zweem over de hero legt */
+  background-blend-mode: normal, luminosity;
   color: #fff;
 }
 
@@ -431,7 +433,7 @@
 .np-panel--red {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(155deg, var(--np-ink) 0%, var(--np-ink-2) 100%);
+  background: linear-gradient(150deg, var(--np-ink-2) 0%, var(--np-ink) 100%);
   color: #fff;
 }
 
@@ -893,7 +895,7 @@
   position: relative;
   overflow: hidden;
   padding: clamp(3rem, 5.5vw, 4.75rem) clamp(1.5rem, 4vw, 4rem);
-  background: linear-gradient(150deg, var(--np-ink) 0%, var(--np-ink-2) 100%);
+  background: linear-gradient(140deg, var(--np-ink-2) 0%, var(--np-ink) 100%);
   border-radius: var(--np-radius-lg);
   color: #fff;
   text-align: center;
@@ -902,12 +904,11 @@
 .np-cta::before {
   content: '';
   position: absolute;
-  top: -55%;
+  top: 0;
   left: 50%;
-  width: 52rem;
-  height: 52rem;
-  background: radial-gradient(circle, rgba(255, 20, 79, 0.22) 0%, rgba(255, 20, 79, 0) 60%);
-  border-radius: 50%;
+  width: 12rem;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255, 20, 79, 0) 0%, var(--np-red) 50%, rgba(255, 20, 79, 0) 100%);
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -966,7 +967,7 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .np-hero {
-    background-position: center, center, 70% bottom;
+    background-position: center, 70% bottom;
   }
   .np-hero-grid,
   .np-head,

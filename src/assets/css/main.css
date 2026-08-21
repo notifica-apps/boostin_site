@@ -756,8 +756,8 @@ h4 {
    Footer
    -------------------------------------------------------------------------- */
 .footer {
-  /* Diep pruim in plaats van vol #ff144f: rood blijft het accent, niet het vlak */
-  background-color: #191016;
+  /* Neutraal bijna-zwart in plaats van vol #ff144f: rood blijft het accent */
+  background-color: #101114;
   color: var(--color-white);
   padding-top: var(--spacing-16);
 }
