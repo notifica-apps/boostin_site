@@ -1,0 +1,945 @@
+/* ==========================================================================
+   Niche landingspagina's — woningcorporaties, maakindustrie
+   Zelfde merk als boostin-consultancy.nl: rood #ff144f, duotone-hero met
+   gebogen hoek, luchtige witte secties, Nunito + Open Sans. Alleen frisser:
+   meer diepte in kaarten, echte tabellen, stappenflows.
+   Alles onder .np-*, zodat de rest van de site ongemoeid blijft.
+   ========================================================================== */
+:root {
+  --np-red: #ff144f;
+  --np-red-dark: #e0103f;
+  --np-red-deep: #b80a33;
+  --np-blue: #3177ea;
+  --np-ink: #22273a;
+  --np-text: #575e73;
+  --np-text-dim: #7c8394;
+  --np-surface: #f7f7f9;
+  --np-line: #e8e9ee;
+  --np-radius: 16px;
+  --np-shadow: 0 1px 2px rgba(34, 39, 58, 0.04), 0 10px 28px -12px rgba(34, 39, 58, 0.14);
+  --np-shadow-lg: 0 2px 4px rgba(34, 39, 58, 0.04), 0 28px 56px -24px rgba(34, 39, 58, 0.24);
+}
+
+/* --------------------------------------------------------------------------
+   Secties en koppen
+   -------------------------------------------------------------------------- */
+.np-section {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.np-section--surface {
+  background-color: var(--np-surface);
+}
+
+.np-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2.25rem, 5vw, 3.75rem);
+}
+
+.np-head h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--np-ink);
+}
+
+.np-head p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--np-text);
+}
+
+.np-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--np-red);
+}
+
+.np-tag::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background-color: var(--np-red);
+}
+
+/* --------------------------------------------------------------------------
+   Hero — rood met duotone-beeld en gebogen hoek, zoals de huidige site
+   -------------------------------------------------------------------------- */
+.np-hero {
+  position: relative;
+  padding-block: clamp(3.25rem, 6vw, 5.5rem);
+  background-color: var(--np-red);
+  background-image: url('../images/hero-bg.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: cover;
+  color: #fff;
+}
+
+.np-hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.np-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.np-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.375rem;
+  padding: 0.4rem 0.95rem 0.4rem 0.7rem;
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.np-eyebrow i {
+  width: 7px;
+  height: 7px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.np-hero h1 {
+  margin: 0 0 1.125rem;
+  font-size: clamp(2.125rem, 4.6vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+
+.np-hero-lead {
+  max-width: 33rem;
+  margin: 0;
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.np-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+
+.np-hero-note {
+  margin-top: 1.625rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Methode-keten in de hero */
+.np-chain {
+  padding: clamp(1.5rem, 3vw, 2.125rem);
+  background-color: rgba(255, 255, 255, 0.97);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -24px rgba(120, 4, 30, 0.55);
+}
+
+.np-chain h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--np-ink);
+}
+
+.np-chain > p {
+  margin: 0 0 1.375rem;
+  font-size: 0.875rem;
+  color: var(--np-text-dim);
+}
+
+.np-chain ol {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 1.875rem;
+  list-style: none;
+}
+
+.np-chain ol::before {
+  content: '';
+  position: absolute;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  left: 5px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--np-blue) 0%, var(--np-red) 100%);
+}
+
+.np-chain li {
+  position: relative;
+  padding: 0.4375rem 0;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--np-ink);
+}
+
+.np-chain li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -1.875rem;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  background-color: #fff;
+  border: 2px solid var(--np-blue);
+  border-radius: 50%;
+}
+
+.np-chain li:last-child::before {
+  background-color: var(--np-red);
+  border-color: var(--np-red);
+}
+
+/* --------------------------------------------------------------------------
+   Cijferband
+   -------------------------------------------------------------------------- */
+.np-stats {
+  padding-block: clamp(2.25rem, 4vw, 3.25rem);
+  background-color: #fff;
+  border-bottom: 1px solid var(--np-line);
+}
+
+.np-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.np-stat {
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--np-red);
+}
+
+.np-stat strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.375rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--np-ink);
+}
+
+.np-stat span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--np-text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   Kaarten
+   -------------------------------------------------------------------------- */
+.np-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.np-card {
+  padding: clamp(1.5rem, 2.4vw, 1.875rem);
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.np-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--np-shadow-lg);
+}
+
+.np-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  color: var(--np-ink);
+}
+
+.np-card p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--np-text);
+}
+
+.np-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.125rem;
+  background-color: rgba(255, 20, 79, 0.09);
+  border-radius: 12px;
+}
+
+.np-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: var(--np-red);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.np-icon--blue {
+  background-color: rgba(49, 119, 234, 0.09);
+}
+
+.np-icon--blue svg {
+  stroke: var(--np-blue);
+}
+
+.np-icon--solid {
+  background-color: var(--np-red);
+}
+
+.np-icon--solid svg {
+  stroke: #fff;
+}
+
+/* Domeinkaart met KPI-pills */
+.np-domain {
+  position: relative;
+  padding: clamp(1.5rem, 2.4vw, 1.75rem);
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+}
+
+.np-domain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--np-red);
+}
+
+.np-domain h3 {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  color: var(--np-ink);
+}
+
+.np-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.np-pills li {
+  padding: 0.3125rem 0.6875rem;
+  background-color: var(--np-surface);
+  border: 1px solid var(--np-line);
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--np-text);
+}
+
+/* --------------------------------------------------------------------------
+   Uitspraak
+   -------------------------------------------------------------------------- */
+.np-quote {
+  max-width: 54rem;
+  margin: clamp(2.25rem, 4vw, 3.25rem) auto 0;
+  padding-left: clamp(1.25rem, 3vw, 2.25rem);
+  border-left: 3px solid var(--np-red);
+}
+
+.np-quote p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2vw, 1.4375rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--np-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Split-paneel
+   -------------------------------------------------------------------------- */
+.np-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.np-panel {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: 20px;
+}
+
+.np-panel--red {
+  background: linear-gradient(145deg, var(--np-red) 0%, var(--np-red-dark) 100%);
+  color: #fff;
+}
+
+.np-panel--light {
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  box-shadow: var(--np-shadow);
+}
+
+.np-panel h3 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.25rem, 2.1vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.np-panel--light h3 {
+  color: var(--np-ink);
+}
+
+.np-panel p {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+.np-panel--red p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.np-panel--light p {
+  color: var(--np-text);
+}
+
+.np-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.np-checks {
+  margin: 1.375rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.np-checks li {
+  position: relative;
+  margin-bottom: 0.6875rem;
+  padding-left: 1.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.np-checks li:last-child {
+  margin-bottom: 0;
+}
+
+.np-panel--light .np-checks li {
+  color: var(--np-text);
+}
+
+.np-panel--red .np-checks li {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.np-checks li::before {
+  content: '';
+  position: absolute;
+  top: 0.15em;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(49, 119, 234, 0.12);
+  border-radius: 50%;
+}
+
+.np-checks li::after {
+  content: '';
+  position: absolute;
+  top: 0.45em;
+  left: 6px;
+  width: 8px;
+  height: 4px;
+  border-left: 2px solid var(--np-blue);
+  border-bottom: 2px solid var(--np-blue);
+  transform: rotate(-45deg);
+}
+
+.np-panel--red .np-checks li::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.np-panel--red .np-checks li::after {
+  border-color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Vergelijking
+   -------------------------------------------------------------------------- */
+.np-compare {
+  overflow-x: auto;
+}
+
+.np-compare table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.np-compare th,
+.np-compare td {
+  padding: 1.0625rem 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-align: left;
+  vertical-align: top;
+}
+
+.np-compare thead th {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--np-text-dim);
+}
+
+.np-compare thead th:nth-child(2) {
+  background-color: rgba(34, 39, 58, 0.04);
+  border-radius: 14px 14px 0 0;
+}
+
+.np-compare thead th:last-child {
+  color: #fff;
+  background-color: var(--np-red);
+  border-radius: 14px 14px 0 0;
+}
+
+.np-compare thead th:last-child small {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.np-compare tbody th {
+  width: 22%;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--np-ink);
+  border-top: 1px solid var(--np-line);
+}
+
+.np-compare tbody td:nth-child(2) {
+  color: var(--np-text-dim);
+  background-color: rgba(34, 39, 58, 0.03);
+  border-top: 1px solid var(--np-line);
+}
+
+.np-compare tbody td:last-child {
+  font-weight: 600;
+  color: var(--np-ink);
+  background-color: rgba(255, 20, 79, 0.06);
+  border-top: 1px solid rgba(255, 20, 79, 0.18);
+}
+
+.np-compare tbody tr:last-child td:nth-child(2),
+.np-compare tbody tr:last-child td:last-child {
+  border-radius: 0 0 14px 14px;
+}
+
+/* --------------------------------------------------------------------------
+   Twee sporen
+   -------------------------------------------------------------------------- */
+.np-lanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.np-lane {
+  padding: clamp(1.75rem, 3vw, 2.125rem);
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: 20px;
+  box-shadow: var(--np-shadow);
+}
+
+.np-lane h3 {
+  margin: 0 0 1.375rem;
+  font-size: 1.125rem;
+  color: var(--np-ink);
+}
+
+.np-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: np-step;
+}
+
+.np-steps li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-bottom: 0.9375rem;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--np-ink);
+}
+
+.np-steps li:last-child {
+  padding-bottom: 0;
+}
+
+.np-steps li::before {
+  counter-increment: np-step;
+  content: counter(np-step);
+  display: flex;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+.np-steps li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 13.5px;
+  height: calc(100% - 28px);
+  border-left: 1px dashed var(--np-line);
+}
+
+.np-lane--red .np-steps li::before {
+  background-color: rgba(255, 20, 79, 0.09);
+  color: var(--np-red);
+}
+
+.np-lane--blue .np-steps li::before {
+  background-color: rgba(49, 119, 234, 0.09);
+  color: var(--np-blue);
+}
+
+.np-lanes-note {
+  max-width: 44rem;
+  margin: 1.75rem auto 0;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--np-ink);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Fasen
+   -------------------------------------------------------------------------- */
+.np-phases {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  counter-reset: np-phase;
+}
+
+.np-phase {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3vw, 2.125rem);
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+}
+
+.np-phase::before {
+  counter-increment: np-phase;
+  content: '0' counter(np-phase);
+  display: block;
+  margin-bottom: 0.875rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--np-red);
+}
+
+.np-phase h3 {
+  margin: 0 0 0.6875rem;
+  font-size: 1.125rem;
+  color: var(--np-ink);
+}
+
+.np-phase p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--np-text);
+}
+
+.np-phase-chip {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.375rem 0.8125rem;
+  transform: translateY(1.25rem);
+  background-color: var(--np-surface);
+  border: 1px solid var(--np-line);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--np-text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   Partner
+   -------------------------------------------------------------------------- */
+.np-partner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.np-partner-title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--np-ink);
+}
+
+.np-partner-lead {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--np-text);
+}
+
+.np-partner-note {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--np-text-dim);
+}
+
+.np-partner-media {
+  position: relative;
+  padding: 0 0 1.25rem 1.25rem;
+}
+
+.np-partner-media::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 60%;
+  background-color: var(--np-red);
+  border-radius: var(--np-radius);
+}
+
+.np-partner-media img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow-lg);
+}
+
+.np-person {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0;
+  padding: 1rem 1.25rem;
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-left: 3px solid var(--np-red);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+}
+
+.np-avatar {
+  display: flex;
+  flex: 0 0 46px;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background-color: var(--np-red);
+  border-radius: 50%;
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.np-person strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--np-ink);
+}
+
+.np-person span {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--np-text-dim);
+}
+
+.np-roles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+}
+
+.np-role {
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid var(--np-line);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow);
+}
+
+.np-role h4 {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--np-ink);
+}
+
+.np-role p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--np-text);
+}
+
+/* --------------------------------------------------------------------------
+   Slot-CTA
+   -------------------------------------------------------------------------- */
+.np-cta {
+  padding: clamp(2.75rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 4rem);
+  background: linear-gradient(125deg, var(--np-red) 0%, var(--np-red-dark) 60%, var(--np-red-deep) 100%);
+  border-radius: 24px;
+  box-shadow: 0 28px 64px -28px rgba(184, 10, 51, 0.6);
+  color: #fff;
+  text-align: center;
+}
+
+.np-cta h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.np-cta > p {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.np-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  justify-content: center;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.np-questions li {
+  padding: 0.625rem 1.125rem;
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-full);
+  font-size: 0.9375rem;
+  color: #fff;
+}
+
+.np-cta .btn {
+  margin-top: 2.25rem;
+}
+
+.np-cta-note {
+  margin-top: 1.125rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .np-hero {
+    background-position: 70% bottom;
+  }
+  .np-hero-grid,
+  .np-head,
+  .np-split,
+  .np-lanes,
+  .np-partner { grid-template-columns: 1fr; }
+  .np-head { align-items: start; }
+  .np-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .np-stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 1.75rem; }
+  .np-phases,
+  .np-roles { grid-template-columns: 1fr; }
+  .np-partner-media { order: -1; max-width: 32rem; }
+}
+
+@media (max-width: 640px) {
+  .np-grid { grid-template-columns: 1fr; }
+  .np-questions { justify-content: flex-start; text-align: left; }
+  .np-hero-actions .btn { width: 100%; }
+}

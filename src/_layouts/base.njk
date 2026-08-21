@@ -16,6 +16,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+  {% if pageCss %}<link rel="stylesheet" href="{{ pageCss | url }}">{% endif %}
 
   <!-- Favicon & Apple Touch Icon -->
   <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}">
