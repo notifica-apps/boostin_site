@@ -38,8 +38,28 @@ description: Neem contact op met Boostin Consultancy. Wij helpen je graag verder
         </div>
       </div>
       <div class="form-container">
-        <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/6zmGQ2X1XW91oGi0OQQ0vma5UHXZGOy6qV6Z5KEIv8DppStJUhO0CP4sMxRkcUl0LV"></div>
-        <script src="https://webforms.pipedrive.com/f/loader"></script>
+        <form class="cf-form cf-inline" data-title="Contactpagina" novalidate>
+          <div class="cf-row">
+            <label>Naam *<input type="text" name="name" autocomplete="name" required></label>
+            <label>Bedrijf<input type="text" name="company" autocomplete="organization"></label>
+          </div>
+          <div class="cf-row">
+            <label>E-mail *<input type="email" name="email" autocomplete="email" required></label>
+            <label>Telefoon<input type="tel" name="phone" autocomplete="tel"></label>
+          </div>
+          <label>Waar gaat het over?<textarea name="message" rows="5"></textarea></label>
+          <div class="cf-trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p class="cf-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primary cf-submit">Verstuur</button>
+          <p class="cf-note">We gebruiken je gegevens alleen om te reageren op deze aanvraag.</p>
+        </form>
+        <div class="cf-done" hidden>
+          <div class="cf-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Dank je, we hebben je aanvraag binnen</h3>
+          <p>Je krijgt een bevestiging per e-mail. We nemen binnen &eacute;&eacute;n werkdag contact op.</p>
+        </div>
       </div>
     </div>
   </div>
