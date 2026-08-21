@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Pagina niet gevonden
+description: Deze pagina bestaat niet of is verplaatst.
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Deze pagina bestaat niet</h1>
+    <p class="lead">Waarschijnlijk is de pagina verplaatst of hebben we hem opgeruimd bij de vernieuwing van de site.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <p class="lead">Ga terug naar de homepage of neem contact op, dan wijzen we je de juiste kant op.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem;">
+      <a href="{{ '/' | url }}" class="btn btn-primary">Naar de homepage</a>
+      <a href="{{ '/contact/' | url }}" class="btn btn-outline">Contact opnemen</a>
+    </div>
+  </div>
+</section>

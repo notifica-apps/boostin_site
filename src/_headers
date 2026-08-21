@@ -1,10 +1,1 @@
 # Cloudflare Pages headers
-
-# TIJDELIJK — boostin.nl dient nu alleen als preview voor partners en mag niet
-# met boostin-consultancy.nl concurreren in Google (dezelfde teksten op twee
-# domeinen = duplicate content).
-#
-# VERWIJDER DIT BLOK bij de overgang naar het apex-domein
-# boostin-consultancy.nl. Zie APEX-MIGRATIE.md.
-/*
-  X-Robots-Tag: noindex, nofollow
