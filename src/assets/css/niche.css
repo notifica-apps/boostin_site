@@ -15,6 +15,7 @@
   /* Diepe vlakken: warm bijna-zwart */
   --np-ink: #191518;
   --np-ink-2: #241f22;
+  --np-plum: #2a1e25;         /* warme aubergine: basis waar de herofoto doorheen komt */
 
   /* Warme neutralen: papier in plaats van koud grijs */
   --np-heading: #1a1518;
@@ -94,15 +95,23 @@
 .np-hero {
   position: relative;
   padding-block: clamp(3.5rem, 5.5vw, 5rem);
-  background-color: var(--np-ink);
+  background-color: var(--np-plum);
+  /* Warme aubergine in plaats van bijna-zwart: donker genoeg links, waar de tekst
+     staat, en open naar rechtsonder, waar de foto in het bronbeeld zit. De linker
+     helft van hero-bg.png is vlak merkrood zonder beeld, dus daar valt niets te
+     winnen met een lichtere overlay. */
   background-image:
-    linear-gradient(105deg, rgba(25, 21, 24, 0.94) 0%, rgba(25, 21, 24, 0.72) 52%, rgba(25, 21, 24, 0.5) 100%),
+    linear-gradient(105deg,
+      rgba(58, 43, 53, 0.92) 0%,
+      rgba(66, 50, 61, 0.8) 45%,
+      rgba(80, 62, 75, 0.44) 78%,
+      rgba(96, 75, 88, 0.24) 100%),
     url('../images/hero-bg.png');
   background-repeat: no-repeat;
   background-position: center, right bottom;
   background-size: cover, cover;
-  /* luminosity: alleen de helderheid van de foto, de kleur komt van --np-ink,
-     zodat de rode duotone geen paarse zweem over de hero legt */
+  /* luminosity: alleen de helderheid van de foto, de kleur komt van --np-plum,
+     zodat de rode duotone niet als fel rood terugkomt maar de warmte wel meepakt */
   background-blend-mode: normal, luminosity;
   color: #fff;
 }
@@ -167,7 +176,8 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  /* 0.62 in plaats van 0.4: op de lichtere hero haalt 40% wit geen 4,5:1 meer */
+  color: rgba(255, 255, 255, 0.62);
 }
 
 /* Methode-keten */
@@ -973,6 +983,13 @@
 @media (max-width: 1024px) {
   .np-hero {
     background-position: center, 70% bottom;
+    /* één kolom: de tekst loopt hier over de foto, dus de overlay blijft dichter */
+    background-image:
+      linear-gradient(105deg,
+        rgba(58, 43, 53, 0.94) 0%,
+        rgba(66, 50, 61, 0.88) 50%,
+        rgba(78, 60, 73, 0.76) 100%),
+      url('../images/hero-bg.png');
   }
   .np-hero-grid,
   .np-head,
