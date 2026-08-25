@@ -1,15 +1,9 @@
 /**
  * Cookie consent voor Boostin Consultancy.
  *
- * AVG-conform: er worden pas cookies geplaatst en pas gegevens gemeten nadat
- * de bezoeker daar toestemming voor heeft gegeven.
- *
- * Google Analytics werkt daarbij anders dan de rest. Die tag staat via Consent
- * Mode v2 in de head van base.njk en laadt dus altijd -- anders kan Google hem
- * niet vinden en faalt de tagcontrole in GA4. Hij staat daar standaard op
- * "denied": geen cookies, geen identifiers, alleen een cookieloze ping. Dit
- * bestand zet hem bij "Accepteren" om naar "granted". Clarity en LinkedIn
- * worden wel gewoon pas na toestemming ingeladen.
+ * AVG-conform: analytische en marketingtrackers worden pas geladen nadat de
+ * bezoeker daar toestemming voor heeft gegeven. Zonder toestemming gebeurt er
+ * niets, ook niet "geanonimiseerd".
  *
  * De meet-ID's staan NIET in dit bestand maar in src/_data/site.json onder
  * "analytics". Het layout-bestand zet die als window.BOOSTIN_CONSENT_CONFIG in
@@ -24,10 +18,7 @@
   'use strict';
 
   var CONSENT_KEY = 'boostin_cookie_consent';
-  // Ophogen na een beleidswijziging, dan wordt opnieuw gevraagd. Deze twee
-  // staan ook in het Consent Mode-blok in src/_layouts/base.njk -- daar mee
-  // ophogen, anders blijft GA na een beleidswijziging op de oude keuze staan.
-  var CONSENT_VERSION = '1';
+  var CONSENT_VERSION = '1'; // Ophogen na een beleidswijziging, dan wordt opnieuw gevraagd
 
   var cfg = window.BOOSTIN_CONSENT_CONFIG || {};
   var GA4_ID = cfg.ga4 || null;
@@ -77,16 +68,20 @@
     return consent;
   }
 
-  /**
-   * Zet de Google-tag aan of uit. De tag zelf staat al in de pagina (base.njk),
-   * hier gaat alleen de toestemmingsschakelaar om. Zonder "granted" plaatst GA
-   * geen cookies en bewaart het geen identifiers.
-   */
-  function setGA4Consent(granted) {
-    if (!GA4_ID || typeof window.gtag !== 'function') return;
-    window.gtag('consent', 'update', {
-      analytics_storage: granted ? 'granted' : 'denied'
-    });
+  function loadGA4() {
+    if (!GA4_ID || !isMeasuredHost() || window.boostinGaLoaded) return;
+    window.boostinGaLoaded = true;
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA4_ID);
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA4_ID, { anonymize_ip: true });
   }
 
   function loadClarity() {
@@ -121,7 +116,7 @@
   }
 
   function loadTrackers() {
-    setGA4Consent(true);
+    loadGA4();
     loadClarity();
     loadLinkedIn();
   }
@@ -156,13 +151,12 @@
 
     document.getElementById('cookie-reject').addEventListener('click', function () {
       setConsent(false);
-      setGA4Consent(false);
       hideBanner();
 
-      // GA luistert direct naar de schakelaar hierboven. Clarity en lintrk niet:
-      // eenmaal ingeladen zijn die binnen deze paginasessie niet meer uit te
-      // zetten. Herladen is dan de enige manier waarop afmelden direct effect heeft.
-      if (window.boostinClarityLoaded || window.boostinLinkedInLoaded) {
+      // Had de bezoeker eerder geaccepteerd en weigert hij nu alsnog, dan zijn
+      // gtag, Clarity en lintrk binnen deze paginasessie niet meer uit te
+      // zetten. Herladen is de enige manier waarop afmelden direct effect heeft.
+      if (window.boostinGaLoaded || window.boostinClarityLoaded || window.boostinLinkedInLoaded) {
         window.location.reload();
       }
     });

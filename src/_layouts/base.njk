@@ -6,54 +6,6 @@
   <title>{{ title }} | {{ site.name }}</title>
   <meta name="description" content="{{ description or site.description }}">
 
-  {% if site.analytics.ga4 %}
-  <!--
-    Google tag (gtag.js) met Consent Mode v2.
-
-    Deze staat bewust hier in de HTML en niet achter de cookiebanner: Google
-    moet de tag kunnen vinden, anders faalt de tagcontrole in GA4 ("Uw
-    Google-tag is niet gevonden"). Gemeten wordt er pas na toestemming -- tot
-    die tijd staat alles op "denied", dus geen cookies en geen identifiers.
-    cookie-consent.js zet dit bij "Accepteren" om naar "granted".
-  -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-
-    // Alleen de productiesite telt mee. Preview-deploys op *.pages.dev en de
-    // dev-server draaien dezelfde HTML met hetzelfde meet-ID; ga-disable legt
-    // de tag daar helemaal stil, terwijl het script-element in de pagina blijft.
-    if (['boostin.nl', 'www.boostin.nl'].indexOf(location.hostname) === -1) {
-      window['ga-disable-{{ site.analytics.ga4 }}'] = true;
-    }
-
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      functionality_storage: 'granted',
-      security_storage: 'granted',
-      wait_for_update: 500
-    });
-
-    // Eerder al akkoord gegeven? Dan meteen bij de eerste hit meten in plaats
-    // van te wachten tot cookie-consent.js onder in de pagina geladen is.
-    // Let op: sleutel en versie staan ook in cookie-consent.js. Hoog je daar
-    // CONSENT_VERSION op, pas het hier dan mee aan.
-    try {
-      var boostinConsent = JSON.parse(localStorage.getItem('boostin_cookie_consent') || 'null');
-      if (boostinConsent && boostinConsent.version === '1' && boostinConsent.analytics) {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-      }
-    } catch (e) {}
-
-    gtag('js', new Date());
-    gtag('config', {{ site.analytics.ga4 | dump | safe }});
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.ga4 }}"></script>
-  {% endif %}
-
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
