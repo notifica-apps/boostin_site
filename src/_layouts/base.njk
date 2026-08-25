@@ -93,6 +93,22 @@
   <script src="{{ '/assets/js/contact-form.js' | url }}"></script>
   <script src="{{ '/assets/js/reveal.js' | url }}"></script>
 
+  <!--
+    Cookie consent. De meet-ID's komen uit src/_data/site.json onder "analytics".
+    Staat daar niets ingevuld, dan verschijnt er geen banner en wordt er geen
+    enkele tracker geladen.
+  -->
+  <script>
+    window.BOOSTIN_CONSENT_CONFIG = {
+      ga4: {{ (site.analytics.ga4 or null) | dump | safe }},
+      clarity: {{ (site.analytics.clarity or null) | dump | safe }},
+      linkedinPartnerId: {{ (site.analytics.linkedinPartnerId or null) | dump | safe }},
+      linkedinConversions: {{ (site.analytics.linkedinConversions or {}) | dump | safe }},
+      cookiePolicyUrl: {{ ('/cookies/' | url) | dump | safe }}
+    };
+  </script>
+  <script src="{{ '/assets/js/cookie-consent.js' | url }}"></script>
+
   {% block scripts %}{% endblock %}
 </body>
 </html>

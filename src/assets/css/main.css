@@ -1504,3 +1504,129 @@ h4 {
     grid-template-columns: 1fr;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Cookiebanner
+   Weigeren en accepteren zijn bewust even zwaar vormgegeven: de AP verlangt
+   dat weigeren net zo makkelijk is als accepteren.
+   -------------------------------------------------------------------------- */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-gray-200);
+  box-shadow: 0 -4px 24px rgba(25, 21, 24, 0.12);
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.3s var(--ease);
+}
+
+#cookie-banner.cookie-banner-visible {
+  transform: translateY(0);
+}
+
+.cookie-banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-5) var(--spacing-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-6);
+}
+
+.cookie-banner-text {
+  flex: 1;
+}
+
+.cookie-banner-text strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-900);
+  margin-bottom: var(--spacing-1);
+}
+
+.cookie-banner-text p {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.cookie-banner-text a {
+  color: var(--color-primary-text);
+  text-decoration: underline;
+}
+
+.cookie-banner-buttons {
+  display: flex;
+  gap: var(--spacing-3);
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+  background: var(--color-white);
+  color: var(--color-primary-text);
+  border: 2px solid var(--color-primary);
+}
+
+.cookie-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.cookie-btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* Knop om de keuze later te wijzigen, gebruikt op /cookies/ */
+.cookie-settings-btn {
+  display: inline-block;
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease);
+}
+
+.cookie-settings-btn:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .cookie-banner-content {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    padding: var(--spacing-5);
+  }
+
+  .cookie-banner-buttons {
+    width: 100%;
+  }
+
+  .cookie-btn {
+    flex: 1;
+  }
+}

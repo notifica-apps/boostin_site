@@ -1,0 +1,158 @@
+---
+layout: base.njk
+title: Cookiebeleid
+description: Informatie over het gebruik van cookies en vergelijkbare technieken op de website van Boostin Consultancy.
+permalink: /cookies/
+pageCss: /assets/css/legal.css
+---
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <h1>Cookiebeleid</h1>
+    <p class="lead">Wat we opslaan op je apparaat, en waarom</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="legal-content">
+
+      <p class="legal-intro">Dit cookiebeleid gaat over {{ site.url | replace('https://', '') }}, de website van {{ site.name }}. Het beschrijft welke cookies en vergelijkbare technieken wij gebruiken en welke keuze je daarin hebt.</p>
+
+      <h2>Wat zijn cookies?</h2>
+      <p>Cookies zijn kleine tekstbestanden die een website op je computer, tablet of telefoon opslaat. Vergelijkbare technieken zijn <em>localStorage</em> en <em>sessionStorage</em>: die slaan gegevens op in je browser zonder dat er een cookie wordt meegestuurd naar de server. In dit beleid bedoelen we met &ldquo;cookies&rdquo; ook die technieken.</p>
+
+      <h2>Noodzakelijke opslag</h2>
+      <p>Deze opslag is nodig om de website te laten werken of om je eigen keuze te onthouden. Hiervoor vragen wij geen toestemming, omdat je er zonder niet omheen kunt.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Naam</th>
+            <th>Type</th>
+            <th>Doel</th>
+            <th>Bewaartermijn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>boostin_cookie_consent</td>
+            <td>localStorage</td>
+            <td>Onthoudt of je toestemming hebt gegeven voor meetcookies, zodat we het niet elk bezoek opnieuw vragen</td>
+            <td>Tot je hem wist of je keuze wijzigt</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% if not site.analytics.ga4 and not site.analytics.clarity and not site.analytics.linkedinPartnerId %}
+      <div class="legal-callout">
+        <p><strong>Op dit moment plaatsen wij geen analytische of marketingcookies.</strong> Er verschijnt daarom ook geen toestemmingsbanner: er valt niets te weigeren. Zodra dat verandert, passen wij dit beleid aan en vragen wij je vooraf om toestemming.</p>
+      </div>
+      {% endif %}
+
+      {% if site.analytics.ga4 or site.analytics.clarity %}
+      <h2>Analytische cookies</h2>
+      <p>Wij willen weten welke pagina&rsquo;s gelezen worden en waar bezoekers afhaken, zodat we de site kunnen verbeteren. Deze cookies plaatsen wij <strong>alleen als je daar toestemming voor geeft</strong>.</p>
+
+      {% if site.analytics.ga4 %}
+      <h3>Google Analytics</h3>
+      <p>Google Analytics meet geanonimiseerd hoe de website gebruikt wordt. Wij hebben een verwerkersovereenkomst met Google, IP-adressen worden ingekort en wij delen deze gegevens niet met Google voor advertentiedoeleinden.</p>
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Doel</th><th>Bewaartermijn</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>_ga</td><td>Onderscheidt unieke bezoekers</td><td>2 jaar</td></tr>
+          <tr><td>_ga_*</td><td>Bewaart de sessiestatus</td><td>2 jaar</td></tr>
+        </tbody>
+      </table>
+      {% endif %}
+
+      {% if site.analytics.clarity %}
+      <h3>Microsoft Clarity</h3>
+      <p>Microsoft Clarity laat ons via heatmaps en sessie-opnames zien hoe bezoekers de site gebruiken. Invoervelden worden automatisch gemaskeerd, zodat wat je in een formulier typt niet zichtbaar is in de opname.</p>
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Doel</th><th>Bewaartermijn</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>_clck</td><td>Bewaart een Clarity-bezoekers-ID en je voorkeuren</td><td>1 jaar</td></tr>
+          <tr><td>_clsk</td><td>Koppelt paginaweergaven binnen een sessie</td><td>1 dag</td></tr>
+          <tr><td>CLID</td><td>Herkent nieuwe Clarity-bezoekers</td><td>1 jaar</td></tr>
+        </tbody>
+      </table>
+      {% endif %}
+      {% endif %}
+
+      {% if site.analytics.linkedinPartnerId %}
+      <h2>Marketingcookies</h2>
+      <h3>LinkedIn Insight Tag</h3>
+      <p>Wij adverteren op LinkedIn. Met de LinkedIn Insight Tag zien wij welke advertenties tot een aanvraag leiden en kunnen wij bezoekers opnieuw een advertentie tonen. Deze cookies plaatsen wij <strong>alleen als je daar toestemming voor geeft</strong>.</p>
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Doel</th><th>Bewaartermijn</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>bcookie</td><td>Browser-identificatie voor LinkedIn</td><td>1 jaar</td></tr>
+          <tr><td>li_sugr</td><td>Herkent je browser bij een volgend bezoek</td><td>90 dagen</td></tr>
+          <tr><td>lidc</td><td>Kiest het juiste LinkedIn-datacenter</td><td>1 dag</td></tr>
+          <tr><td>UserMatchHistory</td><td>Koppelt je bezoek aan LinkedIn-advertenties</td><td>30 dagen</td></tr>
+          <tr><td>AnalyticsSyncHistory</td><td>Houdt bij wanneer gegevens zijn gesynchroniseerd</td><td>30 dagen</td></tr>
+          <tr><td>li_gc</td><td>Bewaart je toestemming bij LinkedIn</td><td>6 maanden</td></tr>
+        </tbody>
+      </table>
+      <p>LinkedIn verwerkt deze gegevens als zelfstandige verwerkingsverantwoordelijke. Meer daarover lees je in het <a href="https://nl.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener">privacybeleid van LinkedIn</a>. Wij ontvangen alleen geaggregeerde rapportages en zien niet welke persoon een advertentie heeft gezien of aangeklikt.</p>
+      {% endif %}
+
+      <h2>Diensten van derden op deze site</h2>
+      <p>Ook zonder cookies maakt je browser verbinding met een aantal partijen. Dat gebeurt om de site te tonen en te laten werken.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Partij</th>
+            <th>Waarvoor</th>
+            <th>Wat zij ontvangen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google Fonts</td>
+            <td>De lettertypen waarin deze site is opgemaakt</td>
+            <td>Je IP-adres en browsergegevens, nodig om het lettertype te kunnen leveren. Er wordt hierbij geen cookie geplaatst.</td>
+          </tr>
+          <tr>
+            <td>Cloudflare</td>
+            <td>Hosting en beveiliging van de website</td>
+            <td>Technische verbindingsgegevens, waaronder je IP-adres, om de site te leveren en misbruik te weren</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Het contactformulier</h2>
+      <p>Vul je het contactformulier in, dan sturen wij je naam, bedrijf, e-mailadres, telefoonnummer en bericht naar ons eigen systeem en naar ons CRM, zodat wij kunnen reageren. Daar is geen cookie voor nodig. Wij gebruiken deze gegevens alleen om op je aanvraag te reageren. Hoe wij daarna met je gegevens omgaan, staat in onze <a href="{{ '/assets/docs/privacyverklaring-boostin-consultancy.pdf' | url }}">privacyverklaring</a>.</p>
+
+      <h2>Je keuze aanpassen</h2>
+      <p>Je kunt je keuze op elk moment wijzigen. De banner verschijnt dan opnieuw.</p>
+      <button type="button" class="cookie-settings-btn" onclick="openCookieSettings()">Cookie-instellingen wijzigen</button>
+
+      <h2>Cookies blokkeren of verwijderen</h2>
+      <p>Je kunt cookies ook blokkeren of verwijderen via je browser:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/nl/kb/cookies-verwijderen-gegevens-wissen-websites-opgeslagen" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+        <li><a href="https://support.microsoft.com/nl-nl/microsoft-edge/cookies-in-microsoft-edge-verwijderen-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+        <li><a href="https://support.apple.com/nl-nl/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+      </ul>
+      <p>Let op: het blokkeren van alle cookies kan invloed hebben op de werking van deze website.</p>
+
+      <h2>Vragen</h2>
+      <p>Heb je een vraag over dit cookiebeleid? Mail ons via <a href="mailto:{{ site.email }}">{{ site.email }}</a> of bel {{ site.phone }}.</p>
+
+      <p class="legal-meta">{{ site.name }}<br>
+      {{ site.address.street }}, {{ site.address.postal }} {{ site.address.city }}</p>
+
+    </div>
+  </div>
+</section>

@@ -51,6 +51,9 @@
         {% for item in navigation.footer %}
         <li><a href="{{ item.url | url }}">{{ item.label }}</a></li>
         {% endfor %}
+        {% if site.analytics.ga4 or site.analytics.clarity or site.analytics.linkedinPartnerId %}
+        <li><a href="#" onclick="openCookieSettings(); return false;">Cookie-instellingen</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

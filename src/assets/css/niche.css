@@ -1153,3 +1153,81 @@
   .np-duo { grid-template-columns: 1fr; }
   .np-media { order: -1; max-width: 34rem; }
 }
+
+/* --------------------------------------------------------------------------
+   Prijskaarten met van-voor (implementatieprogramma)
+   -------------------------------------------------------------------------- */
+.np-prices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-8);
+}
+
+.np-price {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+}
+
+.np-price--hl {
+  border-color: var(--color-primary);
+  box-shadow: 0 18px 44px -22px rgba(255, 20, 79, 0.35);
+}
+
+.np-price-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-5);
+}
+
+.np-price-head h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  color: var(--color-gray-900);
+}
+
+.np-price-head span {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
+
+.np-price-amt {
+  margin: 0;
+}
+
+.np-price-amt span {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-gray-500);
+  margin-bottom: var(--spacing-2);
+}
+
+.np-price-amt strong {
+  display: block;
+  font-size: 2.1rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-gray-900);
+  line-height: 1.1;
+}
+
+.np-price-amt em {
+  display: block;
+  margin-top: var(--spacing-2);
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
+
+@media (max-width: 860px) {
+  .np-prices {
+    grid-template-columns: 1fr;
+  }
+}

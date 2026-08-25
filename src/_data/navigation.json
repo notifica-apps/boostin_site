@@ -6,7 +6,21 @@
     },
     {
       "label": "Wat we doen",
-      "url": "/consultancy/"
+      "url": "/consultancy/",
+      "children": [
+        {
+          "label": "Consultancy",
+          "url": "/consultancy/"
+        },
+        {
+          "label": "Prestatiemanagement",
+          "url": "/prestatiemanagement/"
+        },
+        {
+          "label": "Datagedreven sturen",
+          "url": "/datagedreven-sturen/"
+        }
+      ]
     },
     {
       "label": "Voor wie",
@@ -39,6 +53,10 @@
     {
       "label": "Algemene Voorwaarden",
       "url": "/assets/docs/algemene-voorwaarden-boostin-consultancy.pdf"
+    },
+    {
+      "label": "Cookiebeleid",
+      "url": "/cookies/"
     }
   ]
 }
