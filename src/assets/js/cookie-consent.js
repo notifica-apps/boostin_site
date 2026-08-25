@@ -30,6 +30,16 @@
   // Analyse > Conversies. Leeg laten tot ze bestaan.
   var LINKEDIN_CONVERSIONS = cfg.linkedinConversions || {};
 
+  // Alleen de productiesite telt mee. Preview-deploys op *.boostin-site.pages.dev
+  // en de dev-server draaien dezelfde code met hetzelfde meet-ID; zonder deze
+  // rem lopen testbezoeken en klikwerk gewoon mee in de cijfers van boostin.nl.
+  // De banner tonen we daar wel, anders is hij op een preview niet te testen.
+  var MEASURED_HOSTS = ['boostin.nl', 'www.boostin.nl'];
+
+  function isMeasuredHost() {
+    return MEASURED_HOSTS.indexOf(window.location.hostname) !== -1;
+  }
+
   // Valt er iets te kiezen? Zo niet, dan geen banner.
   function hasTrackers() {
     return Boolean(GA4_ID || CLARITY_ID || LINKEDIN_PARTNER_ID);
@@ -59,7 +69,7 @@
   }
 
   function loadGA4() {
-    if (!GA4_ID || window.boostinGaLoaded) return;
+    if (!GA4_ID || !isMeasuredHost() || window.boostinGaLoaded) return;
     window.boostinGaLoaded = true;
 
     var s = document.createElement('script');
@@ -75,7 +85,7 @@
   }
 
   function loadClarity() {
-    if (!CLARITY_ID || window.boostinClarityLoaded) return;
+    if (!CLARITY_ID || !isMeasuredHost() || window.boostinClarityLoaded) return;
     window.boostinClarityLoaded = true;
 
     (function (c, l, a, r, i, t, y) {
@@ -86,7 +96,7 @@
   }
 
   function loadLinkedIn() {
-    if (!LINKEDIN_PARTNER_ID || window.boostinLinkedInLoaded) return;
+    if (!LINKEDIN_PARTNER_ID || !isMeasuredHost() || window.boostinLinkedInLoaded) return;
     window.boostinLinkedInLoaded = true;
 
     window._linkedin_partner_id = LINKEDIN_PARTNER_ID;

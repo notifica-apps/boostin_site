@@ -129,6 +129,16 @@
 
       form.hidden = true;
       form.parentNode.querySelector(".cf-done").hidden = false;
+
+      // Conversie melden aan GA4 (en later LinkedIn). Pas hier, want alleen een
+      // gelukte POST is een echte aanvraag. Doet niets zonder cookietoestemming.
+      // form_name onderscheidt de CTA's onderling: elke knop geeft zijn eigen
+      // data-title mee, zodat je ziet welke pagina de aanvraag oplevert.
+      if (window.boostinTrackConversion) {
+        window.boostinTrackConversion("contact_aanvraag", {
+          form_name: payload.title || "Contact",
+        });
+      }
     } catch (err) {
       fail(
         form,
