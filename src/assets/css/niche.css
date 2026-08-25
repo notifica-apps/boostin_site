@@ -12,10 +12,10 @@
   --np-red: #ff144f;
   --np-red-ink: #d1153f;      /* rustiger rood voor tekst en randen */
 
-  /* Diepe vlakken: warm bijna-zwart */
-  --np-ink: #191518;
-  --np-ink-2: #241f22;
-  --np-plum: #2a1e25;         /* warme aubergine: basis waar de herofoto doorheen komt */
+  /* Diepe vlakken: warme aubergine, geen bijna-zwart */
+  --np-ink: #2c1e28;
+  --np-ink-2: #3a2836;
+  --np-plum: #4a2438;         /* verzadigde aubergine: kleurt de herofoto (luminosity) */
 
   /* Warme neutralen: papier in plaats van koud grijs */
   --np-heading: #1a1518;
@@ -96,22 +96,21 @@
   position: relative;
   padding-block: clamp(3.5rem, 5.5vw, 5rem);
   background-color: var(--np-plum);
-  /* Warme aubergine in plaats van bijna-zwart: donker genoeg links, waar de tekst
-     staat, en open naar rechtsonder, waar de foto in het bronbeeld zit. De linker
-     helft van hero-bg.png is vlak merkrood zonder beeld, dus daar valt niets te
-     winnen met een lichtere overlay. */
+  /* hero-bg-mono.jpg i.p.v. hero-bg.png: de rode duotone gebruikte maar 55..99 van
+     het 0-255 grijsbereik, waardoor de foto onder elke overlay onzichtbaar bleef.
+     Het monobeeld is uitgerekt naar 25..165 met lokaal contrast, en --np-plum geeft
+     via luminosity de aubergine-kleur. Verloop: dicht linksboven waar de tekst
+     staat, open naar rechtsonder waar de foto zit. */
   background-image:
     linear-gradient(105deg,
-      rgba(58, 43, 53, 0.92) 0%,
-      rgba(66, 50, 61, 0.8) 45%,
-      rgba(80, 62, 75, 0.44) 78%,
-      rgba(96, 75, 88, 0.24) 100%),
-    url('../images/hero-bg.png');
+      rgba(52, 34, 46, 0.94) 0%,
+      rgba(64, 42, 56, 0.86) 58%,
+      rgba(80, 54, 72, 0.34) 82%,
+      rgba(96, 66, 86, 0.12) 100%),
+    url('../images/hero-bg-mono.jpg');
   background-repeat: no-repeat;
   background-position: center, right bottom;
   background-size: cover, cover;
-  /* luminosity: alleen de helderheid van de foto, de kleur komt van --np-plum,
-     zodat de rode duotone niet als fel rood terugkomt maar de warmte wel meepakt */
   background-blend-mode: normal, luminosity;
   color: #fff;
 }
@@ -176,14 +175,16 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  /* 0.62 in plaats van 0.4: op de lichtere hero haalt 40% wit geen 4,5:1 meer */
-  color: rgba(255, 255, 255, 0.62);
+  /* 0.7 in plaats van 0.4: op de lichtere hero haalt 40% wit geen 4,5:1 meer */
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Methode-keten */
 .np-chain {
   padding: clamp(1.75rem, 3vw, 2.25rem);
-  background-color: rgba(255, 255, 255, 0.05);
+  /* donkere glasplaat i.p.v. 5% wit: de foto is nu zichtbaar onder dit paneel,
+     en 85% wit haalt op de lichte plekken anders geen 4,5:1 */
+  background-color: rgba(44, 30, 40, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--np-radius-lg);
   backdrop-filter: blur(8px);
@@ -986,10 +987,10 @@
     /* één kolom: de tekst loopt hier over de foto, dus de overlay blijft dichter */
     background-image:
       linear-gradient(105deg,
-        rgba(58, 43, 53, 0.94) 0%,
-        rgba(66, 50, 61, 0.88) 50%,
-        rgba(78, 60, 73, 0.76) 100%),
-      url('../images/hero-bg.png');
+        rgba(52, 34, 46, 0.94) 0%,
+        rgba(64, 42, 56, 0.88) 50%,
+        rgba(78, 52, 70, 0.82) 100%),
+      url('../images/hero-bg-mono.jpg');
   }
   .np-hero-grid,
   .np-head,
