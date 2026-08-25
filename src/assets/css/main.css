@@ -199,7 +199,7 @@ h4 {
 }
 
 .section--primary {
-  background: linear-gradient(150deg, #3a2836 0%, #2c1e28 100%);
+  background: linear-gradient(150deg, #4e3746 0%, #402c39 100%);
   color: var(--color-white);
 }
 
@@ -561,7 +561,7 @@ h4 {
 .hero {
   position: relative;
   padding: var(--spacing-24) 0;
-  background: linear-gradient(150deg, #3a2836 0%, #2c1e28 100%);
+  background: linear-gradient(150deg, #4e3746 0%, #402c39 100%);
   color: var(--color-white);
   overflow: hidden;
 }
@@ -771,7 +771,7 @@ h4 {
    -------------------------------------------------------------------------- */
 .footer {
   /* Warme aubergine, gelijk aan de hero en de donkere secties */
-  background-color: #2c1e28;
+  background-color: #402c39;
   color: var(--color-white);
   padding-top: var(--spacing-16);
 }
@@ -881,7 +881,7 @@ h4 {
   position: relative;
   padding: var(--spacing-16) 0;
   /* diep bijna-zwart in plaats van vol #ff144f: rood blijft het accent */
-  background: linear-gradient(150deg, #3a2836 0%, #2c1e28 100%);
+  background: linear-gradient(150deg, #4e3746 0%, #402c39 100%);
   color: var(--color-white);
   border-bottom: 2px solid var(--color-primary);
 }

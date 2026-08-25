@@ -12,9 +12,10 @@
   --np-red: #ff144f;
   --np-red-ink: #d1153f;      /* rustiger rood voor tekst en randen */
 
-  /* Diepe vlakken: warme aubergine, geen bijna-zwart */
-  --np-ink: #2c1e28;
-  --np-ink-2: #3a2836;
+  /* Diepe vlakken: warme aubergine, geen bijna-zwart. Gelijk aan het vlak links
+     in de hero (daar gemeten: #402c39), zodat alle donkere blokken één kleur zijn. */
+  --np-ink: #402c39;
+  --np-ink-2: #4e3746;
   --np-plum: #4a2438;         /* verzadigde aubergine: kleurt de herofoto (luminosity) */
 
   /* Warme neutralen: papier in plaats van koud grijs */
@@ -1026,7 +1027,7 @@
 }
 
 .np-section--ink .np-head p {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* Klantlogo's: rustige rij, grijs, kleur op hover. Geen kaders, en een
@@ -1087,7 +1088,8 @@
   margin-top: 1.75rem;
   font-style: normal;
   font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.5);
+  /* 0.62 i.p.v. 0.5: op het lichtere vlak haalt 50% wit geen 4,5:1 */
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .np-testimonial cite strong {
