@@ -17,7 +17,7 @@
   "analytics": {
     "_comment": "Meet-ID's van Boostin zelf. Zolang alles null is verschijnt de cookiebanner niet en wordt er niets geladen. Gebruik hier NOOIT de ID's van Notifica: dan lopen de statistieken en advertentiedoelgroepen van twee bedrijven door elkaar.",
     "ga4": "G-4F6DN1LSH5",
-    "clarity": null,
+    "clarity": "y7xxmr3xos",
     "linkedinPartnerId": null,
     "linkedinConversions": {}
   }
