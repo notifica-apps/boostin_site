@@ -183,7 +183,7 @@ function confirmationHtml({ name, message, label }) {
     </p>
     ${quoted}
     <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">
-      Wil je er eerder over spreken? Bel dan gerust: 030 &ndash; 272 9544.
+      Wil je er eerder over spreken? Bel dan gerust: 030 &ndash; 799 02 15.
     </p>
     <p style="margin:32px 0 0;font-size:16px;line-height:1.6;">
       Met vriendelijke groet,<br>
