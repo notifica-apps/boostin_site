@@ -1516,3 +1516,36 @@
   .np-bars > div { grid-template-columns: minmax(0, 6.5rem) minmax(0, 1fr) 2.5rem; }
   .np-dash-signal { flex-direction: column; gap: 0.5rem; }
 }
+
+.np-price-calc {
+  margin: var(--spacing-4) 0 0;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-gray-200);
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  line-height: 1.9;
+}
+
+.np-price-net {
+  margin: var(--spacing-4) 0 0;
+  padding-top: var(--spacing-4);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.np-price-net span {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-gray-500);
+  margin-bottom: var(--spacing-1);
+}
+
+.np-price-net strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-text);
+  line-height: 1.1;
+}
