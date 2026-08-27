@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
     <loc>{{ site.url }}{{ page.url }}</loc>
     <lastmod>{{ page.date | isoDate }}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>{% if page.url == "/" %}1.0{% elif "/trainingen/" in page.url %}0.7{% else %}0.8{% endif %}</priority>
+    <priority>{% if page.url == "/" %}1.0{% else %}0.8{% endif %}</priority>
   </url>
   {%- endif %}
   {%- endfor %}
