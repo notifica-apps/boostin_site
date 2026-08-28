@@ -1,0 +1,1423 @@
+---
+layout: base.njk
+title: Van workshop naar implementatiewerksessie
+description: "Boostin-werksessies zijn geen losse workshops, maar onderdeel van een vaste, leerbare en schaalbare implementatiemethodiek. Vier typen werksessies, één architectuur: van richting bepalen tot borging in de praktijk."
+permalink: /werksessies/
+pageCss: /assets/css/niche.css
+bodyClass: page-werksessies
+---
+
+<style>
+  /* ------------------------------------------------------------------------
+     Werksessies / implementatiemethodiek — pagina-eigen aanvullingen op het
+     np-designsysteem. Donkere secties in #4A3A46 (voorkeurskleur briefing);
+     rood blijft het accent, blauw/groen komen alleen terug in de
+     veranderkunde-sectie omdat ze daar inhoud zijn (kleurendenken).
+     ------------------------------------------------------------------------ */
+  .page-werksessies {
+    --ws-ink: #4a3a46;
+    --ws-ink-2: #574450;
+  }
+
+  .page-werksessies .np-section--ink,
+  .page-werksessies .np-cta,
+  .page-werksessies .np-panel--red {
+    background: linear-gradient(150deg, var(--ws-ink-2) 0%, var(--ws-ink) 100%);
+  }
+
+  .page-werksessies .np-section--ink .np-tag {
+    color: #ff5c82;
+  }
+
+  .page-werksessies .np-cta-note {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Hero — licht, veel wit, aubergine alleen als tint */
+  .ws-hero {
+    position: relative;
+    padding-block: clamp(4rem, 7vw, 6.5rem);
+    background:
+      radial-gradient(56rem 30rem at 100% 0, rgba(74, 58, 70, 0.08), transparent 60%),
+      radial-gradient(44rem 26rem at 0 100%, rgba(255, 20, 79, 0.05), transparent 55%),
+      #fff;
+    border-bottom: 1px solid var(--np-line);
+  }
+
+  .ws-hero h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    color: var(--np-heading);
+  }
+
+  .ws-hero-sub {
+    margin: 0 0 1.375rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--np-heading);
+  }
+
+  .ws-hero-sub i {
+    font-style: normal;
+    padding-inline: 0.5rem;
+    color: var(--np-red);
+  }
+
+  .ws-hero-lead {
+    max-width: 34rem;
+    margin: 0;
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
+    line-height: 1.8;
+    color: var(--np-text);
+  }
+
+  .ws-kernzin {
+    margin: 1.75rem 0 0;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--np-red);
+    font-family: var(--font-heading);
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+    color: var(--np-heading);
+  }
+
+  .ws-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-top: 2.25rem;
+  }
+
+  .ws-hero-note {
+    margin: 1.5rem 0 0;
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--np-text-dim);
+  }
+
+  /* Architectuurketen in de hero: lichte variant van de np-chain */
+  .ws-chain {
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+    background: #fff;
+    border: 1px solid var(--np-line);
+    border-radius: var(--np-radius-lg);
+    box-shadow: 0 1px 2px rgba(25, 21, 24, 0.05), 0 30px 70px -35px rgba(25, 21, 24, 0.3);
+  }
+
+  .ws-chain h2 {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    color: var(--np-heading);
+  }
+
+  .ws-chain > p {
+    margin: 0 0 1.5rem;
+    font-size: 0.875rem;
+    color: var(--np-text-dim);
+  }
+
+  .ws-chain ol {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 1.75rem;
+    list-style: none;
+  }
+
+  .ws-chain ol::before {
+    content: '';
+    position: absolute;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    left: 4px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--np-line) 0%, var(--np-red) 100%);
+  }
+
+  .ws-chain li {
+    position: relative;
+    padding: 0.375rem 0;
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--np-heading);
+  }
+
+  .ws-chain li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1.75rem;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    background: #fff;
+    border: 1px solid var(--np-text-dim);
+    border-radius: 50%;
+  }
+
+  .ws-chain li:last-child::before {
+    background: var(--np-red);
+    border-color: var(--np-red);
+  }
+
+  /* Horizontale proceslijn: pills met pijlen, wrapt netjes op mobiel */
+  .ws-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0;
+    margin: 2.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ws-flow li {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ws-flow li span {
+    padding: 0.5625rem 1.0625rem;
+    background: var(--np-surface);
+    border: 1px solid var(--np-line);
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: var(--np-heading);
+    white-space: nowrap;
+  }
+
+  .ws-flow li:not(:last-child)::after {
+    content: '\2192';
+    padding-inline: 0.625rem;
+    font-weight: 700;
+    color: var(--np-red);
+  }
+
+  .ws-flow--center { justify-content: center; }
+
+  .ws-flow--sm li span {
+    padding: 0.4375rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+
+  .ws-flow--sm li:not(:last-child)::after { padding-inline: 0.4375rem; }
+
+  .ws-flow--onsurface li span { background: #fff; }
+
+  .ws-flow--ink li span {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #fff;
+  }
+
+  .ws-flow--ink li:not(:last-child)::after { color: #ff5c82; }
+
+  .ws-flow--tight { margin-top: 0.5rem; }
+
+  /* Vier typen werksessies — kaarten op basis van np-lane */
+  .ws-type { display: flex; flex-direction: column; }
+
+  .ws-type-num {
+    display: block;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--np-line-soft);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--np-red-ink);
+  }
+
+  .ws-type h3 { margin: 0 0 0.125rem; }
+
+  .ws-type-sub {
+    display: block;
+    margin-bottom: 1.125rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--np-text-dim);
+  }
+
+  .ws-type-label {
+    display: block;
+    margin: 1.25rem 0 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--np-text-dim);
+  }
+
+  .ws-type .ws-type-label:first-of-type { margin-top: 0; }
+
+  .ws-type h4 {
+    margin: 1.25rem 0 0.375rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    color: var(--np-heading);
+  }
+
+  .ws-type h4 span {
+    font-weight: 400;
+    color: var(--np-text-dim);
+  }
+
+  .ws-type .np-checks { margin-top: 0.25rem; }
+
+  .ws-type .np-pills { margin-top: 0.375rem; }
+
+  .ws-result {
+    margin-top: 1.5rem;
+    padding-top: 1.125rem;
+    border-top: 1px solid var(--np-line-soft);
+  }
+
+  .ws-result .ws-type-label { margin: 0 0 0.25rem; color: var(--np-red-ink); }
+
+  .ws-result p {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+    color: var(--np-heading);
+  }
+
+  /* Leer- en implementatieroute — donkere sectie met vier stappen */
+  .ws-route {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+    counter-reset: ws-route;
+  }
+
+  .ws-route-step {
+    position: relative;
+    padding: clamp(1.5rem, 2.4vw, 1.875rem);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--np-radius);
+    counter-increment: ws-route;
+  }
+
+  .ws-route-step::before {
+    content: '0' counter(ws-route);
+    display: block;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #ff5c82;
+  }
+
+  .ws-route-step h3 {
+    margin: 0 0 0.625rem;
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+
+  .ws-route-chip {
+    display: inline-block;
+    margin: 0 0 0.75rem;
+    padding: 0.3125rem 0.6875rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .ws-route-step p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.66);
+  }
+
+  .ws-route-step:not(:last-child)::after {
+    content: '\2192';
+    position: absolute;
+    top: 50%;
+    right: -0.625rem;
+    transform: translate(50%, -50%);
+    z-index: 1;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--np-red);
+  }
+
+  /* Vaste architectuur — acht genummerde stappen */
+  .ws-arch {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    counter-reset: ws-arch;
+  }
+
+  .ws-arch-step {
+    padding: 1.5rem;
+    background: #fff;
+    border: 1px solid var(--np-line);
+    border-radius: var(--np-radius);
+    counter-increment: ws-arch;
+  }
+
+  .ws-arch-step::before {
+    content: '0' counter(ws-arch);
+    display: block;
+    margin-bottom: 0.875rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--np-line-soft);
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--np-red-ink);
+  }
+
+  .ws-arch-step h3 {
+    margin: 0 0 0.375rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    color: var(--np-heading);
+  }
+
+  .ws-arch-step p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--np-text);
+  }
+
+  /* Tijdlijn van vier uur */
+  .ws-timeline {
+    position: relative;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ws-timeline::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    left: calc(8.875rem + 8px);
+    width: 1px;
+    background: var(--np-line);
+  }
+
+  .ws-tl-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7.75rem 18px minmax(0, 1fr);
+    column-gap: 1.125rem;
+    padding-block: 1.125rem;
+  }
+
+  .ws-tl-time {
+    padding-top: 0.1rem;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+    color: var(--np-text-dim);
+  }
+
+  .ws-tl-dot { position: relative; }
+
+  .ws-tl-dot::after {
+    content: '';
+    position: absolute;
+    top: 0.375rem;
+    left: 50%;
+    width: 11px;
+    height: 11px;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 2px solid var(--np-red);
+    border-radius: 50%;
+  }
+
+  .ws-tl-row h3 {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    color: var(--np-heading);
+  }
+
+  .ws-tl-row p {
+    margin: 0.25rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--np-text);
+  }
+
+  .ws-tl-row--pauze h3 { color: var(--np-text-dim); }
+  .ws-tl-row--pauze .ws-tl-dot::after { border-color: var(--np-line); }
+
+  /* Voorbeeldwerksessie: documentkaart op de donkere sectie */
+  .ws-doc {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .ws-doc-label {
+    margin: 1.375rem 0 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--np-red-ink);
+  }
+
+  .ws-doc-label:first-child { margin-top: 0; }
+
+  .ws-doc p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--np-text);
+  }
+
+  .ws-template {
+    margin-top: 0.5rem;
+    overflow-x: auto;
+    border: 1px solid var(--np-line);
+    border-radius: var(--np-radius);
+  }
+
+  .ws-template table {
+    width: 100%;
+    min-width: 44rem;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+  }
+
+  .ws-template th {
+    padding: 0.75rem 0.875rem;
+    background: var(--np-surface);
+    border-bottom: 1px solid var(--np-line);
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+    color: var(--np-text-dim);
+  }
+
+  .ws-template td {
+    padding: 0.875rem;
+    border-bottom: 1px solid var(--np-line-soft);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--np-heading);
+  }
+
+  .ws-template td:first-child { font-weight: 600; }
+  .ws-template tr:last-child td { border-bottom: 0; }
+  .ws-template .is-ghost td { font-style: italic; color: var(--np-text-dim); }
+
+  .ws-doc-result {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--np-line-soft);
+  }
+
+  /* Checklijsten in twee kolommen */
+  .ws-checks-cols {
+    margin-top: 0.75rem;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+
+  .ws-checks-cols li { break-inside: avoid; }
+
+  /* Grote slotzin */
+  .ws-big {
+    max-width: 40rem;
+    margin: clamp(2.5rem, 4vw, 3.5rem) auto 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3.6vw, 2.625rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--np-heading);
+  }
+
+  /* Veranderkunde: blauw (structuur) en groen (leren) rond Action Learning */
+  .ws-al {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .ws-al-badge {
+    align-self: center;
+    justify-self: center;
+    padding: 0.8125rem 1.5rem;
+    background: linear-gradient(150deg, var(--ws-ink-2), var(--ws-ink));
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    color: #fff;
+    box-shadow: 0 12px 30px -12px rgba(74, 58, 70, 0.5);
+  }
+
+  .ws-panel--blauw { border-top: 3px solid #3177ea; }
+  .ws-panel--groen { border-top: 3px solid #2f8f6b; }
+
+  .ws-panel-kicker {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .ws-panel--blauw .ws-panel-kicker { color: #2560c7; }
+  .ws-panel--groen .ws-panel-kicker { color: #24785a; }
+  .ws-panel--blauw .np-checks li::before { border-color: #2560c7; }
+  .ws-panel--groen .np-checks li::before { border-color: #24785a; }
+
+  .ws-al-note {
+    max-width: 44rem;
+    margin: 2rem auto 0;
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    text-align: center;
+    color: var(--np-text);
+  }
+
+  /* Kernzin in donker paneel (train-de-trainer) */
+  .ws-panel-kernzin {
+    margin: 1.75rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #fff;
+  }
+
+  /* Schaalbaarheidsvisual */
+  .ws-scale { text-align: center; }
+
+  .ws-scale-src {
+    display: inline-block;
+    padding: 0.8125rem 1.75rem;
+    background: linear-gradient(150deg, var(--ws-ink-2), var(--ws-ink));
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+    color: #fff;
+  }
+
+  .ws-scale-line {
+    width: 1px;
+    height: 2.5rem;
+    margin: 0.75rem auto;
+    background: linear-gradient(to bottom, var(--np-line), var(--np-red));
+  }
+
+  .ws-scale-apps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ws-scale-apps li {
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border: 1px solid var(--np-line);
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    color: var(--np-heading);
+  }
+
+  /* Partners */
+  .ws-partner-note {
+    margin: 1.75rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--np-text);
+  }
+
+  .ws-partner-note a {
+    font-weight: 600;
+    color: var(--np-red-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* Slot-CTA */
+  .ws-cta-kernzin {
+    max-width: 34rem;
+    margin: 2.25rem auto 0;
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: #fff;
+  }
+
+  .ws-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.875rem;
+    margin-top: 2.5rem;
+  }
+
+  .ws-cta-actions .btn { margin-top: 0; }
+
+  /* Inladen bij scrollen, zelfde patroon als main.css/reveal.js */
+  .ws-reveal {
+    transition:
+      opacity 0.7s var(--ease) var(--reveal-delay, 0ms),
+      transform 0.7s var(--ease) var(--reveal-delay, 0ms);
+  }
+
+  .ws-reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ws-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .ws-route { grid-template-columns: 1fr; gap: 1.75rem; }
+    .ws-route-step:not(:last-child)::after {
+      top: auto;
+      right: auto;
+      bottom: -0.875rem;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      content: '\2193';
+    }
+    .ws-arch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ws-doc { grid-template-columns: 1fr; }
+    .ws-al { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .ws-arch { grid-template-columns: 1fr; }
+    .ws-timeline::before { display: none; }
+    .ws-tl-row { grid-template-columns: 1fr; }
+    .ws-tl-dot { display: none; }
+    .ws-tl-time { margin-bottom: 0.125rem; text-align: left; }
+    .ws-checks-cols { columns: 1; }
+    .ws-hero-actions .btn { width: 100%; }
+  }
+
+  @media (max-width: 460px) {
+    .ws-hero h1 { hyphens: auto; }
+  }
+</style>
+<noscript><style>.ws-reveal{opacity:1 !important;transform:none !important}</style></noscript>
+
+<!-- 1. Hero -->
+<section class="ws-hero">
+  <div class="container">
+    <div class="np-hero-grid">
+      <div>
+        <span class="np-tag">Implementatiemethodiek</span>
+        <h1>Van workshop naar implementatiewerksessie</h1>
+        <p class="ws-hero-sub">4 uur<i>&middot;</i>E&eacute;n concreet vraagstuk<i>&middot;</i>E&eacute;n bruikbaar resultaat</p>
+        <p class="ws-hero-lead">Een Boostin-werksessie is geen vrijblijvende brainstorm en geen traditionele training. Deelnemers leren een methode en passen die direct toe op hun eigen organisatie. Iedere sessie levert een concreet resultaat op dat daarna daadwerkelijk wordt gebruikt.</p>
+        <p class="ws-kernzin">Een werksessie is geen bijeenkomst. Het is een implementatiestap.</p>
+        <div class="ws-hero-actions">
+          <a href="#methodiek" class="btn btn-primary">Bekijk hoe de methodiek werkt</a>
+          <a href="#" class="btn btn-outline" data-contact-form="contact" data-title="Toepassing werksessies in jouw organisatie of markt">Bespreek toepassing in jouw organisatie of markt</a>
+        </div>
+        <p class="ws-hero-note">Voor organisaties, adviesbureaus en Boostin-partners</p>
+      </div>
+      <div class="ws-chain">
+        <h2>Iedere sessie, dezelfde architectuur</h2>
+        <p>Acht vaste stappen, welke inhoud er ook op tafel ligt.</p>
+        <ol>
+          <li>Aanleiding</li>
+          <li>Leerdoel</li>
+          <li>Theorie</li>
+          <li>Template</li>
+          <li>Werkwijze</li>
+          <li>Uitwerking</li>
+          <li>Resultaat</li>
+          <li>Borging</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Waarom deze aanpak -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Waarom deze aanpak</span>
+        <h2>Veel workshops leveren vooral een goede middag op</h2>
+      </div>
+      <p>Kennis beklijft pas als hij direct wordt toegepast op het eigen werk. Daarom knippen wij leren en implementeren niet op in losse trainingen, adviezen en brainstorms &mdash; maar combineren we ze in &eacute;&eacute;n aanpak.</p>
+    </div>
+    <div class="np-grid">
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </span>
+        <h3>Training</h3>
+        <p>Veel kennis, maar toepassing gebeurt later &mdash; of niet.</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <h3>Consultancy</h3>
+        <p>De adviseur bedenkt vaak de oplossing, waardoor afhankelijkheid ontstaat.</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.68.68 1.24 1.52 1.41 2.5"/></svg>
+        </span>
+        <h3>Brainstorm</h3>
+        <p>Veel idee&euml;n, maar te weinig structuur, keuzes en borging.</p>
+      </div>
+    </div>
+    <div class="np-quote">
+      <p>Wij kiezen voor leren &eacute;n implementeren in dezelfde aanpak.</p>
+    </div>
+    <ul class="ws-flow ws-flow--center ws-reveal">
+      <li><span>Begrijpen</span></li>
+      <li><span>Toepassen</span></li>
+      <li><span>Implementeren</span></li>
+      <li><span>Borgen</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. Vier typen werksessies -->
+<section class="np-section np-section--surface" id="methodiek">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">De vier typen</span>
+        <h2>Vier soorten werksessies. E&eacute;n vaste methodiek.</h2>
+      </div>
+      <p>Samen vormen de vier typen &eacute;&eacute;n complete implementatieroute: van richting bepalen op MT-niveau tot zelfstandig toepassen op de werkvloer. De inhoud verschilt per sessie &mdash; de methodiek eronder is steeds dezelfde.</p>
+    </div>
+    <div class="np-lanes">
+      <div class="np-lane ws-type">
+        <span class="ws-type-num">01</span>
+        <h3>Strategische MT-werksessie</h3>
+        <span class="ws-type-sub">Richting bepalen</span>
+        <span class="ws-type-label">Doel</span>
+        <ul class="np-checks">
+          <li>Ondernemingsambities scherp krijgen</li>
+          <li>Bepalen wat de organisatie wil verbeteren</li>
+          <li>Vertalen naar stuurthema's, KPI's en normen</li>
+          <li>Eigenaarschap en ontwikkelprioriteiten bepalen</li>
+        </ul>
+        <div class="ws-result">
+          <span class="ws-type-label">Resultaat</span>
+          <p>Een gezamenlijk stuurkader en ontwikkelagenda.</p>
+        </div>
+      </div>
+      <div class="np-lane ws-type">
+        <span class="ws-type-num">02</span>
+        <h3>Afdelingswerksessie</h3>
+        <span class="ws-type-sub">Vertalen naar de praktijk</span>
+        <span class="ws-type-label">Doel</span>
+        <ul class="np-checks">
+          <li>Strategie vertalen naar de afdeling</li>
+          <li>Bepalen welke KPI's en normen relevant zijn</li>
+          <li>Bepalen welke analyses nodig zijn</li>
+          <li>Eigenaarschap en werkwijze inrichten</li>
+        </ul>
+        <span class="ws-type-label">Voorbeelden van afdelingen</span>
+        <ul class="np-pills">
+          <li>Projecten</li>
+          <li>Service &amp; Onderhoud</li>
+          <li>Finance</li>
+          <li>Operations</li>
+          <li>HR</li>
+          <li>Andere relevante afdelingen</li>
+        </ul>
+        <div class="ws-result">
+          <span class="ws-type-label">Resultaat</span>
+          <p>Een ingevuld afdelingsstuurmodel dat direct gebruikt kan worden.</p>
+        </div>
+      </div>
+      <div class="np-lane ws-type">
+        <span class="ws-type-num">03</span>
+        <h3>Adviserende MT-werksessie</h3>
+        <span class="ws-type-sub">Samenbrengen, adviseren en besluiten</span>
+        <span class="ws-type-label">Doel</span>
+        <ul class="np-checks">
+          <li>Uitkomsten uit afdelingen beoordelen</li>
+          <li>Samenhang cre&euml;ren</li>
+          <li>Prioriteiten bepalen</li>
+          <li>Besluiten nemen over KPI's, normen en eigenaarschap</li>
+          <li>Organisatiebrede borging organiseren</li>
+        </ul>
+        <div class="ws-result">
+          <span class="ws-type-label">Resultaat</span>
+          <p>Gedragen besluiten en een organisatiebrede werkwijze.</p>
+        </div>
+      </div>
+      <div class="np-lane ws-type">
+        <span class="ws-type-num">04</span>
+        <h3>Coachingssessie</h3>
+        <span class="ws-type-sub">Leren toepassen in de praktijk &mdash; in twee vormen</span>
+        <h4>Prestatieoverleg <span>&mdash; teams leren sturen op:</span></h4>
+        <ul class="np-pills">
+          <li>KPI versus norm</li>
+          <li>Afwijkingen</li>
+          <li>Eigenaarschap</li>
+          <li>Acties</li>
+          <li>Opvolging</li>
+        </ul>
+        <h4>Analyseoverleg <span>&mdash; teams leren:</span></h4>
+        <ul class="np-pills">
+          <li>Oorzaken onderzoeken</li>
+          <li>Symptoom en oorzaak onderscheiden</li>
+          <li>Data gebruiken</li>
+          <li>Oorzaken prioriteren</li>
+          <li>Verbeteracties formuleren</li>
+        </ul>
+        <div class="ws-result">
+          <span class="ws-type-label">Resultaat</span>
+          <p>Management en medewerkers passen de methode zelfstandig toe in echte overleggen.</p>
+        </div>
+      </div>
+    </div>
+    <div class="np-dash-signal" style="margin-top: 1.5rem;">
+      <span>Belangrijk</span>
+      <p>De adviserende MT-sessie is bewust anders dan de strategische MT-sessie. <strong>De strategische MT-sessie geeft richting.</strong> <strong>De adviserende MT-sessie gebruikt de uitwerkingen uit de organisatie om te besluiten en te borgen.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. De totale leer- en implementatieroute -->
+<section class="np-section np-section--ink">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">De route</span>
+        <h2>E&eacute;n complete leer- en implementatieroute</h2>
+      </div>
+      <p>De vier typen werksessies zijn geen losse interventies. Samen vormen ze &eacute;&eacute;n route: van richting bepalen aan de top tot zelfstandig toepassen in de dagelijkse overleggen.</p>
+    </div>
+    <div class="ws-route">
+      <div class="ws-route-step ws-reveal">
+        <h3>Richting bepalen</h3>
+        <span class="ws-route-chip">Strategische MT-werksessie</span>
+        <p>Het MT maakt de ondernemingsambities scherp en vertaalt ze naar stuurthema's, KPI's en normen.</p>
+      </div>
+      <div class="ws-route-step ws-reveal">
+        <h3>Vertalen</h3>
+        <span class="ws-route-chip">Afdelingswerksessie(s)</span>
+        <p>Afdelingen vertalen de strategie naar hun eigen KPI's, normen, analyses en werkwijze.</p>
+      </div>
+      <div class="ws-route-step ws-reveal">
+        <h3>Besluiten</h3>
+        <span class="ws-route-chip">Adviserende MT-werksessie</span>
+        <p>Het MT beoordeelt de uitwerkingen, brengt samenhang aan, besluit en organiseert de borging.</p>
+      </div>
+      <div class="ws-route-step ws-reveal">
+        <h3>Toepassen &amp; leren</h3>
+        <span class="ws-route-chip">Coaching in de praktijk</span>
+        <p>Teams leren de methode zelfstandig toepassen in echte prestatie- en analyseoverleggen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. De vaste architectuur -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">De vaste architectuur</span>
+        <h2>De inhoud verandert. De methodiek blijft hetzelfde.</h2>
+      </div>
+      <p>Of het nu om strategie, een afdeling of een coachingsvraag gaat: iedere werksessie is opgebouwd uit dezelfde acht stappen. Dat maakt de aanpak leerbaar, overdraagbaar en herhaalbaar.</p>
+    </div>
+    <div class="ws-arch">
+      <div class="ws-arch-step ws-reveal">
+        <h3>Aanleiding</h3>
+        <p>Waarom is deze sessie nodig?</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Leerdoel</h3>
+        <p>Wat moeten deelnemers na afloop begrijpen &eacute;n kunnen?</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Theorie</h3>
+        <p>Een compact inhoudelijk kader.</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Template</h3>
+        <p>Een vaste structuur waarmee de theorie wordt toegepast.</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Werkwijze</h3>
+        <p>Stap voor stap uitleg hoe de groep aan de slag gaat.</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Uitwerking door de groep</h3>
+        <p>Deelnemers werken aan hun eigen organisatievraagstuk.</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Resultaat</h3>
+        <p>De sessie eindigt met een concreet ingevuld product.</p>
+      </div>
+      <div class="ws-arch-step ws-reveal">
+        <h3>Borging</h3>
+        <p>Wie doet wat na de sessie en hoe wordt de werkwijze voortgezet?</p>
+      </div>
+    </div>
+    <ul class="ws-flow ws-flow--sm ws-flow--center ws-reveal">
+      <li><span>Aanleiding</span></li>
+      <li><span>Leerdoel</span></li>
+      <li><span>Theorie</span></li>
+      <li><span>Template</span></li>
+      <li><span>Werkwijze</span></li>
+      <li><span>Uitwerking</span></li>
+      <li><span>Resultaat</span></li>
+      <li><span>Borging</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. Het programma van vier uur -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Het programma</span>
+        <h2>Vier uur. Van vraagstuk naar concreet resultaat.</h2>
+      </div>
+      <p>Een strak programma met &eacute;&eacute;n doel: aan het eind van de middag ligt er iets dat de organisatie daadwerkelijk gaat gebruiken.</p>
+    </div>
+    <ol class="ws-timeline">
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">00:00 &ndash; 00:20</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Richten</h3>
+          <p>Aanleiding &middot; vraagstuk &middot; gewenst resultaat</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">00:20 &ndash; 00:50</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Leren</h3>
+          <p>Theorie &middot; model &middot; relevante begrippen</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">00:50 &ndash; 01:10</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Methode</h3>
+          <p>Template &middot; werkwijze &middot; voorbeeld</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">01:10 &ndash; 02:10</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Toepassen</h3>
+          <p>Deelnemers werken in groepen &middot; toepassing op de eigen organisatie &middot; de begeleider coacht</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-tl-row--pauze ws-reveal">
+        <span class="ws-tl-time">02:10 &ndash; 02:20</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Pauze</h3>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">02:20 &ndash; 03:10</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Bespreken</h3>
+          <p>Resultaten presenteren &middot; gezamenlijk toetsen &middot; keuzes aanscherpen</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">03:10 &ndash; 03:40</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Vastleggen</h3>
+          <p>Template afronden &middot; eigenaarschap &middot; acties &middot; openstaande punten</p>
+        </div>
+      </li>
+      <li class="ws-tl-row ws-reveal">
+        <span class="ws-tl-time">03:40 &ndash; 04:00</span>
+        <span class="ws-tl-dot"></span>
+        <div>
+          <h3>Borgen</h3>
+          <p>Wat is ingericht &middot; wie doet wat &middot; vervolg &middot; rol van de interne trainer</p>
+        </div>
+      </li>
+    </ol>
+    <ul class="ws-flow ws-flow--sm ws-flow--center ws-flow--onsurface ws-reveal">
+      <li><span>Richten</span></li>
+      <li><span>Leren</span></li>
+      <li><span>Toepassen</span></li>
+      <li><span>Bespreken</span></li>
+      <li><span>Vastleggen</span></li>
+      <li><span>Borgen</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. Voorbeeld van een concrete werksessie -->
+<section class="np-section np-section--ink">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Voorbeeld</span>
+        <h2>Van ondernemingsambitie naar KPI en norm</h2>
+      </div>
+      <p>Zo ziet &eacute;&eacute;n concrete werksessie eruit &mdash; van aanleiding tot ingevuld template. De inhoud hieronder is voorbeeldinhoud; in de sessie vult de groep het template met de eigen ambities.</p>
+    </div>
+    <figure class="np-dash">
+      <div class="np-dash-bar">
+        <span class="np-dash-title">Werksessie &mdash; <em>van ondernemingsambitie naar KPI en norm</em></span>
+        <span class="np-dash-flag">Voorbeeldinhoud</span>
+      </div>
+      <div class="np-dash-body">
+        <div class="ws-doc">
+          <div>
+            <p class="ws-doc-label">Aanleiding</p>
+            <p>De organisatie heeft ambities en dashboards, maar onvoldoende duidelijkheid over waarop werkelijk moet worden gestuurd.</p>
+            <p class="ws-doc-label">Leerdoel</p>
+            <p>Deelnemers kunnen ondernemingsambities vertalen naar concrete verbeterdoelen, KPI's en normen.</p>
+            <p class="ws-doc-label">Theorie</p>
+            <ul class="ws-flow ws-flow--sm ws-flow--tight">
+              <li><span>Ondernemingsambitie</span></li>
+              <li><span>Verbeterdoel</span></li>
+              <li><span>KPI</span></li>
+              <li><span>Norm</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="ws-doc-label">Template &mdash; ingevuld tijdens de sessie</p>
+            <div class="ws-template">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ambitie</th>
+                    <th>Verbeterdoel</th>
+                    <th>KPI</th>
+                    <th>Definitie</th>
+                    <th>Norm</th>
+                    <th>Eigenaar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hoger projectrendement</td>
+                    <td>Minder verliesuren</td>
+                    <td>Productiviteit</td>
+                    <td>Directe uren / beschikbare uren</td>
+                    <td>&gt; 85%</td>
+                    <td>Manager Projecten</td>
+                  </tr>
+                  <tr class="is-ghost">
+                    <td colspan="6">&hellip; wordt tijdens de sessie verder ingevuld door de groep</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="ws-doc-result">
+          <p class="ws-doc-label">Resultaat na vier uur</p>
+          <ul class="np-checks ws-checks-cols">
+            <li>Een ingevuld stuurmodel</li>
+            <li>Gekozen KPI's</li>
+            <li>Definities</li>
+            <li>Normen</li>
+            <li>Eigenaarschap</li>
+            <li>Concrete vervolgacties</li>
+          </ul>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- 8. Leren door te doen -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Leren door te doen</span>
+        <h2>Geen fictieve cases. Werken aan de eigen organisatie.</h2>
+      </div>
+      <p>Een case uit een boek beklijft niet. Daarom werken deelnemers in iedere sessie met wat er in hun eigen organisatie speelt:</p>
+    </div>
+    <ul class="ws-scale-apps ws-reveal">
+      <li>Eigen ambities</li>
+      <li>Eigen processen</li>
+      <li>Eigen KPI's</li>
+      <li>Eigen normen</li>
+      <li>Eigen knelpunten</li>
+      <li>Eigen afdelingen</li>
+      <li>Eigen stuurvraagstukken</li>
+    </ul>
+    <p class="ws-big ws-reveal">Leren wordt implementeren.</p>
+  </div>
+</section>
+
+<!-- 9. De veranderkundige gedachte -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">De veranderkundige gedachte</span>
+        <h2>Gestructureerd &eacute;n lerend veranderen</h2>
+      </div>
+      <p>De methodiek combineert de voorspelbaarheid van een gestructureerde aanpak met leren door toepassing in de praktijk.</p>
+    </div>
+    <div class="ws-al">
+      <div class="np-panel np-panel--light ws-panel--blauw">
+        <span class="ws-panel-kicker">Blauw</span>
+        <h3>Structuur</h3>
+        <ul class="np-checks">
+          <li>Vaste stappen</li>
+          <li>Duidelijke output</li>
+          <li>Templates</li>
+          <li>Planning</li>
+          <li>Eigenaarschap</li>
+          <li>Borging</li>
+        </ul>
+      </div>
+      <div class="ws-al-badge">Action Learning</div>
+      <div class="np-panel np-panel--light ws-panel--groen">
+        <span class="ws-panel-kicker">Groen</span>
+        <h3>Leren</h3>
+        <ul class="np-checks">
+          <li>Leren door te doen</li>
+          <li>Reflecteren</li>
+          <li>Feedback</li>
+          <li>Oefenen</li>
+          <li>Zelf oplossingen ontwikkelen</li>
+          <li>Vaardigheden opbouwen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Train-de-trainer -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Train-de-trainer</span>
+        <h2>De organisatie leert het uiteindelijk zelf doen</h2>
+      </div>
+      <p>Gedurende het traject wordt een interne kartrekker opgeleid die de werkwijze draagt als de begeleiding stopt &mdash; bijvoorbeeld een controller, afdelingsmanager, HR-manager of verbetermanager.</p>
+    </div>
+    <div class="np-split">
+      <div class="np-panel np-panel--light">
+        <h3>Wat de interne trainer leert</h3>
+        <ul class="np-checks">
+          <li>Templates gebruiken</li>
+          <li>Werksessies ondersteunen</li>
+          <li>Prestatieoverleggen begeleiden</li>
+          <li>Analyseoverleggen begeleiden</li>
+          <li>Teams coachen</li>
+          <li>Verbeteracties opvolgen</li>
+          <li>Nieuwe medewerkers meenemen in de werkwijze</li>
+        </ul>
+      </div>
+      <div class="np-panel np-panel--red">
+        <h3>Waarom we dit zo doen</h3>
+        <p>Externe begeleiding moet zichzelf overbodig maken. De methodiek is zo opgebouwd dat de organisatie hem na het traject zelfstandig draait &mdash; met de interne trainer als drager van de werkwijze, ook richting nieuwe medewerkers.</p>
+        <p class="ws-panel-kernzin">Maximale waarde. Minimale afhankelijkheid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Waarom dit schaalbaar is -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Schaalbaarheid</span>
+        <h2>De methodiek is vast. De toepassing verandert.</h2>
+      </div>
+      <p>Dezelfde methodiek werkt in meerdere afdelingen, bij verschillende organisaties en in verschillende sectoren &mdash; begeleid door verschillende consultants, met sectorspecifieke templates en ondersteund vanuit een digitaal leerportaal.</p>
+    </div>
+    <div class="ws-scale ws-reveal">
+      <span class="ws-scale-src">Vaste methodiek</span>
+      <span class="ws-scale-line"></span>
+      <ul class="ws-scale-apps">
+        <li>Strategie</li>
+        <li>Projecten</li>
+        <li>Service</li>
+        <li>Finance</li>
+        <li>Operations</li>
+        <li>HR</li>
+        <li>AI</li>
+        <li>En verder&hellip;</li>
+      </ul>
+    </div>
+    <div class="np-quote">
+      <p>Schaalbaarheid ontstaat doordat de methodiek hetzelfde blijft, terwijl het vraagstuk verandert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. Voor partners en consultants -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Voor partners en consultants</span>
+        <h2>Een methodiek die consultants kunnen leren &eacute;n opschalen</h2>
+      </div>
+      <p>Boostin ontwikkelt niet alleen inhoud, maar een overdraagbare implementatiemethodiek. Partners kunnen de methodiek leren, er branchekennis aan toevoegen, werksessies zelfstandig begeleiden en dezelfde aanpak bij meerdere klanten toepassen &mdash; met gebruik van de technologie, templates en leeromgeving van Boostin.</p>
+    </div>
+    <div class="np-split">
+      <div class="np-panel np-panel--red">
+        <h3>Boostin brengt</h3>
+        <p><strong>Technologie, methodiek en schaalbaarheid.</strong></p>
+        <ul class="np-checks">
+          <li>De vaste werksessie-architectuur en templates</li>
+          <li>Technologie en digitaal leerportaal</li>
+          <li>Een aanpak die zich laat herhalen bij meerdere klanten</li>
+        </ul>
+      </div>
+      <div class="np-panel np-panel--light">
+        <h3>De partner brengt</h3>
+        <p><strong>Marktkennis, klantrelatie en implementatiekracht.</strong></p>
+        <ul class="np-checks">
+          <li>Branchekennis en sectorspecifieke inhoud</li>
+          <li>De relatie met en het vertrouwen van de klant</li>
+          <li>Zelfstandige begeleiding van werksessies</li>
+        </ul>
+      </div>
+    </div>
+    <p class="ws-partner-note">Verder praten over samenwerken met Boostin? <a href="{{ '/partners/' | url }}">Lees hoe een partnerschap werkt</a>.</p>
+  </div>
+</section>
+
+<!-- 13. Slot-CTA -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-cta">
+      <h2>Wil je zien hoe deze aanpak binnen jouw organisatie of markt werkt?</h2>
+      <p>We kunnen samen &eacute;&eacute;n concreet vraagstuk kiezen en daar een eerste werksessie voor ontwerpen.</p>
+      <ul class="ws-flow ws-flow--ink ws-flow--center">
+        <li><span>Richting bepalen</span></li>
+        <li><span>Vertalen</span></li>
+        <li><span>Besluiten</span></li>
+        <li><span>Toepassen &amp; leren</span></li>
+      </ul>
+      <p class="ws-cta-kernzin">Een werksessie is geen bijeenkomst.<br>Het is een implementatiestap.</p>
+      <div class="ws-cta-actions">
+        <a href="#" class="btn btn-white" data-contact-form="contact" data-title="Bespreek een werksessie">Bespreek een werksessie</a>
+        <a href="#" class="btn btn-outline-white" data-contact-form="contact" data-title="Ontwikkel een werksessie voor jouw markt">Ontwikkel een werksessie voor jouw markt</a>
+      </div>
+      <p class="np-cta-note">Voor organisaties, adviesbureaus, branche-experts en Boostin-partners.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Inladen bij scrollen voor de pagina-eigen .ws-reveal elementen.
+  // Zelfde gedrag en vangnetten als /assets/js/reveal.js.
+  (function () {
+    "use strict";
+    var els = Array.prototype.slice.call(document.querySelectorAll(".ws-reveal"));
+    if (!els.length) return;
+    function showAll() {
+      for (var i = 0; i < els.length; i++) els[i].classList.add("is-visible");
+    }
+    try {
+      if (!("IntersectionObserver" in window)) { showAll(); return; }
+      var STAGGER_PARENTS = ".ws-route, .ws-arch";
+      els.forEach(function (el) {
+        var group = el.closest(STAGGER_PARENTS);
+        if (!group) return;
+        var i = Array.prototype.slice.call(group.children).indexOf(el);
+        if (i > 0) el.style.setProperty("--reveal-delay", Math.min(i, 5) * 80 + "ms");
+      });
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      els.forEach(function (el) { observer.observe(el); });
+    } catch (e) {
+      showAll();
+    }
+  })();
+</script>
