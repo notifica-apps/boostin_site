@@ -565,7 +565,12 @@ bodyClass: page-werksessies
     column-gap: 2.5rem;
   }
 
-  .ws-checks-cols li { break-inside: avoid; }
+  /* de kaart staat op een ink-sectie die color:#fff zet; zonder eigen kleur
+     erven de items wit en zijn ze onzichtbaar op de witte kaart */
+  .ws-checks-cols li {
+    break-inside: avoid;
+    color: var(--np-text);
+  }
 
   /* Grote slotzin */
   .ws-big {
@@ -657,10 +662,13 @@ bodyClass: page-werksessies
     color: #fff;
   }
 
+  /* display:block is nodig: op een inline span doen width/height niets
+     en verdwijnt het verbindingslijntje */
   .ws-scale-line {
+    display: block;
     width: 1px;
     height: 2.5rem;
-    margin: 0.75rem auto;
+    margin: 0.875rem auto;
     background: linear-gradient(to bottom, var(--np-line), var(--np-red));
   }
 
@@ -669,20 +677,24 @@ bodyClass: page-werksessies
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    max-width: 40rem;
+    max-width: 44rem;
     margin: 0 auto;
     padding: 0;
     list-style: none;
   }
 
+  /* tags in de stijl van np-pills, geen knoppen */
   .ws-scale-apps li {
-    padding: 0.5rem 1rem;
-    background: #fff;
+    padding: 0.4375rem 0.9375rem;
+    background: var(--np-surface);
     border: 1px solid var(--np-line);
-    border-radius: var(--radius-full);
-    font-size: 0.9375rem;
-    color: var(--np-heading);
+    border-radius: 9px;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--np-text);
   }
+
+  .np-section--surface .ws-scale-apps li { background: #fff; }
 
   /* Partners */
   .ws-partner-note {
