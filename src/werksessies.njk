@@ -572,6 +572,19 @@ bodyClass: page-werksessies
     color: var(--np-text);
   }
 
+  /* Gecentreerde sectiekop: de standaard np-head (kop links, tekst rechts)
+     oogt uit balans bij een korte tekst naast een hoge kop; deze sectie is
+     één gecentreerde kolom met chips en slotzin eronder */
+  .ws-head-center {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .ws-head-center p { max-width: 38rem; }
+
   /* Grote slotzin */
   .ws-big {
     max-width: 40rem;
@@ -662,14 +675,36 @@ bodyClass: page-werksessies
     color: #fff;
   }
 
-  /* display:block is nodig: op een inline span doen width/height niets
-     en verdwijnt het verbindingslijntje */
-  .ws-scale-line {
+  /* verbindingspijl die de bron-pill en de tray echt raakt (display:block,
+     want op een inline span doen width/height niets) */
+  .ws-scale-arrow {
+    position: relative;
     display: block;
     width: 1px;
-    height: 2.5rem;
-    margin: 0.875rem auto;
-    background: linear-gradient(to bottom, var(--np-line), var(--np-red));
+    height: 2rem;
+    margin: 0 auto;
+    background: var(--np-red);
+  }
+
+  .ws-scale-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--np-red);
+  }
+
+  /* de toepassingen als één omkaderd geheel, geen zwevende chips */
+  .ws-scale-tray {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--np-line);
+    border-radius: var(--np-radius-lg);
   }
 
   .ws-scale-apps {
@@ -694,7 +729,11 @@ bodyClass: page-werksessies
     color: var(--np-text);
   }
 
-  .np-section--surface .ws-scale-apps li { background: #fff; }
+  .ws-scale-apps li.ws-etc {
+    background: transparent;
+    border-color: transparent;
+    color: var(--np-text-dim);
+  }
 
   /* Partners */
   .ws-partner-note {
@@ -1223,7 +1262,7 @@ bodyClass: page-werksessies
 <!-- 8. Leren door te doen -->
 <section class="np-section">
   <div class="container">
-    <div class="np-head">
+    <div class="np-head ws-head-center">
       <div>
         <span class="np-tag">Leren door te doen</span>
         <h2>Geen fictieve cases. Werken aan de eigen organisatie.</h2>
@@ -1327,17 +1366,19 @@ bodyClass: page-werksessies
     </div>
     <div class="ws-scale ws-reveal">
       <span class="ws-scale-src">Vaste methodiek</span>
-      <span class="ws-scale-line"></span>
-      <ul class="ws-scale-apps">
-        <li>Strategie</li>
-        <li>Projecten</li>
-        <li>Service</li>
-        <li>Finance</li>
-        <li>Operations</li>
-        <li>HR</li>
-        <li>AI</li>
-        <li>En verder&hellip;</li>
-      </ul>
+      <span class="ws-scale-arrow"></span>
+      <div class="ws-scale-tray">
+        <ul class="ws-scale-apps">
+          <li>Strategie</li>
+          <li>Projecten</li>
+          <li>Service</li>
+          <li>Finance</li>
+          <li>Operations</li>
+          <li>HR</li>
+          <li>AI</li>
+          <li class="ws-etc">En verder&hellip;</li>
+        </ul>
+      </div>
     </div>
     <div class="np-quote">
       <p>Schaalbaarheid ontstaat doordat de methodiek hetzelfde blijft, terwijl het vraagstuk verandert.</p>
