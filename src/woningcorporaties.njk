@@ -5,6 +5,7 @@ description: Grip op data, grip op sturen, grip op de corporatie. Boostin brengt
 permalink: /woningcorporaties/
 pageCss: /assets/css/niche.css
 ---
+{% from "beslisregels.njk" import beslisregels %}
 
 <!-- Hero -->
 <section class="np-hero">
@@ -401,6 +402,27 @@ pageCss: /assets/css/niche.css
     </div>
   </div>
 </section>
+
+<!-- Beslisregels -->
+{{ beslisregels({
+     sectionClass: "np-section",
+     intro: "In dezelfde engine zit een beslisregelmachine. Voor een corporatie die dagelijks regels toepast op kandidaten, huurders en complexen is dat een andere manier van werken dan een script dat niemand kan nalezen.",
+     regel: "Passend toewijzen",
+     cond1: "Huishoudinkomen onder de grens",
+     cond2: "Huur boven de aftoppingsgrens",
+     uitkomstA: "Niet passend",
+     uitkomstB: "Passend toewijzen",
+     uitlegNoot: "Handig als je accountant of toezichthouder wil zien hoe een toewijzing tot stand is gekomen.",
+     voorbeelden: [
+       "Passend toewijzen",
+       "Urgentiebepaling",
+       "Inkomensafhankelijke huurverhoging",
+       "Stap in het incassotraject",
+       "Ingreep bij een conditiescore",
+       "Wel of geen maatwerk",
+       "Toewijzingsvoorrang"
+     ]
+   }) }}
 
 <!-- Het model -->
 <section class="np-section np-section--surface" id="model">

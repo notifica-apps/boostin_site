@@ -5,6 +5,7 @@ description: Grip op productieprestaties en sneller verbeteren. Boostin brengt p
 permalink: /maakindustrie/
 pageCss: /assets/css/niche.css
 ---
+{% from "beslisregels.njk" import beslisregels %}
 
 <!-- Hero -->
 <section class="np-hero">
@@ -418,8 +419,29 @@ pageCss: /assets/css/niche.css
   </div>
 </section>
 
+<!-- Beslisregels -->
+{{ beslisregels({
+     sectionClass: "np-section np-section--surface",
+     intro: "In dezelfde engine zit een beslisregelmachine. Voor een productiebedrijf dat elke dag dezelfde afweging maakt over batches, orders en machines is dat een andere manier van werken dan een script dat niemand kan nalezen.",
+     regel: "Keuringsbesluit",
+     cond1: "Maatafwijking binnen tolerantie",
+     cond2: "Oppervlakteafwijking gevonden",
+     uitkomstA: "Herbewerken",
+     uitkomstB: "Vrijgeven",
+     uitlegNoot: "Handig bij een audit of een klantklacht: je laat zien welke regel gold en waarom de uitkomst zo is.",
+     voorbeelden: [
+       "Keuringsbesluit",
+       "Vrijgave van een batch",
+       "Garantieafhandeling",
+       "Prijsstaffel",
+       "Onderhoud op conditie",
+       "Escalatie bij afwijking",
+       "Leverbetrouwbaarheidsklasse"
+     ]
+   }) }}
+
 <!-- CTA -->
-<section class="np-section np-section--surface">
+<section class="np-section">
   <div class="container">
     <div class="np-cta">
     <h2>Waar zit jullie grootste verbeterkans?</h2>

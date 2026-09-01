@@ -1,0 +1,103 @@
+{#
+  Beslisregels-blok (de BusinessRuler in GRIP).
+
+  Het mechanisme is doelgroep-neutraal: elke organisatie die een regel op een
+  heel bestand toepast kan dit gebruiken. Daarom staat het blok op meerdere
+  doelgroeppagina's, met per markt een eigen beslistabel en eigen voorbeelden.
+
+  LET OP bij het plaatsen: dit blok gebruikt np-compare en np-panel--light.
+  Die zijn gestyled voor een LICHTE sectie. Zet het dus in een
+  "np-section" of "np-section np-section--surface", nooit in --ink.
+
+  Gebruik:
+    {% from "beslisregels.njk" import beslisregels %}
+    {{ beslisregels({
+         sectionClass: "np-section",
+         intro:        "...",
+         regel:        "Kwijtschelding gemeentebelasting",
+         cond1:        "Inkomen onder de bijstandsnorm",
+         cond2:        "Vermogen boven de grens",
+         uitkomstA:    "Afwijzen",
+         uitkomstB:    "Toekennen",
+         uitlegNoot:   "...",
+         voorbeelden:  ["...", "..."]
+       }) }}
+#}
+
+{% macro beslisregels(o) %}
+<section class="{{ o.sectionClass }}">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Beslisregels</span>
+        <h2>Beleidsregels als tabel, niet als code</h2>
+      </div>
+      <p>{{ o.intro }} Je legt de regel vast als tabel en die wordt toegepast op je hele bestand. Elke rij is &eacute;&eacute;n geval; een streep betekent dat die voorwaarde niet uitmaakt.</p>
+    </div>
+    <div class="np-compare">
+      <table>
+        <thead>
+          <tr>
+            <th>{{ o.regel }}</th>
+            <th>{{ o.cond1 }}</th>
+            <th>{{ o.cond2 }}</th>
+            <th>Uitkomst<small>wat er wordt teruggeschreven</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Geval 1</th>
+            <td>Ja</td>
+            <td>Ja</td>
+            <td>{{ o.uitkomstA }}</td>
+          </tr>
+          <tr>
+            <th>Geval 2</th>
+            <td>Ja</td>
+            <td>Nee</td>
+            <td>{{ o.uitkomstB }}</td>
+          </tr>
+          <tr>
+            <th>Geval 3</th>
+            <td>Nee</td>
+            <td>&mdash;</td>
+            <td>{{ o.uitkomstA }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="np-lanes-note">Twee voorwaarden zijn vier mogelijke combinaties. De tool rekent na of je ze alle vier hebt afgedekt.</p>
+    <div class="np-grid">
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <h3>De regel wordt nagerekend</h3>
+        <p>Twee voorwaarden geven vier combinaties, drie voorwaarden acht. De tool controleert of je ze allemaal hebt afgedekt, zodat een gat in de regel opvalt v&oacute;&oacute;rdat een uitzonderingsgeval het vindt.</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </span>
+        <h3>Leesbaar voor wie erover gaat</h3>
+        <p>Een beslistabel is geen code en geen model: wie de regel moet verantwoorden kan hem zelf nakijken. {{ o.uitlegNoot }}</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </span>
+        <h3>Draait op je eigen database</h3>
+        <p>De regel wordt niet op een export toegepast maar op de bron: het leest de records, past de tabel toe en schrijft de uitkomst terug. Ook genest, en net als de rest on-premise of in je eigen cloud.</p>
+      </div>
+    </div>
+    <div class="np-panel np-panel--light" style="margin-top: 1rem;">
+      <h3>Waar dit past</h3>
+      <ul class="np-pills">
+        {%- for v in o.voorbeelden %}
+        <li>{{ v }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endmacro %}

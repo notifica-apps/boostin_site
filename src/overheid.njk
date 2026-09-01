@@ -5,6 +5,7 @@ description: Een Nederlandse ETL-tool die on-premise draait, dus je gegevens ver
 permalink: /overheid/
 pageCss: /assets/css/niche.css
 ---
+{% from "beslisregels.njk" import beslisregels %}
 
 <!-- Hero -->
 <section class="np-hero">
@@ -190,8 +191,30 @@ pageCss: /assets/css/niche.css
   </div>
 </section>
 
+<!-- Beslisregels -->
+{{ beslisregels({
+     sectionClass: "np-section",
+     intro: "Naast het meten van kwaliteit zit er in GRIP een beslisregelmachine. Voor een organisatie die de hele dag regels toepast op inwoners of objecten is dat een andere manier van werken dan een script dat niemand kan nalezen.",
+     regel: "Kwijtschelding gemeentebelasting",
+     cond1: "Inkomen onder de bijstandsnorm",
+     cond2: "Vermogen boven de grens",
+     uitkomstA: "Afwijzen",
+     uitkomstB: "Toekennen",
+     uitlegNoot: "Dat weegt zwaarder nu geautomatiseerde besluiten uitlegbaar moeten zijn en in het Algoritmeregister terechtkomen.",
+     voorbeelden: [
+       "Kwijtschelding belastingen",
+       "Wmo-indicatie",
+       "Minimaregelingen",
+       "Leerlingenvervoer",
+       "Subsidietoetsing",
+       "Risicogericht toezicht",
+       "Belastingcategorie",
+       "Urgentiebepaling"
+     ]
+   }) }}
+
 <!-- Domeinen -->
-<section class="np-section">
+<section class="np-section np-section--surface">
   <div class="container">
     <div class="np-head">
       <div>
