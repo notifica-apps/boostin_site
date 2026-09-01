@@ -1,7 +1,7 @@
 {
   "name": "boostin-site",
   "version": "1.0.0",
-  "description": "Boostin Consultancy website",
+  "description": "Boostin website",
   "main": ".eleventy.js",
   "scripts": {
     "dev": "eleventy --serve",

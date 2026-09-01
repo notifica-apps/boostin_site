@@ -1,5 +1,5 @@
 /**
- * Cookie consent voor Boostin Consultancy.
+ * Cookie consent voor Boostin.
  *
  * AVG-conform: analytische en marketingtrackers worden pas geladen nadat de
  * bezoeker daar toestemming voor heeft gegeven. Zonder toestemming gebeurt er
