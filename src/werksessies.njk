@@ -576,7 +576,7 @@ bodyClass: page-werksessies
      oogt uit balans bij een korte tekst naast een hoge kop; deze sectie is
      één gecentreerde kolom met chips en slotzin eronder */
   .ws-head-center {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: center;
     text-align: center;
     gap: 1rem;
@@ -793,7 +793,7 @@ bodyClass: page-werksessies
 
   /* Responsive */
   @media (max-width: 1024px) {
-    .ws-route { grid-template-columns: 1fr; gap: 1.75rem; }
+    .ws-route { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
     .ws-route-step:not(:last-child)::after {
       top: auto;
       right: auto;
@@ -803,14 +803,14 @@ bodyClass: page-werksessies
       content: '\2193';
     }
     .ws-arch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .ws-doc { grid-template-columns: 1fr; }
-    .ws-al { grid-template-columns: 1fr; }
+    .ws-doc { grid-template-columns: minmax(0, 1fr); }
+    .ws-al { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media (max-width: 640px) {
-    .ws-arch { grid-template-columns: 1fr; }
+    .ws-arch { grid-template-columns: minmax(0, 1fr); }
     .ws-timeline::before { display: none; }
-    .ws-tl-row { grid-template-columns: 1fr; }
+    .ws-tl-row { grid-template-columns: minmax(0, 1fr); }
     .ws-tl-dot { display: none; }
     .ws-tl-time { margin-bottom: 0.125rem; text-align: left; }
     .ws-checks-cols { columns: 1; }
@@ -829,7 +829,7 @@ bodyClass: page-werksessies
     <div class="np-hero-grid">
       <div>
         <span class="np-tag">Implementatiemethodiek</span>
-        <h1>Van workshop naar implementatiewerksessie</h1>
+        <h1>Van workshop naar implementatie&shy;werksessie</h1>
         <p class="ws-hero-sub">4 uur<i>&middot;</i>E&eacute;n concreet vraagstuk<i>&middot;</i>E&eacute;n bruikbaar resultaat</p>
         <p class="ws-hero-lead">Een Boostin-werksessie is geen vrijblijvende brainstorm en geen traditionele training. Deelnemers leren een methode en passen die direct toe op hun eigen organisatie. Iedere sessie levert een concreet resultaat op dat daarna daadwerkelijk wordt gebruikt.</p>
         <p class="ws-kernzin">Een werksessie is geen bijeenkomst. Het is een implementatiestap.</p>

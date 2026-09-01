@@ -264,7 +264,7 @@
 
 .np-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.25rem, 3vw, 3rem);
 }
 
@@ -997,18 +997,18 @@
   .np-head,
   .np-split,
   .np-lanes,
-  .np-partner { grid-template-columns: 1fr; }
+  .np-partner { grid-template-columns: minmax(0, 1fr); }
   .np-head { align-items: start; }
   .np-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .np-stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+  .np-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
   .np-phases,
-  .np-roles { grid-template-columns: 1fr; }
+  .np-roles { grid-template-columns: minmax(0, 1fr); }
   .np-phase-chip { transform: none; margin-top: 1.5rem; }
   .np-partner-media { order: -1; max-width: 32rem; }
 }
 
 @media (max-width: 640px) {
-  .np-grid { grid-template-columns: 1fr; }
+  .np-grid { grid-template-columns: minmax(0, 1fr); }
   .np-questions { justify-content: flex-start; text-align: left; }
   .np-hero-actions .btn { width: 100%; }
 }
@@ -1150,7 +1150,7 @@
 }
 
 @media (max-width: 1024px) {
-  .np-duo { grid-template-columns: 1fr; }
+  .np-duo { grid-template-columns: minmax(0, 1fr); }
   .np-media { order: -1; max-width: 34rem; }
 }
 
@@ -1159,7 +1159,7 @@
    -------------------------------------------------------------------------- */
 .np-prices {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-5);
   margin-top: var(--spacing-8);
 }
@@ -1228,7 +1228,7 @@
 
 @media (max-width: 860px) {
   .np-prices {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1508,11 +1508,11 @@
 
 @media (max-width: 1024px) {
   .np-dash-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .np-dash-charts { grid-template-columns: 1fr; }
+  .np-dash-charts { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 560px) {
-  .np-dash-kpis { grid-template-columns: 1fr; }
+  .np-dash-kpis { grid-template-columns: minmax(0, 1fr); }
   .np-bars > div { grid-template-columns: minmax(0, 6.5rem) minmax(0, 1fr) 2.5rem; }
   .np-dash-signal { flex-direction: column; gap: 0.5rem; }
 }

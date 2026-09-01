@@ -152,6 +152,13 @@ address {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: var(--line-height-tight);
+  /*
+    Nederlandse samenstellingen zijn lang ("implementatiewerksessie" is bij
+    36px al 438px breed). Zonder dit breekt zo'n woord niet en duwt het de
+    hele pagina breder dan de viewport op mobiel.
+  */
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 h1 {
@@ -209,26 +216,26 @@ h4 {
 }
 
 .grid--2 {
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid--3 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .grid--4 {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 @media (max-width: 1024px) {
   .grid--3, .grid--4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .grid--2, .grid--3, .grid--4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -644,7 +651,7 @@ h4 {
    -------------------------------------------------------------------------- */
 .methode-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-8);
 }
 
@@ -670,7 +677,7 @@ h4 {
 
 @media (max-width: 768px) {
   .methode-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -679,7 +686,7 @@ h4 {
    -------------------------------------------------------------------------- */
 .klanten-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--spacing-8);
   align-items: center;
 }
@@ -713,7 +720,7 @@ h4 {
 
 @media (max-width: 1024px) {
   .klanten-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .klant-logo img {
@@ -723,7 +730,7 @@ h4 {
 
 @media (max-width: 640px) {
   .klanten-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .klant-logo img {
@@ -778,7 +785,7 @@ h4 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
   gap: var(--spacing-12);
   padding-bottom: var(--spacing-12);
 }
@@ -848,7 +855,8 @@ h4 {
 
 .footer-legal-links {
   display: flex;
-  gap: var(--spacing-6);
+  flex-wrap: wrap;
+  gap: var(--spacing-3) var(--spacing-6);
 }
 
 .footer-legal-links a {
@@ -858,13 +866,13 @@ h4 {
 
 @media (max-width: 1024px) {
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .footer-bottom {
@@ -919,7 +927,7 @@ h4 {
 /* Two column layout */
 .two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-12);
   align-items: center;
 }
@@ -934,7 +942,7 @@ h4 {
 
 @media (max-width: 768px) {
   .two-col {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .two-col--reverse {
@@ -985,7 +993,7 @@ h4 {
    -------------------------------------------------------------------------- */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--spacing-8);
 }
 
@@ -1010,13 +1018,13 @@ h4 {
 
 @media (max-width: 1024px) {
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1401,7 +1409,7 @@ h4 {
 
 .cf-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--spacing-4);
 }
 
@@ -1501,7 +1509,7 @@ h4 {
 
 @media (max-width: 560px) {
   .cf-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
