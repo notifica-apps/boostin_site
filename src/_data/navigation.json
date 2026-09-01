@@ -21,6 +21,10 @@
           "url": "/datagedreven-sturen/"
         },
         {
+          "label": "Datakwaliteit",
+          "url": "/datakwaliteit/"
+        },
+        {
           "label": "Werksessies",
           "url": "/werksessies/"
         }
@@ -33,6 +37,10 @@
         {
           "label": "Woningcorporaties",
           "url": "/woningcorporaties/"
+        },
+        {
+          "label": "Overheid",
+          "url": "/overheid/"
         },
         {
           "label": "Maakindustrie",
