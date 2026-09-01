@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Datakwaliteit meetbaar maken
-description: Van datakwaliteitsrapport naar meetsysteem. Regels in beheer bij de vakafdeling, elke nacht gemeten over alle bronsystemen, en per eigenaar een werklijst met de records die niet kloppen. Volgens het NORA-raamwerk gegevenskwaliteit.
+description: Van datakwaliteitsrapport naar meetsysteem. Business rules in beheer bij de vakafdeling, met streefwaarde en drempelwaarde, elke nacht gemeten over alle bronsystemen, en per eigenaar een werklijst met de records die niet kloppen. De aanpak zoals hij bij het RIVM draait.
 permalink: /datakwaliteit/
 pageCss: /assets/css/niche.css
 ---
@@ -21,15 +21,15 @@ pageCss: /assets/css/niche.css
         <p class="np-hero-note">Technologie &times; Mens = Resultaat</p>
       </div>
       <div class="np-chain">
-        <h2>Het stappenplan gegevenskwaliteit</h2>
-        <p>De zes processtappen uit het NORA-raamwerk.</p>
+        <h2>Van business rule naar werklijst</h2>
+        <p>Onze route, in elke opdracht dezelfde.</p>
         <ol>
-          <li>Context bepalen</li>
-          <li>Gegevens beschrijven</li>
-          <li>Regels en eisen beschrijven</li>
-          <li>Kwaliteit meten</li>
-          <li>Signalen afhandelen</li>
-          <li>Maatregelen implementeren</li>
+          <li>Kritiek gegeven</li>
+          <li>Business rule</li>
+          <li>Norm</li>
+          <li>Meting genereren</li>
+          <li>Overtredingen</li>
+          <li>Werklijst</li>
         </ol>
       </div>
     </div>
@@ -45,8 +45,8 @@ pageCss: /assets/css/niche.css
         <span>kwaliteitsdimensies uit het NORA-raamwerk waarop we meten</span>
       </div>
       <div class="np-stat">
-        <strong>6</strong>
-        <span>processtappen, het stappenplan dat de overheid zelf hanteert</span>
+        <strong>2</strong>
+        <span>normen per regel: een streefwaarde en een drempelwaarde</span>
       </div>
       <div class="np-stat">
         <strong>1</strong>
@@ -206,43 +206,66 @@ pageCss: /assets/css/niche.css
     <div class="np-head">
       <div>
         <span class="np-tag">Het stappenplan</span>
-        <h2>Zes stappen, en wat er in elke stap gebeurt</h2>
+        <h2>E&eacute;n keer inrichten, daarna elke nacht</h2>
       </div>
-      <p>We volgen het stappenplan gegevenskwaliteit uit het NORA-raamwerk &mdash; het kader dat binnen de Nederlandse overheid al is afgesproken. Wij verzinnen geen eigen methodiek, we maken die stappen uitvoerbaar. Per stap staat hieronder wat wij concreet doen.</p>
+      <p>Dit is de werkwijze zoals hij draait, niet een model op papier. Het linkerspoor doe je &eacute;&eacute;n keer per domein en werk je daarna alleen bij. Het rechterspoor gaat daarna elke nacht automatisch, zonder dat er iemand iets voor hoeft te bouwen.</p>
     </div>
-    <div class="np-phases">
-      <div class="np-phase">
-        <h3>Context bepalen</h3>
-        <p>Welk proces, welk besluit, welke verantwoording? We beginnen bij de vraag waar nu iets aan hangt: een verantwoordingsstroom die elk jaar pijn doet, of een dossier waarin de cijfers niet te vertrouwen zijn. Niet bij een organisatiebrede inventarisatie.</p>
-        <span class="np-phase-chip">E&eacute;n afgebakend domein</span>
+    <div class="np-lanes">
+      <div class="np-lane np-lane--blue">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </span>
+        <h3>Inrichten, per domein</h3>
+        <ul class="np-steps">
+          <li>Bronnen aansluiten, read-only per systeem</li>
+          <li>Kritieke gegevens en definities vastleggen</li>
+          <li>Per gegeven een business rule opschrijven</li>
+          <li>Teller, noemer en detailvraag erbij</li>
+          <li>Streefwaarde, drempelwaarde en eigenaar</li>
+          <li>Regel vrijgeven via de status</li>
+          <li>Meting genereren uit het overzicht</li>
+        </ul>
       </div>
-      <div class="np-phase">
-        <h3>Gegevens beschrijven</h3>
-        <p>Welke gegevens zijn kritiek in dat proces, uit welk bronsysteem komen ze en wat is de definitie? Dat leggen we vast per bron en per tabel, met de vakafdeling erbij. Waar een landelijk gegevensmodel bestaat, sluiten we daarop aan.</p>
-        <span class="np-phase-chip">Kritieke gegevens benoemd</span>
-      </div>
-      <div class="np-phase">
-        <h3>Regels en eisen beschrijven</h3>
-        <p>Per kritiek gegeven een regel in gewone taal, de kwaliteitsdimensie waar hij op zit, en twee normen: een streefwaarde en een drempelwaarde. Plus een eigenaar. Dit is de stap die de vakafdeling zelf doet &mdash; het staat in een overzicht dat zij beheren, niet in code.</p>
-        <span class="np-phase-chip">Regels in eigen beheer</span>
-      </div>
-      <div class="np-phase">
-        <h3>Kwaliteit meten</h3>
-        <p>Uit dat overzicht genereert GRIP de hele meting: per regel een teller en een noemer, over alle bronsystemen heen. Dat draait elke nacht en legt per peildatum de uitkomst vast, zodat je niet alleen de stand ziet maar ook de beweging.</p>
-        <span class="np-phase-chip">Elke nacht, automatisch</span>
-      </div>
-      <div class="np-phase">
-        <h3>Signalen afhandelen</h3>
-        <p>Een regel onder de drempelwaarde levert geen percentage op maar de records zelf: welke dossiers, welk team, welke periode. Die lijst gaat naar de eigenaar, met een mail met de stand van zaken erbij. Sturen op datakwaliteit wordt zo gewoon werk verdelen.</p>
-        <span class="np-phase-chip">Werklijst per eigenaar</span>
-      </div>
-      <div class="np-phase">
-        <h3>Maatregelen implementeren</h3>
-        <p>Herstellen wat hersteld moet worden, en daarna de oorzaak wegnemen &mdash; meestal een validatie in het invoerscherm of een aanpassing in het werkproces. Bij de volgende peildatum zie je zwart op wit of de maatregel heeft geholpen. Dat is het verschil met een auditrapport.</p>
-        <span class="np-phase-chip">Aantoonbaar effect</span>
+      <div class="np-lane np-lane--red">
+        <span class="np-icon np-icon--solid">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </span>
+        <h3>Draaien, elke nacht</h3>
+        <ul class="np-steps">
+          <li>Tellers meten, per regel en per bron</li>
+          <li>Overtredingen ophalen op recordniveau</li>
+          <li>Scoren tegen de norm: groen, oranje, rood</li>
+          <li>Vastleggen met een peildatum</li>
+          <li>Datamart en dashboard actualiseren</li>
+          <li>Werklijst naar de eigenaar</li>
+          <li>Rapportage mailen, inclusief zelfcontrole</li>
+        </ul>
       </div>
     </div>
-    <p class="np-lanes-note">Stap 1 tot en met 3 doe je &eacute;&eacute;n keer per domein. Stap 4 tot en met 6 gaan daarna elke maand door, zonder dat er iemand iets voor hoeft te bouwen.</p>
+    <p class="np-lanes-note">Een regel erbij is een regel in het overzicht en opnieuw genereren. Diezelfde nacht wordt hij meegemeten.</p>
+    <div class="np-split" style="margin-top: 3rem;">
+      <div class="np-panel np-panel--outline">
+        <h3>Wie doet wat</h3>
+        <p>De scheiding is bewust: de inhoud hoort bij de organisatie, de machinerie bij ons.</p>
+        <ul class="np-checks">
+          <li>de vakafdeling bepaalt wat een geldige registratie is</li>
+          <li>de eigenaar per regel pakt de werklijst op</li>
+          <li>wij sluiten de bronnen aan en genereren de meting</li>
+          <li>wij houden de meting in de lucht bij een systeemwijziging</li>
+        </ul>
+      </div>
+      <div class="np-panel np-panel--outline">
+        <h3>Aansluiting op het NORA-stappenplan</h3>
+        <p>Werkt jouw organisatie met het stappenplan gegevenskwaliteit uit het NORA-raamwerk, dan is dit de uitvoerbare kant daarvan. De zes processtappen vallen samen met de sporen hierboven:</p>
+        <ul class="np-checks">
+          <li>context bepalen en gegevens beschrijven &mdash; stap 1 en 2 links</li>
+          <li>regels en eisen beschrijven &mdash; stap 3 tot en met 6 links</li>
+          <li>gegevenskwaliteit meten &mdash; stap 1 tot en met 4 rechts</li>
+          <li>signalen afhandelen &mdash; stap 5 tot en met 7 rechts</li>
+          <li>maatregelen implementeren &mdash; bij jullie, wij meten het effect</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
