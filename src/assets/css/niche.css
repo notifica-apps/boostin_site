@@ -577,7 +577,7 @@
   border-bottom: 2px solid var(--np-red);
 }
 
-.np-compare thead th:last-child small {
+.np-compare thead th small {
   display: block;
   margin-top: 0.25rem;
   font-family: var(--font-body);
