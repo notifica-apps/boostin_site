@@ -1549,3 +1549,116 @@
   color: var(--color-primary-text);
   line-height: 1.1;
 }
+
+/* ==========================================================================
+   Brede tabellen op mobiel
+   --------------------------------------------------------------------------
+   .np-compare tabellen hebben min-width: 44rem (704px) en scrollen binnen hun
+   eigen container. Op een telefoon is daardoor maar ~49% zichtbaar. Twee
+   antwoorden, afhankelijk van wat de tabel moet overbrengen:
+
+   1. .np-compare--stack  -> de beslistabel. Die betekent alleen iets als je
+      de voorwaarden en de uitkomst samen ziet, dus die stapelt op mobiel tot
+      een blokje per geval. Vereist data-label op elke td (zie beslisregels.njk).
+   2. alle andere         -> een swipe-hint, zodat mensen weten dat er meer is.
+      Die tabellen zijn rij voor rij te lezen, dus scrollen kan daar wel.
+   ========================================================================== */
+
+.np-table-caption {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--np-text-dim);
+}
+
+/* 1. Swipe-hint. Sticky op left:0 zodat hij bij horizontaal scrollen in beeld
+      blijft staan. De grenzen zijn gemeten, niet gekozen: .np-compare scrollt
+      t/m 750px en .ws-template t/m 790px, dus daar houdt de hint op. */
+.np-compare::before,
+.ws-template::before {
+  content: 'Swipe voor de hele tabel \2192';
+  position: sticky;
+  left: 0;
+  display: none;
+  padding: 0.625rem 0.875rem 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  color: var(--np-text-dim);
+}
+
+@media (max-width: 759px) {
+  .np-compare::before { display: block; }
+}
+
+@media (max-width: 799px) {
+  .ws-template::before { display: block; }
+}
+
+/* 2. Beslistabel: op mobiel een blokje per geval. */
+@media (max-width: 640px) {
+  .np-compare--stack { overflow-x: visible; }
+
+  /* gestapeld valt er niets te swipen, dus de hint weg */
+  .np-compare--stack::before { display: none; }
+
+  .np-compare--stack table { min-width: 0; }
+  .np-compare--stack thead { display: none; }
+
+  .np-compare--stack tbody,
+  .np-compare--stack tr,
+  .np-compare--stack tbody th,
+  .np-compare--stack tbody td { display: block; }
+
+  .np-compare--stack tbody tr {
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    background-color: #fff;
+    border: 1px solid var(--np-line);
+    border-radius: var(--np-radius);
+  }
+
+  .np-compare--stack tbody tr:last-child { margin-bottom: 0; }
+
+  .np-compare--stack tbody th {
+    width: auto;
+    padding: 0.75rem 1rem;
+    background-color: var(--np-surface);
+    border-bottom: 1px solid var(--np-line);
+  }
+
+  .np-compare--stack tbody td {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    background-color: transparent;
+    border-bottom: 1px solid var(--np-line-soft);
+    text-align: right;
+  }
+
+  /* de basisregel dimt kolom 2 (dat is de "eigen aanpak"-kolom in een
+     vergelijkingstabel). Gestapeld is kolom 2 gewoon de tweede voorwaarde,
+     dus die moet dezelfde kleur hebben als de rest. */
+  .np-compare--stack tbody td:nth-child(2) { color: var(--np-heading); }
+
+  .np-compare--stack tbody td::before {
+    content: attr(data-label);
+    flex: 1 1 auto;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--np-text-dim);
+    text-align: left;
+  }
+
+  /* de uitkomst is de clou: die blijft gemarkeerd en sluit de kaart af */
+  .np-compare--stack tbody td:last-child {
+    background-color: rgba(255, 20, 79, 0.045);
+    border-bottom: 0;
+  }
+}

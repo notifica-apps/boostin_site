@@ -34,11 +34,12 @@
       </div>
       <p>{{ o.intro }} Je legt de regel vast als tabel en die wordt toegepast op je hele bestand. Elke rij is &eacute;&eacute;n geval; een streep betekent dat die voorwaarde niet uitmaakt.</p>
     </div>
-    <div class="np-compare">
+    <p class="np-table-caption">{{ o.regel }}</p>
+    <div class="np-compare np-compare--stack">
       <table>
         <thead>
           <tr>
-            <th>{{ o.regel }}</th>
+            <th>&nbsp;</th>
             <th>{{ o.cond1 }}</th>
             <th>{{ o.cond2 }}</th>
             <th>Uitkomst<small>wat er wordt teruggeschreven</small></th>
@@ -47,21 +48,21 @@
         <tbody>
           <tr>
             <th>Geval 1</th>
-            <td>Ja</td>
-            <td>Ja</td>
-            <td>{{ o.uitkomstA }}</td>
+            <td data-label="{{ o.cond1 }}">Ja</td>
+            <td data-label="{{ o.cond2 }}">Ja</td>
+            <td data-label="Uitkomst">{{ o.uitkomstA }}</td>
           </tr>
           <tr>
             <th>Geval 2</th>
-            <td>Ja</td>
-            <td>Nee</td>
-            <td>{{ o.uitkomstB }}</td>
+            <td data-label="{{ o.cond1 }}">Ja</td>
+            <td data-label="{{ o.cond2 }}">Nee</td>
+            <td data-label="Uitkomst">{{ o.uitkomstB }}</td>
           </tr>
           <tr>
             <th>Geval 3</th>
-            <td>Nee</td>
-            <td>&mdash;</td>
-            <td>{{ o.uitkomstA }}</td>
+            <td data-label="{{ o.cond1 }}">Nee</td>
+            <td data-label="{{ o.cond2 }}">&mdash;</td>
+            <td data-label="Uitkomst">{{ o.uitkomstA }}</td>
           </tr>
         </tbody>
       </table>
