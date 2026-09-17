@@ -355,6 +355,63 @@ pageCss: /assets/css/niche.css
   </div>
 </section>
 
+<!-- Bronnen Westerkwartier -->
+<section class="np-section" id="bronnen">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Bronnen in de praktijk</span>
+        <h2>Wat er bij gemeente Westerkwartier daadwerkelijk is aangesloten</h2>
+      </div>
+      <p>Niet een belofte over &quot;alle bronnen&quot;, maar de lijst zoals die er nu staat: zeventien systemen, ontsloten via vier koppeltechnieken. De techniek volgt uit wat de bron toelaat &mdash; een vakapplicatie met een eigen database sluit je anders aan dan een klimaatsensor in een gebouw. Een bron hoeft dus niet eerst geschikt gemaakt te worden.</p>
+    </div>
+    <div class="np-grid np-grid--2">
+      <div class="np-domain">
+        <h3>Database naar database (ODBC)</h3>
+        <p class="np-source-note">Rechtstreeks meelezen op de database van de vakapplicatie, met een read-only account. Het grootste deel van de bronnen loopt zo: negen van de zeventien.</p>
+        <ul class="np-pills">
+          <li>Burgerzaken</li>
+          <li>Sociaal domein</li>
+          <li>Basisregistratie Adressen en Gebouwen (BAG)</li>
+          <li>Meldingen openbare ruimte</li>
+          <li>Financi&euml;le applicatie</li>
+          <li>WOZ</li>
+          <li>Afvalapplicatie</li>
+          <li>Milieustraat</li>
+          <li>Telefooncentrale</li>
+        </ul>
+      </div>
+      <div class="np-domain">
+        <h3>API-koppeling (JSON)</h3>
+        <p class="np-source-note">Systemen die hun gegevens via een webservice aanbieden. GRIP haalt het JSON-bericht op, legt het plat en modelleert het door tot rapportageklare tabellen.</p>
+        <ul class="np-pills">
+          <li>Ritregistratie voertuigen</li>
+          <li>Helpdesksysteem</li>
+          <li>Personeelssysteem</li>
+        </ul>
+      </div>
+      <div class="np-domain">
+        <h3>Bestandslevering (CSV)</h3>
+        <p class="np-source-note">Bronnen die periodiek een export leveren in plaats van een verbinding. Ingelezen en per peildatum vastgelegd, zodat er een reeks van ontstaat in plaats van een losse momentopname.</p>
+        <ul class="np-pills">
+          <li>Wifi-punten</li>
+          <li>Printerverbruik</li>
+          <li>Afspraakregistratie inwoners</li>
+          <li>CBS-data</li>
+        </ul>
+      </div>
+      <div class="np-domain">
+        <h3>Apparatuur uitlezen (SNMP)</h3>
+        <p class="np-source-note">Een netwerkprotocol voor apparatuur die geen database en geen API heeft. Daarmee komt ook meetdata uit de gebouwen in hetzelfde model terecht.</p>
+        <ul class="np-pills">
+          <li>Klimaatsensoren</li>
+        </ul>
+      </div>
+    </div>
+    <p class="np-source-foot">Wat hier opvalt is niet de techniek maar de spreiding: van een kernregistratie als de BAG tot printerverbruik en klimaatsensoren. Juist die kleine bronnen &mdash; waar niemand een dataproject voor start &mdash; geven vaak het antwoord op een vraag over huisvesting, dienstverlening of kosten. Ze staan hier in hetzelfde model, naast het sociaal domein en de financi&euml;n.</p>
+  </div>
+</section>
+
 <!-- Kaders -->
 <section class="np-section np-section--surface">
   <div class="container">

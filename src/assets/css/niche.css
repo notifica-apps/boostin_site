@@ -412,6 +412,24 @@
   color: var(--np-text);
 }
 
+/* Toelichting boven de pills en afsluitende noot onder een bronnenoverzicht */
+.np-source-note {
+  margin: 0 0 1.125rem;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--np-text-dim);
+}
+
+.np-source-foot {
+  max-width: 52rem;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+  padding-left: 1.125rem;
+  border-left: 2px solid var(--np-red);
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--np-text);
+}
+
 /* --------------------------------------------------------------------------
    Uitspraak
    -------------------------------------------------------------------------- */
