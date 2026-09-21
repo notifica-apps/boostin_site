@@ -27,6 +27,10 @@
         {
           "label": "Werksessies",
           "url": "/werksessies/"
+        },
+        {
+          "label": "AI Contract Checker",
+          "url": "/ai-contract-checker/"
         }
       ]
     },
