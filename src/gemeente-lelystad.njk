@@ -1,0 +1,722 @@
+---
+layout: base.njk
+title: Stuurinformatie voor gemeente Lelystad
+description: Wat Boostin voor gemeente Lelystad kan betekenen - stuurinformatie voor sociaal domein, VTH en dienstverlening, uit de bronnen die er al zijn en binnen de eigen omgeving.
+permalink: /gemeente-lelystad/
+pageCss: /assets/css/niche.css
+bodyClass: page-gemeente
+noindex: true
+eleventyExcludeFromCollections: true
+gemeente: Lelystad
+datum: september 2026
+---
+{#
+  Persoonlijke pagina voor één gemeente, op noindex en buiten de sitemap.
+  Bedoeld om te versturen (link) en om als PDF achter te laten (Ctrl+P /
+  knop "Opslaan als PDF"). Voor een volgende gemeente: kopieer dit bestand,
+  pas permalink, title, gemeente en de contactpersoon aan.
+#}
+<style>
+  .gm-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .gm-meta { margin-top: 1.5rem; font-size: .875rem; color: rgba(255,255,255,.7); }
+  .gm-meta strong { color: #fff; font-weight: 600; }
+
+  .gm-domains { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+  .gm-domain { background: #fff; border: 1px solid var(--np-line); border-radius: var(--np-radius-lg); padding: clamp(1.25rem, 2.4vw, 1.875rem); }
+  .gm-domain h3 { margin: 0 0 .375rem; font-size: 1.25rem; letter-spacing: -.02em; color: var(--np-heading); }
+  .gm-domain > p { margin: 0 0 1rem; font-size: .9375rem; line-height: 1.7; color: var(--np-text); }
+  .gm-domain dl { margin: 0; display: grid; gap: .75rem; }
+  .gm-domain dt { font-size: .6875rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--np-red-ink); }
+  .gm-domain dd { margin: .2rem 0 0; font-size: .875rem; line-height: 1.65; color: var(--np-text); }
+  .gm-domain dd strong { color: var(--np-heading); }
+
+  .gm-dashes { display: grid; gap: 2rem; }
+  .gm-dash-caption { margin: .75rem 0 0; font-size: .875rem; line-height: 1.7; color: rgba(255,255,255,.7); max-width: 48rem; }
+
+  .gm-contacts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; margin-top: 2rem; text-align: left; }
+  .gm-contact { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: var(--np-radius); padding: 1.25rem 1.5rem; }
+  .gm-contact strong { display: block; font-size: 1.0625rem; color: #fff; }
+  .gm-contact span { display: block; margin: .15rem 0 .6rem; font-size: .8125rem; color: rgba(255,255,255,.7); }
+  .gm-contact a { color: #fff; font-size: .9375rem; text-decoration: underline; text-underline-offset: 3px; }
+
+
+  /* ---------- Showcase-dashboard (beeldend voorbeeld) ---------- */
+  .gd { display: grid; grid-template-columns: 176px minmax(0,1fr); margin: 0; background: #fff; border: 1px solid var(--np-line); border-radius: var(--np-radius-lg); overflow: hidden; box-shadow: 0 1px 2px rgba(25,21,24,.05), 0 40px 80px -48px rgba(64,44,57,.55); }
+  .gd-side { background: var(--np-ink); color: #fff; padding: 1.25rem 0; }
+  .gd-brand { display: flex; align-items: center; gap: .5rem; padding: 0 1.125rem 1.25rem; font-weight: 700; font-size: .875rem; letter-spacing: -.01em; }
+  .gd-brand i { width: 22px; height: 22px; border-radius: 6px; background: var(--np-red); display: inline-block; }
+  .gd-nav { list-style: none; margin: 0; padding: 0; }
+  .gd-nav li { padding: .55rem 1.125rem; font-size: .75rem; color: rgba(255,255,255,.62); border-left: 3px solid transparent; }
+  .gd-nav li.is-on { color: #fff; background: rgba(255,255,255,.07); border-left-color: var(--np-red); font-weight: 600; }
+  .gd-side small { display: block; margin: 1.25rem 1.125rem 0; font-size: .625rem; line-height: 1.5; color: rgba(255,255,255,.4); }
+  .gd-main { padding: 1.125rem 1.25rem 1.25rem; background: #faf8f5; min-width: 0; }
+  .gd-top { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .gd-top h3 { margin: 0; font-size: 1.0625rem; letter-spacing: -.02em; color: var(--np-heading); }
+  .gd-top h3 span { font-weight: 400; color: var(--np-text-dim); }
+  .gd-chips { display: flex; flex-wrap: wrap; gap: .375rem; }
+  .gd-chips span { padding: .3rem .65rem; border: 1px solid var(--np-line); border-radius: 999px; background: #fff; font-size: .6875rem; color: var(--np-text); }
+  .gd-chips span.gd-fict { border-color: rgba(255,20,79,.35); color: var(--np-red-ink); font-weight: 600; }
+  .gd-kpis { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .625rem; margin-bottom: .625rem; }
+  .gd-tile { background: #fff; border: 1px solid var(--np-line); border-radius: 10px; padding: .75rem .875rem .625rem; min-width: 0; }
+  .gd-tile > span { display: block; font-size: .6875rem; color: var(--np-text-dim); line-height: 1.3; min-height: 1.8em; }
+  .gd-tile strong { display: block; margin: .25rem 0 .125rem; font-size: 1.5rem; font-weight: 650; letter-spacing: -.03em; color: var(--np-heading); }
+  .gd-tile em { font-style: normal; font-size: .6875rem; font-weight: 600; color: #1f8a5b; }
+  .gd-tile em.is-bad { color: var(--np-red-ink); }
+  .gd-tile svg { display: block; width: 100%; height: 30px; margin-top: .375rem; }
+  .gd-row { display: grid; gap: .625rem; margin-bottom: .625rem; }
+  .gd-row--a { grid-template-columns: minmax(0,1.75fr) minmax(0,1fr); }
+  .gd-row--b { grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); margin-bottom: 0; }
+  .gd-card { background: #fff; border: 1px solid var(--np-line); border-radius: 10px; padding: .875rem 1rem; min-width: 0; }
+  .gd-card h4 { margin: 0 0 .625rem; font-size: .75rem; font-weight: 600; color: var(--np-heading); }
+  .gd-card h4 span { font-weight: 400; color: var(--np-text-dim); }
+  .gd-card svg { display: block; width: 100%; height: auto; }
+  .gd-legend { display: flex; flex-wrap: wrap; gap: .25rem .875rem; margin-top: .5rem; font-size: .6875rem; color: var(--np-text); }
+  .gd-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: .35rem; vertical-align: -1px; }
+  .gd-donut { display: grid; grid-template-columns: minmax(0,1fr); gap: .75rem; justify-items: center; }
+  .gd-donut svg { max-width: 132px; }
+  .gd-donut ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .4rem .875rem; width: 100%; }
+  .gd-donut li { display: grid; grid-template-columns: 10px minmax(0,1fr) auto; gap: .5rem; align-items: center; font-size: .75rem; color: var(--np-text); }
+  .gd-donut li i { width: 10px; height: 10px; border-radius: 2px; }
+  .gd-donut li b { font-variant-numeric: tabular-nums; color: var(--np-heading); }
+  .gd-heat { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 4px; }
+  .gd-heat div { border-radius: 6px; padding: .5rem .45rem .45rem; min-height: 54px; display: flex; flex-direction: column; justify-content: space-between; font-size: .625rem; line-height: 1.2; color: var(--np-heading); }
+  .gd-heat div b { font-size: .9375rem; font-weight: 650; letter-spacing: -.02em; }
+  .gd-heat div.is-dark { color: #fff; }
+  .gd-scale { display: flex; align-items: center; gap: .5rem; margin-top: .5rem; font-size: .625rem; color: var(--np-text-dim); }
+  .gd-scale i { flex: 1; height: 6px; border-radius: 3px; background: linear-gradient(90deg, rgba(255,20,79,.08), #ff144f); }
+  .gd-funnel { display: grid; gap: .45rem; }
+  .gd-funnel > div { display: grid; grid-template-columns: minmax(0,7.5rem) minmax(0,1fr) 3.25rem; gap: .625rem; align-items: center; font-size: .6875rem; color: var(--np-text); }
+  .gd-funnel i { display: block; height: 22px; background: #f0ebe4; border-radius: 5px; overflow: hidden; }
+  .gd-funnel i b { display: block; height: 100%; border-radius: 5px; background: linear-gradient(90deg, #ff144f, #ff5a82); }
+  .gd-funnel u { text-decoration: none; text-align: right; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--np-heading); }
+  .gd-funnel small { grid-column: 2 / 4; margin-top: -.2rem; font-size: .625rem; color: var(--np-red-ink); font-weight: 600; }
+  .gd-note { margin: 1rem 0 0; font-size: .875rem; line-height: 1.7; color: var(--np-text); max-width: 52rem; }
+
+  @media (max-width: 1024px) {
+    .gd { grid-template-columns: minmax(0,1fr); }
+    .gd-side { display: none; }
+  }
+  @media (max-width: 760px) {
+    .gd-kpis { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .gd-row--a, .gd-row--b { grid-template-columns: minmax(0,1fr); }
+    .gd-heat { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+
+  .gm-print-only { display: none; }
+
+  @media (max-width: 860px) {
+    .gm-domains, .gm-contacts { grid-template-columns: minmax(0,1fr); }
+  }
+
+  /* ------------------------------------------------------------------
+     Print / PDF: A4 staand, zonder menu, footer, cookiebanner en knoppen.
+     Vlakken en kleuren blijven staan, blokken breken niet midden door.
+     ------------------------------------------------------------------ */
+  @page { size: A4; margin: 14mm 13mm 16mm; }
+  @media print {
+    html { font-size: 13px; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .header, .footer, #cookie-banner, .gm-noprint, .nav-toggle { display: none !important; }
+    main { padding-top: 0 !important; margin-top: 0 !important; }
+    /* inladen-bij-scrollen uit: in print is alles meteen zichtbaar */
+    .np-head, .np-card, .np-domain, .np-lane, .np-phase, .np-panel, .np-quote,
+    .np-cta, .np-stat, .np-chain, .np-role, .np-person, .np-compare,
+    .np-hero-grid > div { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .container { max-width: none !important; padding-inline: 0 !important; }
+
+    .np-hero { padding-block: 2rem 2.25rem; border-radius: 10px; padding-inline: 1.75rem; }
+    .np-hero h1 { font-size: 2.5rem; }
+    .np-section { padding-block: 1.75rem; }
+    .np-section--surface, .np-section--ink { border-radius: 10px; padding-inline: 1.5rem; margin-block: .5rem; }
+    .np-head { grid-template-columns: minmax(0,1fr) !important; gap: .75rem; margin-bottom: 1.25rem; }
+    .np-head h2 { font-size: 1.75rem; }
+    .np-hero-grid { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr) !important; gap: 1.5rem; }
+    .np-grid { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+    .np-split, .gm-domains, .gm-contacts { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    .np-grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    .np-phases, .np-roles { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+    .np-phase-chip { transform: none !important; margin-top: 1rem; }
+    .np-stats-grid { grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
+    .np-dash-kpis { grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
+    .np-dash-charts { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    .gd { grid-template-columns: 150px minmax(0,1fr) !important; box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+    .gd-side { display: block !important; }
+    .gd-kpis { grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
+    .gd-row--a { grid-template-columns: minmax(0,1.75fr) minmax(0,1fr) !important; }
+    .gd-row--b { grid-template-columns: minmax(0,1.15fr) minmax(0,1fr) !important; }
+    .gd-heat { grid-template-columns: repeat(5, minmax(0,1fr)) !important; }
+    .gd-donut ul { grid-template-columns: minmax(0,1fr) !important; }
+    .gd-note { display: none; }
+    .np-dash { box-shadow: none; border: 1px solid var(--np-line); }
+
+    .np-card, .np-panel, .np-domain, .gm-domain, .np-dash, .np-phase, .np-role,
+    .np-chart, .gm-contact, .np-quote, .np-compare tr { break-inside: avoid; page-break-inside: avoid; }
+    .np-head, h2, h3 { break-after: avoid; page-break-after: avoid; }
+    .gm-break { break-before: page; page-break-before: always; }
+
+    a { color: inherit; text-decoration: none; }
+    .gm-print-only { display: block; }
+  }
+</style>
+
+<!-- Hero -->
+<section class="np-hero">
+  <div class="container">
+    <div class="np-hero-grid">
+      <div>
+        <span class="np-eyebrow"><i></i>Voor gemeente {{ gemeente }}</span>
+        <h1>Grip op de vragen<br>waar je de gegevens<br>al voor hebt.</h1>
+        <p class="np-hero-lead">Een gemeente heeft geen gebrek aan gegevens. Ze staan in het zaaksysteem, het klantcontactsysteem, de applicaties van het sociaal domein en VTH, en in de financi&euml;le administratie. Wat vaak ontbreekt is de verbinding ertussen. Boostin ontsluit die bronnen, legt de definities vast en levert dashboards waarop je kunt sturen. Dat gebeurt binnen jullie eigen omgeving, en we beginnen met &eacute;&eacute;n vraagstuk.</p>
+        <div class="gm-actions gm-noprint">
+          <a href="#" class="btn btn-white" data-contact-form="contact" data-title="Gemeente {{ gemeente }}: eerste vraagstuk">Bespreek een eerste vraagstuk</a>
+          <button type="button" class="btn btn-outline-white" onclick="window.print()">Opslaan als PDF</button>
+        </div>
+        <p class="gm-meta">Opgesteld voor gemeente {{ gemeente }} &middot; {{ datum }} &middot; contact: <strong>Patrick Talen</strong></p>
+      </div>
+      <div class="np-chain">
+        <h2>Van vraag naar verbetering</h2>
+        <p>Dezelfde route bij elk vraagstuk.</p>
+        <ol>
+          <li>Informatievraag</li>
+          <li>Indicator</li>
+          <li>Norm</li>
+          <li>Databronnen</li>
+          <li>Stuurinformatie</li>
+          <li>Verbeteractie</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cijferband -->
+<section class="np-stats">
+  <div class="container">
+    <div class="np-stats-grid">
+      <div class="np-stat">
+        <strong>17</strong>
+        <span>bronsystemen aangesloten bij gemeente Westerkwartier</span>
+      </div>
+      <div class="np-stat">
+        <strong>0</strong>
+        <span>gegevens die jullie eigen omgeving hoeven te verlaten</span>
+      </div>
+      <div class="np-stat">
+        <strong>1</strong>
+        <span>vraagstuk is genoeg om te beginnen</span>
+      </div>
+      <div class="np-stat">
+        <strong>NL</strong>
+        <span>techniek, leverancier en ondersteuning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Showcase-dashboard -->
+<section class="np-section np-section--surface gm-showcase">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Zo kan het eruitzien</span>
+        <h2>E&eacute;n overzicht voor de hele gemeente</h2>
+      </div>
+      <p>Een voorbeeld van een stuurdashboard voor {{ gemeente }}: dienstverlening, digitalisering en het sociaal domein samen in &eacute;&eacute;n beeld, met doorklikken tot op wijk- en dossierniveau. Alle cijfers zijn fictief. Het dashboard laat de opbouw zien, niet hoe {{ gemeente }} ervoor staat.</p>
+    </div>
+
+    <figure class="gd" role="img" aria-label="Voorbeelddashboard met fictieve cijfers: kengetallen voor digitaal bereik, klantcontact, Wmo en beslistermijnen; een groeicurve van digitaal verzonden post, klantcontact per kanaal, Wmo-meldingen per wijk en de Wmo-keten van melding tot ervaring.">
+      <div class="gd-side">
+        <div class="gd-brand"><i></i>Stuurinformatie</div>
+        <ul class="gd-nav">
+          <li class="is-on">Overzicht gemeente</li>
+          <li>Dienstverlening</li>
+          <li>Digitaal bereik</li>
+          <li>Sociaal domein</li>
+          <li>Vergunningen en VTH</li>
+          <li>Datakwaliteit</li>
+        </ul>
+        <small>Ververst vannacht 03:00<br>Bronnen: zaaksysteem, KCS, sociaal domein, VTH, post</small>
+      </div>
+      <div class="gd-main">
+        <div class="gd-top">
+          <h3>Overzicht gemeente {{ gemeente }} <span>&middot; 2026</span></h3>
+          <div class="gd-chips"><span>Periode: 2026</span><span>Wijk: alle</span><span class="gd-fict">Fictieve cijfers</span></div>
+        </div>
+
+        <div class="gd-kpis">
+          <div class="gd-tile"><span>Digitaal verzonden post</span><strong>61%</strong><em>+23 pp sinds januari</em><svg viewBox="0 0 120 30" aria-hidden="true"><polyline points="4.0,26.0 14.2,24.3 24.4,23.4 34.5,20.8 44.7,19.0 54.9,18.2 65.1,15.6 75.3,13.8 85.5,11.2 95.6,9.5 105.8,7.7 116.0,6.0" fill="none" stroke="#ff144f" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><circle cx="116.0" cy="6.0" r="2.5" fill="#ff144f"/></svg></div>
+          <div class="gd-tile"><span>Klantvraag opgelost in eerste contact</span><strong>71%</strong><em>+3 pp dit kwartaal</em><svg viewBox="0 0 120 30" aria-hidden="true"><polyline points="4.0,26.0 20.0,20.3 36.0,23.1 52.0,17.4 68.0,14.6 84.0,14.6 100.0,8.9 116.0,6.0" fill="none" stroke="#ff144f" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><circle cx="116.0" cy="6.0" r="2.5" fill="#ff144f"/></svg></div>
+          <div class="gd-tile"><span>Wmo-zorg geleverd zoals toegewezen</span><strong>88%</strong><em class="is-bad">128 toewijzingen open</em><svg viewBox="0 0 120 30" aria-hidden="true"><polyline points="4.0,26.0 20.0,23.1 36.0,17.4 52.0,14.6 68.0,11.7 84.0,11.7 100.0,8.9 116.0,6.0" fill="none" stroke="#ff144f" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><circle cx="116.0" cy="6.0" r="2.5" fill="#ff144f"/></svg></div>
+          <div class="gd-tile"><span>Vergunningen binnen de beslistermijn</span><strong>93%</strong><em class="is-bad">14 zaken bijna over termijn</em><svg viewBox="0 0 120 30" aria-hidden="true"><polyline points="4.0,6.0 20.0,11.0 36.0,21.0 52.0,16.0 68.0,26.0 84.0,21.0 100.0,11.0 116.0,16.0" fill="none" stroke="#ff144f" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/><circle cx="116.0" cy="16.0" r="2.5" fill="#ff144f"/></svg></div>
+        </div>
+
+        <div class="gd-row gd-row--a">
+          <div class="gd-card">
+            <h4>Digitaal verzonden post <span>&mdash; aandeel per maand, tegen het doel</span></h4>
+            <svg viewBox="0 0 320 124" aria-hidden="true">
+              <rect x="20" y="12" width="280" height="100" rx="3" fill="#f3eee8"/>
+              <line x1="20" y1="37" x2="300" y2="37" stroke="#8a827b" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="24" y="33" font-size="8" fill="#5b544f">doel 2026: 75%</text>
+              <polygon points="20.0,74.0 45.5,72.0 70.9,71.0 96.4,68.0 121.8,66.0 147.3,65.0 172.7,62.0 198.2,60.0 223.6,57.0 249.1,55.0 274.5,53.0 300.0,51.0 300.0,112 20,112" fill="rgba(255,20,79,0.18)"/>
+              <polyline points="20.0,74.0 45.5,72.0 70.9,71.0 96.4,68.0 121.8,66.0 147.3,65.0 172.7,62.0 198.2,60.0 223.6,57.0 249.1,55.0 274.5,53.0 300.0,51.0" fill="none" stroke="#ff144f" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="300.0" cy="51.0" r="3.5" fill="#ff144f"/>
+              <text x="294.0" y="44.0" font-size="9" font-weight="700" fill="#1a1518" text-anchor="end">61%</text>
+              <text x="16" y="15" font-size="7" fill="#8a827b" text-anchor="end">100</text>
+              <text x="16" y="64" font-size="7" fill="#8a827b" text-anchor="end">50</text>
+              <text x="16" y="114" font-size="7" fill="#8a827b" text-anchor="end">0</text>
+            </svg>
+            <div class="np-chart-x"><span>jan</span><span>feb</span><span>mrt</span><span>apr</span><span>mei</span><span>jun</span><span>jul</span><span>aug</span><span>sep</span><span>okt</span><span>nov</span><span>dec</span></div>
+            <div class="gd-legend"><span><i style="background:#ff144f"></i>Digitaal (MijnOverheid, e-mail)</span><span><i style="background:#e3dbd1"></i>Papier</span></div>
+          </div>
+          <div class="gd-card">
+            <h4>Klantcontact per kanaal <span>&mdash; dit kwartaal</span></h4>
+            <div class="gd-donut">
+              <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="42" fill="none" stroke="#402c39" stroke-width="16" stroke-dasharray="116.11 147.78" stroke-dashoffset="0.00" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="42" fill="none" stroke="#ff144f" stroke-width="16" stroke-dasharray="71.25 192.64" stroke-dashoffset="-116.11" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="42" fill="none" stroke="#ff8fab" stroke-width="16" stroke-dasharray="44.86 219.03" stroke-dashoffset="-187.36" transform="rotate(-90 60 60)"/><circle cx="60" cy="60" r="42" fill="none" stroke="#d9cfc4" stroke-width="16" stroke-dasharray="31.67 232.23" stroke-dashoffset="-232.23" transform="rotate(-90 60 60)"/>
+                <text x="60" y="58" font-size="16" font-weight="700" fill="#1a1518" text-anchor="middle">24.600</text>
+                <text x="60" y="71" font-size="8" fill="#8a827b" text-anchor="middle">contacten</text>
+              </svg>
+              <ul><li><i style="background:#402c39"></i>Telefoon<b>44%</b></li><li><i style="background:#ff144f"></i>Online formulier<b>27%</b></li><li><i style="background:#ff8fab"></i>Balie<b>17%</b></li><li><i style="background:#d9cfc4"></i>E-mail en chat<b>12%</b></li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="gd-row gd-row--b">
+          <div class="gd-card">
+            <h4>Wmo-meldingen per wijk <span>&mdash; per 1.000 inwoners</span></h4>
+            <div class="gd-heat"><div class="is-dark" style="background: rgba(255,20,79,0.94)"><span>Stads&shy;hart</span><b>52</b></div><div class="is-dark" style="background: rgba(255,20,79,0.80)"><span>Lelystad-Haven</span><b>45</b></div><div class="is-dark" style="background: rgba(255,20,79,0.71)"><span>Bos&shy;wijk</span><b>41</b></div><div class="is-dark" style="background: rgba(255,20,79,0.65)"><span>Zuider&shy;zeewijk</span><b>38</b></div><div class="is-dark" style="background: rgba(255,20,79,0.57)"><span>Atol&shy;wijk</span><b>34</b></div><div class="" style="background: rgba(255,20,79,0.47)"><span>Water&shy;wijk</span><b>29</b></div><div class="" style="background: rgba(255,20,79,0.33)"><span>Bolder</span><b>22</b></div><div class="" style="background: rgba(255,20,79,0.24)"><span>Hollandse Hout</span><b>18</b></div><div class="" style="background: rgba(255,20,79,0.18)"><span>Kust&shy;wijk</span><b>15</b></div><div class="" style="background: rgba(255,20,79,0.12)"><span>Warande</span><b>12</b></div></div>
+            <div class="gd-scale">laag<i></i>hoog</div>
+          </div>
+          <div class="gd-card">
+            <h4>De Wmo-keten <span>&mdash; van melding tot ervaring, dit jaar</span></h4>
+            <div class="gd-funnel"><div><span>Meldingen</span><i><b style="width:100%"></b></i><u>1.180</u></div><div><span>Beschikking binnen 8 weken</span><i><b style="width:90%"></b></i><u>1.062</u></div><div><span></span><small>118 meldingen buiten de wettelijke termijn</small></div><div><span>Zorg daadwerkelijk gestart</span><i><b style="width:79%"></b></i><u>934</u></div><div><span></span><small>128 toewijzingen zonder levering</small></div><div><span>Ervaring inwoner 7 of hoger</span><i><b style="width:59%"></b></i><u>698</u></div></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <p class="gd-note">Elke tegel is aanklikbaar tot op het niveau van de wijk, het team of het dossier. Achter &ldquo;128 toewijzingen open&rdquo; staat dus de lijst met de toewijzingen waar het om gaat, niet alleen een percentage.</p>
+  </div>
+</section>
+
+<!-- De vraag -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">De eerste vraag</span>
+        <h2>Bij welk proces mis je grip, terwijl de gegevens er wel zijn?</h2>
+      </div>
+      <p>We beginnen niet bij een applicatie of een dataplatform. We beginnen bij een proces waar het nu knelt en bij het besluit dat daar genomen moet worden. Een paar vragen die we bij gemeenten vaak horen:</p>
+    </div>
+    <div class="np-grid">
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </span>
+        <h3>Wordt geleverd wat we inkopen?</h3>
+        <p>De Wmo-zorg wordt ingekocht, maar krijgen inwoners ook wat er is ingekocht? En hoe komt de ervaring van de inwoner die de zorg ontvangt bij de gemeente terug?</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <h3>Halen we onze servicenormen?</h3>
+        <p>Waar staan we tegenover de landelijke norm voor dienstverlening en tegenover de norm die we onszelf richting inwoners hebben opgelegd? En waar zit het verschil tussen die twee?</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+        <h3>Loopt de digitalisering ook echt?</h3>
+        <p>Brieven digitaal versturen is het doel, maar hoeveel inwoners zijn aangesloten op MijnOverheid? Groeit het digitale aandeel zoals verwacht, of loopt het vast?</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </span>
+        <h3>Waarom kost een dwarsvraag dagen?</h3>
+        <p>Een vraag die twee systemen raakt, bijvoorbeeld vergunningen en handhaving, gaat langs drie mensen en eindigt in Excel. De volgende keer begint het weer van voren af aan.</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <h3>Kloppen de cijfers waarop we ons verantwoorden?</h3>
+        <p>Richting de raad, het Rijk en inwoners moet een cijfer kloppen. Dat vraagt dat je weet welke records niet kloppen, en niet alleen een percentage.</p>
+      </div>
+      <div class="np-card">
+        <span class="np-icon np-icon--blue">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </span>
+        <h3>Rekent elke afdeling anders?</h3>
+        <p>Doorlooptijd, caseload, bezetting: als iedere afdeling een eigen definitie gebruikt, gaat het overleg over wiens cijfer klopt en niet over het besluit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Domeinen -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Wat we ontsluiten</span>
+        <h2>Vier domeinen, met voorbeelden</h2>
+      </div>
+      <p>Per domein: de vraag, de bronnen die we aansluiten en wat er vervolgens in beeld komt. Het zijn voorbeelden, geen vast pakket. Welke bronnen bij jullie aangesloten worden, hangt af van het vraagstuk dat als eerste wordt opgepakt.</p>
+    </div>
+    <div class="gm-domains">
+      <div class="gm-domain">
+        <h3>Sociaal domein</h3>
+        <p>Wmo, Jeugd en Participatie: veel geld, veel partijen, weinig zicht op wat er aan het eind bij de inwoner aankomt.</p>
+        <dl>
+          <div><dt>De vraag</dt><dd>Wordt er <strong>geleverd wat er is ingekocht</strong>, per aanbieder en per product? En hoe verhoudt zich dat tot de ervaring van de inwoner?</dd></div>
+          <div><dt>Bronnen</dt><dd>Applicatie sociaal domein (beschikkingen, toewijzingen), berichtenverkeer met aanbieders, financi&euml;le administratie, klanttevredenheid.</dd></div>
+          <div><dt>In beeld</dt><dd>Toegewezen tegenover gedeclareerd, doorlooptijd van melding tot beschikking, uitputting per aanbieder, signalen op afwijkingen.</dd></div>
+        </dl>
+      </div>
+      <div class="gm-domain">
+        <h3>Vergunningen, toezicht en handhaving</h3>
+        <p>Vergunningen, meldingen en handhaving staan vaak in verschillende systemen. Pas in samenhang zie je waar het knelt.</p>
+        <dl>
+          <div><dt>De vraag</dt><dd>Halen we de <strong>wettelijke beslistermijnen</strong>? Waar loopt de voorraad op, en volgt er op een melding ook toezicht?</dd></div>
+          <div><dt>Bronnen</dt><dd>VTH-applicatie, zaaksysteem, meldingen openbare ruimte, BAG. Meerdere databases, samengebracht in &eacute;&eacute;n model.</dd></div>
+          <div><dt>In beeld</dt><dd>Voorraad en doorlooptijd per zaaktype, termijnoverschrijdingen v&oacute;&oacute;rdat ze ontstaan, handhavingsverzoeken per wijk en per object.</dd></div>
+        </dl>
+      </div>
+      <div class="gm-domain">
+        <h3>Dienstverlening en klantcontact</h3>
+        <p>Er ligt een landelijke norm voor dienstverlening, en de meeste gemeenten hanteren daarnaast hun eigen servicenormen richting inwoners.</p>
+        <dl>
+          <div><dt>De vraag</dt><dd>Hoe doen we het <strong>tegenover de landelijke norm en tegenover onze eigen norm</strong>, en waar zit het verschil?</dd></div>
+          <div><dt>Bronnen</dt><dd>Klantcontactsysteem, telefooncentrale, afsprakenregistratie, zaaksysteem.</dd></div>
+          <div><dt>In beeld</dt><dd>Bereikbaarheid, afhandeling in het eerste contact, terugbelverzoeken binnen de termijn, drukte per dagdeel. Alles gemeten tegen beide normen.</dd></div>
+        </dl>
+      </div>
+      <div class="gm-domain">
+        <h3>Digitale dienstverlening</h3>
+        <p>Digitaliseren is pas geslaagd als inwoners mee digitaliseren. Dat is te meten.</p>
+        <dl>
+          <div><dt>De vraag</dt><dd>Hoeveel inwoners bereiken we digitaal, en <strong>groeit dat aandeel</strong> zoals het plan veronderstelt?</dd></div>
+          <div><dt>Bronnen</dt><dd>Verzendgegevens van post en berichten, aansluitingen op MijnOverheid, e-formulieren, Burgerzaken.</dd></div>
+          <div><dt>In beeld</dt><dd>Digitaal tegenover papier per brieftype, de groeicurve per maand, en de groepen inwoners die achterblijven.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dashboards -->
+<section class="np-section np-section--ink">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Zo ziet het eruit</span>
+        <h2>Per domein: van signaal naar actie</h2>
+      </div>
+      <p>Een dashboard is pas nuttig als iemand er iets mee doet. Daarom heeft elke tegel een norm en een eigenaar, en kun je doorklikken naar de onderliggende zaken of dossiers. De cijfers hieronder zijn fictief. Ze laten de opbouw zien, niet de situatie in {{ gemeente }}.</p>
+    </div>
+
+    <div class="gm-dashes">
+      <div>
+        <figure class="np-dash">
+          <div class="np-dash-bar">
+            <span class="np-dash-title">Dienstverlening &mdash; <em>landelijke norm en eigen norm naast elkaar</em></span>
+            <span class="np-dash-flag">Voorbeeldweergave, fictieve cijfers</span>
+          </div>
+          <div class="np-dash-body">
+            <div class="np-dash-kpis">
+              <div class="np-dash-kpi">
+                <span>Telefoon binnen 30 sec. opgenomen</span>
+                <strong>78%</strong>
+                <em class="is-down">eigen norm 80%</em>
+                <small>Landelijke norm gehaald</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Afgehandeld in eerste contact</span>
+                <strong>71%</strong>
+                <em>3 pp meer dan vorig kwartaal</em>
+                <small>Eigen norm 70%</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Terugbelverzoek binnen 2 werkdagen</span>
+                <strong>64%</strong>
+                <em class="is-down">eigen norm 90%</em>
+                <small>Grootste afwijking</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Zaken binnen de wettelijke termijn</span>
+                <strong>93%</strong>
+                <em>1 pp meer dan vorig kwartaal</em>
+                <small>Uitsplitsbaar per zaaktype</small>
+              </div>
+            </div>
+            <div class="np-dash-charts">
+              <div class="np-chart">
+                <h4>Openstaande terugbelverzoeken <span>&mdash; per afdeling, ouder dan 2 werkdagen</span></h4>
+                <div class="np-bars">
+                  <div><span>Belastingen</span><i><b style="width:100%"></b></i><u>118</u></div>
+                  <div><span>Sociaal domein</span><i><b style="width:74%"></b></i><u>87</u></div>
+                  <div><span>Vergunningen</span><i><b style="width:41%"></b></i><u>48</u></div>
+                  <div><span>Burgerzaken</span><i><b style="width:22%"></b></i><u>26</u></div>
+                  <div><span>Overige afdelingen</span><i><b style="width:30%"></b></i><u>35</u></div>
+                </div>
+              </div>
+              <div class="np-chart">
+                <h4>Bereikbaarheid per week <span>&mdash; tegen de eigen norm</span></h4>
+                <svg viewBox="0 0 320 120" role="img" aria-label="Lijndiagram: het percentage telefoontjes dat binnen 30 seconden wordt opgenomen schommelt tussen 70 en 84 procent, met een dip in week 5 en 6, en ligt de laatste weken net onder de eigen norm van 80 procent">
+                  <line x1="20" y1="47" x2="300" y2="47" stroke="#8a827b" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <text x="20" y="42" font-size="8" fill="#8a827b">eigen norm 80%</text>
+                  <polyline points="20,38 60,33.5 100,42.5 140,56 180,74 220,65 260,51.5 300,51.5" fill="none" stroke="#ff144f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                  <circle cx="300" cy="51.5" r="3.5" fill="#ff144f"></circle>
+                </svg>
+                <div class="np-chart-x">
+                  <span>wk 1</span><span>wk 2</span><span>wk 3</span><span>wk 4</span><span>wk 5</span><span>wk 6</span><span>wk 7</span><span>wk 8</span>
+                </div>
+              </div>
+            </div>
+            <div class="np-dash-signal">
+              <span>Signaal</span>
+              <p><strong>De landelijke norm wordt gehaald, de eigen norm voor terugbellen niet.</strong> Bijna de helft van de achterstand zit bij Belastingen en valt samen met de verzending van de aanslagen. Dat is een planningsvraag, geen capaciteitsvraag. Achter de tegel staat de lijst met openstaande verzoeken.</p>
+            </div>
+          </div>
+        </figure>
+      </div>
+
+      <div>
+        <figure class="np-dash">
+          <div class="np-dash-bar">
+            <span class="np-dash-title">Wmo &mdash; <em>ingekocht, geleverd en ervaren</em></span>
+            <span class="np-dash-flag">Voorbeeldweergave, fictieve cijfers</span>
+          </div>
+          <div class="np-dash-body">
+            <div class="np-dash-kpis">
+              <div class="np-dash-kpi">
+                <span>Lopende toewijzingen</span>
+                <strong>3.240</strong>
+                <em>2% meer dan vorig jaar</em>
+                <small>Per product en aanbieder</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Geleverd tegenover toegewezen</span>
+                <strong>88%</strong>
+                <em class="is-down">12% niet gedeclareerd</em>
+                <small>Toewijzing zonder levering</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Melding tot beschikking</span>
+                <strong>6,2 wk</strong>
+                <em class="is-down">wettelijk 8 weken</em>
+                <small>Mediaan, dit kwartaal</small>
+              </div>
+              <div class="np-dash-kpi">
+                <span>Ervaring inwoner</span>
+                <strong>7,4</strong>
+                <em>uit het cli&euml;ntervaringsonderzoek</em>
+                <small>Naast de levering gelegd</small>
+              </div>
+            </div>
+            <div class="np-dash-charts">
+              <div class="np-chart">
+                <h4>Toegewezen zonder levering <span>&mdash; per aanbieder, aantal cli&euml;nten</span></h4>
+                <div class="np-bars">
+                  <div><span>Aanbieder A</span><i><b style="width:100%"></b></i><u>142</u></div>
+                  <div><span>Aanbieder B</span><i><b style="width:58%"></b></i><u>82</u></div>
+                  <div><span>Aanbieder C</span><i><b style="width:37%"></b></i><u>53</u></div>
+                  <div><span>Aanbieder D</span><i><b style="width:21%"></b></i><u>30</u></div>
+                  <div><span>Overige aanbieders</span><i><b style="width:45%"></b></i><u>64</u></div>
+                </div>
+              </div>
+              <div class="np-chart">
+                <h4>Geleverd tegenover toegewezen <span>&mdash; per maand</span></h4>
+                <svg viewBox="0 0 320 120" role="img" aria-label="Lijndiagram: het percentage van de toewijzingen waarop geleverd is loopt van 81 procent in januari op naar 88 procent in augustus">
+                  <polygon points="20,74 60,71.75 100,65 140,62.75 180,58.25 220,56 260,51.5 300,47 300,110 20,110" fill="rgba(255,20,79,0.07)"></polygon>
+                  <polyline points="20,74 60,71.75 100,65 140,62.75 180,58.25 220,56 260,51.5 300,47" fill="none" stroke="#ff144f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                  <circle cx="300" cy="47" r="3.5" fill="#ff144f"></circle>
+                </svg>
+                <div class="np-chart-x">
+                  <span>jan</span><span>feb</span><span>mrt</span><span>apr</span><span>mei</span><span>jun</span><span>jul</span><span>aug</span>
+                </div>
+              </div>
+            </div>
+            <div class="np-dash-signal">
+              <span>Signaal</span>
+              <p><strong>Bij aanbieder A is voor 142 cli&euml;nten zorg toegewezen waarop niets is gedeclareerd.</strong> Dat kan betekenen dat de zorg niet start, of dat de declaratie achterloopt. In beide gevallen is het een gesprek met de aanbieder, en achter de tegel staan de dossiers waar het over gaat.</p>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bewezen -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Het draait al</span>
+        <h2>Wat bij gemeente Westerkwartier is gebouwd, gaat mee naar {{ gemeente }}</h2>
+      </div>
+      <p>Gemeenten lijken sterk op elkaar: dezelfde bronsystemen, dezelfde processen, dezelfde verantwoordingsstromen. Wat we bij Westerkwartier hebben gebouwd is daarom geen eenmalig maatwerk. Het is een model dat bij de volgende gemeente voor een groot deel opnieuw gebruikt wordt. GRIP, de techniek eronder, draait ook bij Fijnder in de Achterhoek en bij het RIVM.</p>
+    </div>
+    <div class="np-grid np-grid--2">
+      <div class="np-domain">
+        <h3>Zeventien bronnen, vier koppeltechnieken</h3>
+        <p class="np-source-note">De techniek volgt uit wat de bron toelaat. Een bron hoeft dus niet eerst geschikt gemaakt te worden.</p>
+        <ul class="np-pills">
+          <li>Burgerzaken</li>
+          <li>Sociaal domein</li>
+          <li>BAG</li>
+          <li>Meldingen openbare ruimte</li>
+          <li>Financi&euml;le applicatie</li>
+          <li>WOZ</li>
+          <li>Afval en milieustraat</li>
+          <li>Telefooncentrale</li>
+          <li>Helpdesk</li>
+          <li>Personeelssysteem</li>
+          <li>Afspraakregistratie inwoners</li>
+          <li>CBS-data</li>
+          <li>Klimaatsensoren</li>
+        </ul>
+      </div>
+      <div class="np-domain">
+        <h3>Een model dat groeit per gemeente</h3>
+        <p class="np-source-note">Bij Westerkwartier staat een GGM-ready datamodel dat dagelijks wordt ververst. Bij jullie is het inrichten: bronnen aansluiten en de definities naast jullie praktijk leggen.</p>
+        <ul class="np-checks">
+          <li>weken tot de eerste stuurinformatie, geen jaren</li>
+          <li>het gesprek gaat vanaf dag &eacute;&eacute;n over de inhoud</li>
+          <li>elke gemeente voegt definities en koppelingen toe</li>
+          <li>&eacute;&eacute;n beheerd model, geen losse kopie&euml;n per gemeente</li>
+        </ul>
+      </div>
+    </div>
+    <div class="np-quote">
+      <p>Het idee van Common Ground is goed: bouw het &eacute;&eacute;n keer, gebruik het vaker. Het risico is dat er tien versies ontstaan die niemand meer beheert. Wij hergebruiken het model en blijven het ook beheren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Compliance -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Compliance en soevereiniteit</span>
+        <h2>Jullie gegevens blijven waar ze horen</h2>
+      </div>
+      <p>Europese cloudsoevereiniteit staat bij gemeenten op de agenda, en de AVG-afweging rond verwerking buiten de eigen omgeving wordt scherper beoordeeld dan een paar jaar geleden. Voor een gemeente is dat een randvoorwaarde. Zo hebben we het geregeld.</p>
+    </div>
+    <div class="np-split">
+      <div class="np-panel np-panel--red">
+        <h3>On-premise of jullie eigen cloud</h3>
+        <p>GRIP draait on-premise of in jullie eigen cloudomgeving. Die keuze maken jullie, niet de leverancier.</p>
+        <ul class="np-checks">
+          <li>gegevens hoeven de eigen omgeving niet te verlaten</li>
+          <li>geen verwerking buiten de EU, dus geen doorgiftevraagstuk</li>
+          <li>meelezen met een read-only account per bronsysteem</li>
+          <li>Nederlandse leverancier, Nederlandse ondersteuning</li>
+          <li>ISO 27001: certificeringstraject loopt</li>
+        </ul>
+      </div>
+      <div class="np-panel np-panel--light">
+        <h3>Geen black box, geen lock-in</h3>
+        <p>GRIP genereert leesbare SQL. Daardoor kan jullie organisatie zelf zien wat er met de gegevens gebeurt.</p>
+        <ul class="np-checks">
+          <li>volledige inzage in definities en berekeningen</li>
+          <li>versiebeheer en logging op elke stap</li>
+          <li>aansluiting op het Gemeentelijk Gegevensmodel (GGM)</li>
+          <li>datakwaliteit gemeten op de dimensies van het NORA-raamwerk</li>
+          <li>beslisregels uitlegbaar, klaar voor het Algoritmeregister</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wie zijn we -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Wie zijn we</span>
+        <h2>Domeinkennis uit gemeenteland, techniek die al draait</h2>
+      </div>
+      <p>Boostin is onderdeel van de Data Performance Groep. Onder hetzelfde dak levert Notifica stuurinformatie aan zo'n zeventig organisaties in de installatiebranche, van 30 tot 3.000 medewerkers, met een vast bedrag per maand. Die aanpak brengen we met Boostin naar gemeenten, samen met mensen die gemeenteland van binnen kennen.</p>
+    </div>
+    <div class="np-roles">
+      <div class="np-role">
+        <h4>Patrick Talen</h4>
+        <p>Werkt sinds 2008 in de informatievoorziening van gemeenten, onder meer bij Decos, DocLogic en Data Bay. Kent de processen en de mensen, en zorgt dat het vraagstuk op de goede plek terechtkomt.</p>
+      </div>
+      <div class="np-role">
+        <h4>Dolf Jansonius</h4>
+        <p>Maker van GRIP: bronontsluiting, datamodellen, datakwaliteit en de on-premise inrichting. GRIP draait bij Westerkwartier, Fijnder en het RIVM.</p>
+      </div>
+      <div class="np-role">
+        <h4>Tobias Boog</h4>
+        <p>Van vraagstuk naar werkende stuurinformatie: dashboards, definities en de afspraken die ervoor zorgen dat er ook echt op gestuurd wordt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Werkwijze -->
+<section class="np-section np-section--surface">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Zo werken we</span>
+        <h2>Klein beginnen, snel iets laten zien</h2>
+      </div>
+      <p>Geen meerjarig dataprogramma vooraf. We kiezen samen &eacute;&eacute;n vraagstuk waar nu echt iets moet gebeuren en laten daar binnen weken iets werkends zien. Daarna beslissen jullie of en hoe het verder gaat.</p>
+    </div>
+    <div class="np-phases">
+      <div class="np-phase">
+        <h3>1. Verkennend gesprek</h3>
+        <p>Welk proces knelt, welke bronnen spelen, wie gaat erover? We bepalen welk vraagstuk het snelst aantoonbare waarde oplevert.</p>
+        <span class="np-phase-chip">E&eacute;n gesprek</span>
+      </div>
+      <div class="np-phase">
+        <h3>2. Pilot op &eacute;&eacute;n vraagstuk</h3>
+        <p>Bronnen aansluiten, definities en normen vastleggen en het eerste dashboard opleveren, samen met de mensen die erop gaan sturen.</p>
+        <span class="np-phase-chip">Weken, geen jaren</span>
+      </div>
+      <div class="np-phase">
+        <h3>3. Uitbreiden per domein</h3>
+        <p>Het model groeit per vraagstuk. Onderhoud en doorontwikkeling zitten in een vast bedrag per maand, dus niet in een nieuw project per wijziging.</p>
+        <span class="np-phase-chip">Groeit mee</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / contact -->
+<section class="np-section">
+  <div class="container">
+    <div class="np-cta">
+      <h2>Waar wil {{ gemeente }} als eerste grip op?</h2>
+      <p>In een eerste gesprek bepalen we welk vraagstuk zich leent om snel aantoonbare waarde te laten zien. Bijvoorbeeld:</p>
+      <ul class="np-questions">
+        <li>Wordt er geleverd wat we inkopen?</li>
+        <li>Halen we onze eigen servicenormen?</li>
+        <li>Hoe snel groeit het digitale bereik?</li>
+        <li>Waar lopen de beslistermijnen uit?</li>
+      </ul>
+      <div class="gm-contacts">
+        <div class="gm-contact">
+          <strong>Patrick Talen</strong>
+          <span>Contactpersoon gemeente {{ gemeente }}</span>
+          <a href="mailto:patrick@ptconnectit.nl">patrick@ptconnectit.nl</a>
+        </div>
+        <div class="gm-contact">
+          <strong>Tobias Boog</strong>
+          <span>Boostin, Data Performance Groep</span>
+          <a href="mailto:tobias@notifica.nl">tobias@notifica.nl</a> &middot; <a href="tel:+31620124077">06 20 12 40 77</a>
+        </div>
+      </div>
+      <p class="np-cta-note">E&eacute;n gesprek, geen verplichting. We bepalen samen of er een pilot in zit.</p>
+      <p class="np-cta-note gm-print-only">Online versie: boostin.nl{{ page.url }}</p>
+    </div>
+  </div>
+</section>

@@ -1,1 +1,5 @@
 # Cloudflare Pages headers
+
+# Persoonlijke gemeentepagina's: niet indexeren (naast de meta-tag)
+/gemeente-*
+  X-Robots-Tag: noindex, nofollow

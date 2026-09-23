@@ -6,7 +6,8 @@
   <title>{{ title }} | {{ site.name }}</title>
   <meta name="description" content="{{ description or site.description }}">
 
-  <!-- Canonical URL -->
+  {% if noindex %}<meta name="robots" content="noindex, nofollow">
+  {% endif %}<!-- Canonical URL -->
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
   <!-- Fonts -->
