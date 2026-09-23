@@ -105,6 +105,23 @@ datum: september 2026
   .page-gemeente .np-roles { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .gm-role-wide { grid-column: 1 / -1; }
   .gm-role-wide p + p { margin-top: .5rem; }
+
+  /* ---------- Woo ---------- */
+  .gm-woo-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,15rem); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; margin-bottom: 2rem; }
+  .gm-woo-shot { margin: 0; }
+  .gm-woo-shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--np-line); box-shadow: 0 30px 60px -36px rgba(64,44,57,.5); }
+  .gm-woo-shot figcaption { margin-top: .625rem; font-size: .75rem; line-height: 1.5; color: var(--np-text-dim); }
+  .gm-woo-split { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+  .gm-woo-split .np-panel h3 { margin-top: 0; }
+  .gm-cats { display: grid; grid-template-columns: repeat(17, minmax(0,1fr)); gap: 4px; margin-top: .25rem; }
+  .gm-cats i { display: block; height: 26px; border-radius: 4px; background: #ff144f; }
+  .gm-cats i.is-part { background: rgba(255,20,79,.38); }
+  .gm-cats i.is-none { background: #e6dfd6; }
+  @media (max-width: 860px) {
+    .gm-woo-grid, .gm-woo-split { grid-template-columns: minmax(0,1fr); }
+    .gm-woo-shot { max-width: 17rem; }
+  }
+
   .gm-print-only { display: none; }
 
   @media (max-width: 860px) {
@@ -152,6 +169,9 @@ datum: september 2026
     .gd-heat { grid-template-columns: repeat(5, minmax(0,1fr)) !important; }
     .gd-donut ul { grid-template-columns: minmax(0,1fr) !important; }
     .gd-note { display: none; }
+    .gm-woo-grid { grid-template-columns: minmax(0,1fr) 11rem !important; }
+    .gm-woo-split { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    .gm-woo-shot img { box-shadow: none; }
     .np-dash { box-shadow: none; border: 1px solid var(--np-line); }
 
     .np-card, .np-panel, .np-domain, .gm-domain, .np-dash, .np-phase, .np-role,
@@ -555,6 +575,111 @@ datum: september 2026
   </div>
 </section>
 
+
+<!-- Woo -->
+<section class="np-section np-section--surface gm-woo">
+  <div class="container">
+    <div class="np-head">
+      <div>
+        <span class="np-tag">Wet open overheid</span>
+        <h2>Openbaar maken is &eacute;&eacute;n. Aantonen hoe het gaat is twee.</h2>
+      </div>
+      <p>De Woo vraagt twee dingen van een gemeente: Woo-verzoeken binnen de termijn afhandelen, en informatie actief openbaar maken. Een publicatieplatform zoals GPP-Woo regelt het openbaar maken. Wat daarna vaak ontbreekt is het overzicht: hoeveel verzoeken er lopen, waar de termijnen knellen en hoe volledig de actieve openbaarmaking is.</p>
+    </div>
+
+    <div class="gm-woo-grid">
+      <div class="gm-woo-split">
+        <div class="np-panel np-panel--light">
+          <h3>Woo-verzoeken</h3>
+          <p>Woo-verzoeken lopen als zaak door het zaaksysteem. Door die zaken te volgen zie je v&oacute;&oacute;rdat een termijn verloopt waar het vastloopt.</p>
+          <ul class="np-checks">
+            <li>binnen de beslistermijn, met en zonder verdaging</li>
+            <li>openstaande verzoeken per afdeling en per fase</li>
+            <li>doorlooptijd van ontvangst tot besluit</li>
+            <li>omvang: aantal documenten per verzoek</li>
+          </ul>
+        </div>
+        <div class="np-panel np-panel--light">
+          <h3>Actieve openbaarmaking</h3>
+          <p>Per informatiecategorie uit de Woo zichtbaar wat er gepubliceerd is, wat nog ontbreekt en hoe lang publicatie duurt na vaststelling.</p>
+          <ul class="np-checks">
+            <li>volledigheid per informatiecategorie</li>
+            <li>tijd tussen besluit en publicatie</li>
+            <li>publicaties per afdeling en per maand</li>
+            <li>koppeling tussen publicatieplatform, zaaksysteem en DMS</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="gm-woo-shot">
+        <img src="{{ '/assets/images/gpp-woo-site.jpg' | url }}" alt="Website van GPP-Woo: een modern open source, Common Ground-compliant softwareoplossing om overheidsinformatie openbaar te maken" width="735" height="1240" loading="lazy">
+        <figcaption>GPP-Woo, het generieke publicatieplatform voor de Woo (gpp-woo.nl). Open source en Common Ground. Boostin vult het aan met stuurinformatie.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="np-dash">
+      <div class="np-dash-bar">
+        <span class="np-dash-title">Woo &mdash; <em>verzoeken en actieve openbaarmaking</em></span>
+        <span class="np-dash-flag">Voorbeeldweergave, fictieve cijfers</span>
+      </div>
+      <div class="np-dash-body">
+        <div class="np-dash-kpis">
+          <div class="np-dash-kpi">
+            <span>Woo-verzoeken dit jaar</span>
+            <strong>146</strong>
+            <em>18% meer dan vorig jaar</em>
+            <small>Waarvan 31 nog open</small>
+          </div>
+          <div class="np-dash-kpi">
+            <span>Besluit binnen de termijn</span>
+            <strong>68%</strong>
+            <em class="is-down">9 verzoeken over de termijn</em>
+            <small>Inclusief verdaging</small>
+          </div>
+          <div class="np-dash-kpi">
+            <span>Doorlooptijd tot besluit</span>
+            <strong>6,4 wk</strong>
+            <em class="is-down">mediaan, dit kwartaal</em>
+            <small>Uitsplitsbaar per afdeling</small>
+          </div>
+          <div class="np-dash-kpi">
+            <span>Informatiecategorie&euml;n op orde</span>
+            <strong>9 / 17</strong>
+            <em>2 meer dan vorig kwartaal</em>
+            <small>4 gedeeltelijk, 4 nog niet</small>
+          </div>
+        </div>
+        <div class="np-dash-charts">
+          <div class="np-chart">
+            <h4>Openstaande Woo-verzoeken <span>&mdash; per afdeling</span></h4>
+            <div class="np-bars">
+              <div><span>Ruimte en wonen</span><i><b style="width:100%"></b></i><u>11</u></div>
+              <div><span>Sociaal domein</span><i><b style="width:64%"></b></i><u>7</u></div>
+              <div><span>Bestuur en concern</span><i><b style="width:45%"></b></i><u>5</u></div>
+              <div><span>Openbare ruimte</span><i><b style="width:36%"></b></i><u>4</u></div>
+              <div><span>Overige afdelingen</span><i><b style="width:36%"></b></i><u>4</u></div>
+            </div>
+          </div>
+          <div class="np-chart">
+            <h4>Actieve openbaarmaking <span>&mdash; per informatiecategorie</span></h4>
+            <div class="gm-cats" role="img" aria-label="Van de 17 informatiecategorie&euml;n zijn er 9 volledig, 4 gedeeltelijk en 4 nog niet openbaar gemaakt"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="is-part"></i><i class="is-part"></i><i class="is-part"></i><i class="is-part"></i><i class="is-none"></i><i class="is-none"></i><i class="is-none"></i><i class="is-none"></i></div>
+            <div class="gd-legend"><span><i style="background:#ff144f"></i>volledig</span><span><i style="background:rgba(255,20,79,.38)"></i>gedeeltelijk</span><span><i style="background:#e6dfd6"></i>nog niet</span></div>
+            <h4 style="margin-top:1.125rem">Van besluit tot publicatie <span>&mdash; mediaan in werkdagen</span></h4>
+            <div class="np-bars">
+              <div><span>Raadsstukken</span><i><b style="width:12%"></b></i><u>2</u></div>
+              <div><span>Collegebesluiten</span><i><b style="width:45%"></b></i><u>9</u></div>
+              <div><span>Woo-besluiten</span><i><b style="width:70%"></b></i><u>14</u></div>
+            </div>
+          </div>
+        </div>
+        <div class="np-dash-signal">
+          <span>Signaal</span>
+          <p><strong>Elf van de 31 openstaande verzoeken liggen bij Ruimte en wonen, en daar zitten ook de meeste termijnoverschrijdingen.</strong> Het gaat om verzoeken met veel documenten. Dat is een vraag over capaciteit bij het beoordelen, en die lijst staat achter de tegel.</p>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
 <!-- Bewezen -->
 <section class="np-section">
   <div class="container">
@@ -708,6 +833,7 @@ datum: september 2026
         <li>Halen we onze eigen servicenormen?</li>
         <li>Hoe snel groeit het digitale bereik?</li>
         <li>Waar lopen de beslistermijnen uit?</li>
+        <li>Halen we de Woo-termijnen?</li>
       </ul>
       <div class="gm-contacts">
         <div class="gm-contact">
