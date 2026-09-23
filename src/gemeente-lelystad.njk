@@ -102,10 +102,14 @@ datum: september 2026
     .gd-heat { grid-template-columns: repeat(2, minmax(0,1fr)); }
   }
 
+  .page-gemeente .np-roles { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .gm-role-wide { grid-column: 1 / -1; }
+  .gm-role-wide p + p { margin-top: .5rem; }
   .gm-print-only { display: none; }
 
   @media (max-width: 860px) {
     .gm-domains, .gm-contacts { grid-template-columns: minmax(0,1fr); }
+    .page-gemeente .np-roles { grid-template-columns: minmax(0,1fr); }
   }
 
   /* ------------------------------------------------------------------
@@ -134,7 +138,8 @@ datum: september 2026
     .np-grid { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
     .np-split, .gm-domains, .gm-contacts { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
     .np-grid--2 { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
-    .np-phases, .np-roles { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+    .np-phases { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+    .np-roles { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
     .np-phase-chip { transform: none !important; margin-top: 1rem; }
     .np-stats-grid { grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
     .np-dash-kpis { grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
@@ -645,9 +650,10 @@ datum: september 2026
       <p>Boostin is onderdeel van de Data Performance Groep. Onder hetzelfde dak levert Notifica stuurinformatie aan zo'n zeventig organisaties in de installatiebranche, van 30 tot 3.000 medewerkers, met een vast bedrag per maand. Die aanpak brengen we met Boostin naar gemeenten, samen met mensen die gemeenteland van binnen kennen.</p>
     </div>
     <div class="np-roles">
-      <div class="np-role">
+      <div class="np-role gm-role-wide">
         <h4>Patrick Talen</h4>
-        <p>Werkt sinds 2008 in de informatievoorziening van gemeenten, onder meer bij Decos, DocLogic en Data Bay. Kent de processen en de mensen, en zorgt dat het vraagstuk op de goede plek terechtkomt.</p>
+        <p>Werkt sinds 2008 bij diverse toonaangevende leveranciers van software ter ondersteuning van overheidsorganisaties en specifiek voor gemeenten. Zoals Decos, Doclogic (sinds 2021 onderdeel van Decos), Xential, Data B Mailservice, Office Automate en Qualigraf. Met deze brede ervaring vertaalt Patrick vraagstukken naar oplossingen die echt werken.</p>
+        <p>Sinds 2026 is Patrick verbonden aan Boostin &ndash; grip op data.</p>
       </div>
       <div class="np-role">
         <h4>Dolf Jansonius</h4>
